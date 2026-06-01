@@ -1,0 +1,95 @@
+/* styles.css */
+
+/* Color palette */
+:root{
+  --blue-dark: #0b3b66;
+  --blue-mid: #1e6fa8;
+  --blue-light: #9fd3ff;
+  --accent: #0b7bd6;
+  --muted: #6c757d;
+}
+
+/* Topbar */
+.topbar{
+  background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid));
+  padding: 0.6rem 1rem;
+}
+.logo { border-radius: 6px; }
+.brand-title{ font-weight:700; font-size:1.05rem; }
+.brand-sub{ font-size:0.75rem; color: rgba(255,255,255,0.85); }
+
+/* Buttons and icons */
+.btn-icon{
+  width:44px; height:44px; border-radius:10px;
+}
+.notif-count{
+  position:absolute; top:6px; right:6px; font-size:0.65rem;
+}
+
+/* Avatar */
+.avatar{ width:44px; height:44px; font-weight:700; }
+
+/* Summary cards */
+.summary-card{
+  border: none;
+  background: linear-gradient(180deg, #ffffff, #f8fbff);
+  color: var(--blue-dark);
+}
+.summary-icon{
+  font-size:1.6rem; color: var(--blue-mid);
+}
+
+/* Welcome card */
+.stat .h5{ font-weight:700; color:var(--blue-dark); }
+
+/* Order progress */
+.order-progress { background: #ffffff; }
+.stage-row .stage-label{
+  width:110px; min-width:100px; font-weight:600; color:var(--blue-dark);
+}
+.stage-progress .progress-bar{ height:12px; border-radius:8px; }
+.stage-meta{ width:140px; text-align:right; min-width:120px; }
+
+/* Timeline */
+.timeline{ list-style:none; padding-left:0; margin:0; }
+.timeline li{ display:flex; gap:12px; align-items:flex-start; padding:12px 0; border-bottom:1px solid #f1f3f5; }
+.timeline-date{ width:110px; color:var(--muted); font-size:0.85rem; }
+.timeline-content{ flex:1; }
+
+/* Chat */
+.chat-box{ max-height:320px; overflow:auto; background:linear-gradient(180deg,#fbfdff,#ffffff); }
+.message{ padding:8px 10px; border-radius:8px; background:#f8f9fb; }
+.message.sent .message-body{ background:var(--blue-dark); color:#fff; padding:8px 12px; border-radius:8px; display:inline-block; }
+.message.received .message-body{ background:#f1f5f9; padding:8px 12px; border-radius:8px; display:inline-block; }
+.message-meta{ margin-bottom:6px; }
+
+/* Documents */
+.list-group-item{ display:flex; justify-content:space-between; align-items:center; }
+
+/* Chart placeholders */
+.chart-placeholder{ background:#fff; padding:10px; border-radius:8px; border:1px solid #eef3fb; }
+
+/* Responsive tweaks */
+@media (max-width: 991px){
+  .brand-sub{ display:none; }
+  .company-name{ display:none; }
+  .stage-meta{ display:none; }
+  .stage-label{ width:90px; }
+}
+
+/* Buttons */
+.btn-support{ border-radius:8px; }
+
+/* Badges */
+.badge { font-weight:600; }
+
+/* Small UI polish */
+.card { border-radius:12px; }
+.table thead th { border-bottom: 2px solid #eef3fb; }
+.table-hover tbody tr:hover { background: #fbfdff; }
+
+/* Accessibility: focus outlines */
+a:focus, button:focus, input:focus, select:focus, textarea:focus {
+  outline: 3px solid rgba(11,59,102,0.12);
+  outline-offset: 2px;
+}
