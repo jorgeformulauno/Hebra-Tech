@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS v5.3.8 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/proveedores.css">
+</head>
+<script>
+    function actualizarEstadoEnVivo(id) {
+        // 1. Obtener los elementos usando el ID del proveedor
+        const switchElement = document.getElementById(`switchEstado${id.charAt(0).toUpperCase() + id.slice(1)}`);
+        const badgeFicha = document.getElementById(`badge-estado-${id}`);
+        const puntoLista = document.getElementById(`punto-estado-${id}`);
+
+        // 2. Si el switch se activa (True)
+        if (switchElement.checked) {
+            // Cambiar el badge de la ficha de detalles a verde
+            if (badgeFicha) {
+                badgeFicha.className = "badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                badgeFicha.innerText = "Activo";
+            }
+            // Cambiar la gema de la lista izquierda a verde
+            if (puntoLista) {
+                puntoLista.className = "position-absolute top-0 start-100 translate-middle p-1 bg-success border border-2 border-primary rounded-circle";
+            }
+        }
+        // 3. Si el switch se desactiva (False)
+        else {
+            // Cambiar el badge de la ficha de detalles a rojo
+            if (badgeFicha) {
+                badgeFicha.className = "badge bg-danger-subtle text-danger mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                badgeFicha.innerText = "Inactivo";
+            }
+            // Cambiar la gema de la lista izquierda a rojo
+            if (puntoLista) {
+                puntoLista.className = "position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-2 border-primary rounded-circle";
+            }
+        }
+    }
+</script>
+
+<body style="background-color: #A5C9CA;">
+
+    <div class="w-100 min-vh-100" style="background-color: #A5C9CA;">
+
+        <header class="container mt-4 mb-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card border-0 shadow-sm rounded-5 py-4 px-5 bg-white text-center">
+
+                        <span class="text-uppercase tracking-wider fw-bold small d-block mb-1 text-primary"
+                            style="letter-spacing: 3px; font-size: 0.7rem;">
+                            PANEL DE CONTROL
+                        </span>
+
+                        <h1 class="fw-bold text-dark h3 mb-2">
+                            Directorio de Proveedores Textiles
+                        </h1>
+
+                        <p class="text-muted small mb-0 mx-auto" style="max-width: 550px;">
+                            Consulte las fichas de contacto, NIT y estados de sincronización de sus satélites en tiempo
+                            real.
+                        </p>
+
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="py-5 rounded-top-5 shadow-lg" style="background-color: #2D424D" ; min-vh-75;>
+            <div class="container pt-3">
+
+                <div class="row g-4 pb-4">
+
+                    <div class="col-lg-4">
+                        <div class="card border-0 shadow rounded-4 p-3 h-100" style="background-color: #1A2F3B;">
+
+                            <div class="fw-bold text-white opacity-75 mb-3 px-2 small tracking-wider"
+                                style="letter-spacing: 1px;">
+                                PROVEEDORES REGISTRADOS
+                            </div>
+
+                            <div class="mb-3 px-1">
+                                <div class="input-group input-group-sm">
+                                    <span
+                                        class="input-group-text border-0 text-white-50 bg-light bg-opacity-10 rounded-start-pill pl-3">
+                                        <i class="bi bi-search"></i>
+                                    </span>
+                                    <input type="text"
+                                        class="form-control border-0 text-white bg-light  rounded-end-pill py-2 ps-2 text-muted"
+                                        id="buscarProveedor" placeholder="Buscar por nombre o NIT..."
+                                        style="font-size: 0.8rem; box-shadow: none;">
+                                </div>
+                            </div>
+
+                            <div class="nav flex-column nav-pills" id="list-tab" role="tablist"
+                                aria-orientation="vertical">
+
+                                <button
+                                    class="nav-link active border-0 rounded-4 p-3 mb-2 d-flex align-items-center justify-content-between text-start"
+                                    id="list-prov1-list" data-bs-toggle="pill" data-bs-target="#list-prov1"
+                                    type="button" role="tab"
+                                    style="--bs-nav-pills-link-active-bg: #0d6efd; --bs-nav-pills-link-active-color: #ffffff; color: #ffffff;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="position-relative">
+                                            <div class="bg-light bg-opacity-10 text-white p-2 rounded-3"><i
+                                                    class="bi bi-building"></i></div>
+                                            <span id="punto-estado-prov1"
+                                                class="position-absolute top-0 start-100 translate-middle p-1 bg-success border border-2 rounded-circle"
+                                                style="width: 12px; height: 12px; border-color: #1A2F3B !important;"></span>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block small fw-bold">Textiles del Sol S.A.</strong>
+                                            <span class="opacity-75" style="font-size: 0.75rem;">NIT:
+                                                900.123.456-1</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-chevron-right small opacity-50"></i>
+                                </button>
+
+                                <button
+                                    class="nav-link border-0 rounded-4 p-3 mb-2 d-flex align-items-center justify-content-between text-start"
+                                    id="list-prov2-list" data-bs-toggle="pill" data-bs-target="#list-prov2"
+                                    type="button" role="tab"
+                                    style="--bs-nav-pills-link-active-bg: #0d6efd; --bs-nav-pills-link-active-color: #ffffff; color: #ffffff;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="position-relative">
+                                            <div class="bg-light bg-opacity-10 text-white p-2 rounded-3"><i
+                                                    class="bi bi-building"></i></div>
+                                            <span id="punto-estado-prov2"
+                                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-2 rounded-circle"
+                                                style="width: 12px; height: 12px; border-color: #1A2F3B !important;"></span>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block small fw-bold">Hilanderías Bogotá</strong>
+                                            <span class="opacity-75" style="font-size: 0.75rem;">NIT:
+                                                860.789.101-2</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-chevron-right small opacity-50"></i>
+                                </button>
+                                <button
+                                    class="nav-link border-0 rounded-4 p-3 mb-2 d-flex align-items-center justify-content-between text-start"
+                                    id="list-prov-list" data-bs-toggle="pill" data-bs-target="#list-prov3" type="button"
+                                    role="tab"
+                                    style="--bs-nav-pills-link-active-bg: #0d6efd; --bs-nav-pills-link-active-color: #ffffff; color: #ffffff;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="position-relative">
+                                            <div class="bg-light bg-opacity-10 text-white p-2 rounded-3"><i
+                                                    class="bi bi-building"></i></div>
+                                            <span id="punto-estado-prov3"
+                                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-2 rounded-circle"
+                                                style="width: 12px; height: 12px; border-color: #1A2F3B !important;"></span>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block small fw-bold">OperPan</strong>
+                                            <span class="opacity-75" style="font-size: 0.75rem;">NIT:
+                                                832.751.989-9</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-chevron-right small opacity-50"></i>
+                                </button>
+                                <button
+                                    class="nav-link border-0 rounded-4 p-3 mb-2 d-flex align-items-center justify-content-between text-start"
+                                    id="list-prov-list" data-bs-toggle="pill" data-bs-target="#list-prov4" type="button"
+                                    role="tab"
+                                    style="--bs-nav-pills-link-active-bg: #0d6efd; --bs-nav-pills-link-active-color: #ffffff; color: #ffffff;">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="position-relative">
+                                            <div class="bg-light bg-opacity-10 text-white p-2 rounded-3"><i
+                                                    class="bi bi-building"></i></div>
+                                            <span id="punto-estado-prov4"
+                                                class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-2 rounded-circle"
+                                                style="width: 12px; height: 12px; border-color: #1A2F3B !important;"></span>
+                                        </div>
+                                        <div>
+                                            <strong class="d-block small fw-bold">sewing and fabrics LTDA</strong>
+                                            <span class="opacity-75" style="font-size: 0.75rem;">NIT:
+                                                802.234.959-5</span>
+                                        </div>
+                                    </div>
+                                    <i class="bi bi-chevron-right small opacity-50"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="tab-content h-100" id="nav-tabContent">
+
+                            <div class="tab-pane fade show active h-100" id="list-prov1" role="tabpanel">
+                                <div class="card border-0 shadow rounded-4 p-4 p-md-5 bg-white h-100">
+                                    <div
+                                        class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
+                                        <div>
+                                            <span id="badge-estado-prov1"
+                                                class="badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold"
+                                                style="font-size: 0.7rem;">Activo</span>
+                                            <h3 class="fw-bold text-dark h4 mb-1">Textiles del Sol S.A.</h3>
+                                            <p class="text-muted small mb-0"><i
+                                                    class="bi bi-calendar3 me-2"></i>Registrado el: 15/01/2026</p>
+                                        </div>
+                                        <div class="text-end text-muted small">
+                                            <span class="d-block">ID Proveedor: <strong>#101</strong></span>
+                                            <span class="d-block">ID Usuario Asoc: <strong>#22</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4 mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Contacto Principal</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-person me-2 text-secondary"></i>Carlos Mendoza</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Número de Identificación (NIT)</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-card-text me-2 text-secondary"></i>900.123.456-1</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Correo Electrónico</label>
+                                            <div class="text-dark fw-semibold">
+                                                <i class="bi bi-envelope me-2 text-secondary"></i>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contacto@textilesdelsol.com"
+                                                    target="_blank"
+                                                    class="text-decoration-none text-dark fw-semibold link-primary">contacto@textilesdelsol.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Teléfono de Línea</label>
+                                            <i class="bi bi-envelope me-2 text-secondary"></i>
+                                            <a href="https://www.whatsapp.com/" target="_blank"
+                                                class="text-decoration-none text-dark fw-semibold link-primary">+57
+                                                (601) 444-9876</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top pt-4">
+                                        <div class="p-3 rounded-4 d-flex align-items-center justify-content-between"
+                                            style="background-color: #F8F9FA;">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i
+                                                        class="bi bi-shield-check fs-5"></i></div>
+                                                <div>
+                                                    <strong class="d-block text-dark small fw-bold">Estado de
+                                                        Operación</strong>
+                                                    <span class="text-muted" style="font-size: 0.75rem;">Permitir
+                                                        asignación de órdenes en satélites</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-md">
+                                                <input class="form-check-input cursor-pointer" type="checkbox"
+                                                    role="switch" id="switchEstadoProv1" checked
+                                                    onchange="actualizarEstadoEnVivo('prov1')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-pane fade h-100" id="list-prov2" role="tabpanel">
+                                <div class="card border-0 shadow rounded-4 p-4 p-md-5 bg-white h-100">
+                                    <div
+                                        class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
+                                        <div>
+                                            <span id="badge-estado-prov2"
+                                                class="badge bg-danger-subtle text-danger mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold"
+                                                style="font-size: 0.7rem;">Inactivo</span>
+                                            <h3 class="fw-bold text-dark h4 mb-1">Hilanderías Bogotá</h3>
+                                            <p class="text-muted small mb-0"><i
+                                                    class="bi bi-calendar3 me-2"></i>Registrado el: 02/03/2026</p>
+                                        </div>
+                                        <div class="text-end text-muted small">
+                                            <span class="d-block">ID Proveedor: <strong>#102</strong></span>
+                                            <span class="d-block">ID Usuario Asoc: <strong>#34</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4 mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Contacto Principal</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-person me-2 text-secondary"></i>Luz Marina Gómez</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Número de Identificación (NIT)</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-card-text me-2 text-secondary"></i>860.789.101-2</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Correo Electrónico</label>
+                                            <div class="text-dark fw-semibold">
+                                                <i class="bi bi-envelope me-2 text-secondary"></i>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gerencia@hilanderiasbogota.co"
+                                                    target="_blank"
+                                                    class="text-decoration-none text-dark fw-semibold link-primary">gerencia@hilanderiasbogota.co</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Teléfono de Línea</label>
+                                            <i class="bi bi-envelope me-2 text-secondary"></i>
+                                            <a href="https://www.whatsapp.com/" target="_blank"
+                                                class="text-decoration-none text-dark fw-semibold link-primary">+57
+                                                (601) 444-9876</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top pt-4">
+                                        <div class="p-3 rounded-4 d-flex align-items-center justify-content-between"
+                                            style="background-color: #F8F9FA;">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i
+                                                        class="bi bi-shield-check fs-5"></i></div>
+                                                <div>
+                                                    <strong class="d-block text-dark small fw-bold">Estado de
+                                                        Operación</strong>
+                                                    <span class="text-muted" style="font-size: 0.75rem;">Permitir
+                                                        asignación de órdenes en satélites</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-md">
+                                                <input class="form-check-input cursor-pointer" type="checkbox"
+                                                    role="switch" id="switchEstadoProv2"
+                                                    onchange="actualizarEstadoEnVivo('prov2')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade h-100" id="list-prov3" role="tabpanel">
+                                <div class="card border-0 shadow rounded-4 p-4 p-md-5 bg-white h-100">
+                                    <div
+                                        class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
+                                        <div>
+                                            <span id="badge-estado-prov3"
+                                                class="badge bg-danger-subtle text-danger mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold"
+                                                style="font-size: 0.7rem;">Inactivo</span>
+                                            <h3 class="fw-bold text-dark h4 mb-1">OperPan</h3>
+                                            <p class="text-muted small mb-0"><i
+                                                    class="bi bi-calendar3 me-2"></i>Registrado el: 02/03/2026</p>
+                                        </div>
+                                        <div class="text-end text-muted small">
+                                            <span class="d-block">ID Proveedor: <strong>#102</strong></span>
+                                            <span class="d-block">ID Usuario Asoc: <strong>#34</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4 mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Contacto Principal</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-person me-2 text-secondary"></i>Eddier Paz</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Número de Identificación (NIT)</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-card-text me-2 text-secondary"></i>832.751.989-9</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Correo Electrónico</label>
+                                            <div class="text-dark fw-semibold">
+                                                <i class="bi bi-envelope me-2 text-secondary"></i>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=gerencia@hilanderiasbogota.co"
+                                                    target="_blank"
+                                                    class="text-decoration-none text-dark fw-semibold link-primary">OperPan@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Teléfono de Línea</label>
+                                            <i class="bi bi-envelope me-2 text-secondary"></i>
+                                            <a href="https://www.whatsapp.com/" target="_blank"
+                                                class="text-decoration-none text-dark fw-semibold link-primary">+57
+                                                314 4314902</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top pt-4">
+                                        <div class="p-3 rounded-4 d-flex align-items-center justify-content-between"
+                                            style="background-color: #F8F9FA;">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i
+                                                        class="bi bi-shield-check fs-5"></i></div>
+                                                <div>
+                                                    <strong class="d-block text-dark small fw-bold">Estado de
+                                                        Operación</strong>
+                                                    <span class="text-muted" style="font-size: 0.75rem;">Permitir
+                                                        asignación de órdenes en satélites</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-md">
+                                                <input class="form-check-input cursor-pointer" type="checkbox"
+                                                    role="switch" id="switchEstadoProv3"
+                                                    onchange="actualizarEstadoEnVivo('prov3')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade show active h-100" id="list-prov4" role="tabpanel">
+                                <div class="card border-0 shadow rounded-4 p-4 p-md-5 bg-white h-100">
+                                    <div
+                                        class="d-flex justify-content-between align-items-start border-bottom pb-4 mb-4">
+                                        <div>
+                                            <span id="badge-estado-prov4"
+                                                class="badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold"
+                                                style="font-size: 0.7rem;">Activo</span>
+                                            <h3 class="fw-bold text-dark h4 mb-1">sewing and fabrics LTDA.</h3>
+                                            <p class="text-muted small mb-0"><i
+                                                    class="bi bi-calendar3 me-2"></i>Registrado el: 15/01/2026</p>
+                                        </div>
+                                        <div class="text-end text-muted small">
+                                            <span class="d-block">ID Proveedor: <strong>#101</strong></span>
+                                            <span class="d-block">ID Usuario Asoc: <strong>#22</strong></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-4 mb-4">
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Contacto Principal</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-person me-2 text-secondary"></i>LEANDRO PAREDES</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Número de Identificación (NIT)</label>
+                                            <div class="text-dark fw-semibold"><i
+                                                    class="bi bi-card-text me-2 text-secondary"></i>802.234.959-5</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Correo Electrónico</label>
+                                            <div class="text-dark fw-semibold">
+                                                <i class="bi bi-envelope me-2 text-secondary"></i>
+                                                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=contacto@textilesdelsol.com"
+                                                    target="_blank"
+                                                    class="text-decoration-none text-dark fw-semibold link-primary">sewingandfabrics@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="text-uppercase text-muted fw-bold d-block mb-1"
+                                                style="font-size: 0.75rem;">Teléfono de Línea</label>
+                                            <i class="bi bi-envelope me-2 text-secondary"></i>
+                                            <a href="https://www.whatsapp.com/" target="_blank"
+                                                class="text-decoration-none text-dark fw-semibold link-primary">+57
+                                                320 456 1221</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="border-top pt-4">
+                                        <div class="p-3 rounded-4 d-flex align-items-center justify-content-between"
+                                            style="background-color: #F8F9FA;">
+                                            <div class="d-flex align-items-center gap-3">
+                                                <div class="bg-primary bg-opacity-10 text-primary p-2 rounded-3"><i
+                                                        class="bi bi-shield-check fs-5"></i></div>
+                                                <div>
+                                                    <strong class="d-block text-dark small fw-bold">Estado de
+                                                        Operación</strong>
+                                                    <span class="text-muted" style="font-size: 0.75rem;">Permitir
+                                                        asignación de órdenes en satélites</span>
+                                                </div>
+                                            </div>
+                                            <div class="form-check form-switch form-switch-md">
+                                                <input class="form-check-input cursor-pointer" type="checkbox"
+                                                    role="switch" id="switchEstadoProv4" checked
+                                                    onchange="actualizarEstadoEnVivo('prov4')">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    function toggleEstado(id) {
+                        const switchElement = document.getElementById(`switchEstado${id.charAt(0).toUpperCase() + id.slice(1)}`);
+                        const badge = document.getElementById(`badge-estado-${id}`);
+
+                        if (switchElement.checked) {
+                            badge.className = "badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                            badge.innerText = "Activo";
+                        } else {
+                            badge.className = "badge bg-danger-subtle text-danger mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                            badge.innerText = "Inactivo";
+                        }
+                    }
+
+                    // ============================================================================
+                    // 1. FUNCIÓN PARA EL FILTRADO DEL BUSCADOR EN TIEMPO REAL
+                    // ============================================================================
+                    document.getElementById('buscarProveedor').addEventListener('input', function (e) {
+                        // Convertimos lo que escribe el usuario a minúsculas y quitamos espacios extras
+                        const textoBusqueda = e.target.value.toLowerCase().trim();
+
+                        // Capturamos todos los botones de proveedores en la lista izquierda
+                        const proveedores = document.querySelectorAll('#list-tab .nav-link');
+
+                        proveedores.forEach(proveedor => {
+                            // Buscamos el texto dentro del tag <strong> (donde está el nombre de la empresa)
+                            const nombreEmpresa = proveedor.querySelector('strong').innerText.toLowerCase();
+
+                            // OPCIONAL: Si también quieres buscar por NIT, puedes descomentar la siguiente línea:
+                            // const nitEmpresa = proveedor.querySelector('.opacity-75').innerText.toLowerCase();
+
+                            // Si el nombre de la empresa contiene lo que se escribió, lo muestra; si no, lo oculta
+                            if (nombreEmpresa.includes(textoBusqueda)) {
+                                // Quitamos la clase de Bootstrap 'd-none' (que oculta elementos) si estaba puesta
+                                proveedor.classList.remove('d-none');
+                            } else {
+                                // Añadimos la clase 'd-none' de Bootstrap para ocultar el proveedor que no coincide
+                                proveedor.classList.add('d-none');
+                            }
+                        });
+                    });
+
+                    // ============================================================================
+                    // 2. FUNCIÓN DE SINCRONIZACIÓN DE ESTADOS (Mantiene lo que ya hicimos)
+                    // ============================================================================
+                    function actualizarEstadoEnVivo(id) {
+                        const switchElement = document.getElementById(`switchEstado${id.charAt(0).toUpperCase() + id.slice(1)}`);
+                        const badgeFicha = document.getElementById(`badge-estado-${id}`);
+                        const puntoLista = document.getElementById(`punto-estado-${id}`);
+
+                        if (switchElement.checked) {
+                            if (badgeFicha) {
+                                badgeFicha.className = "badge bg-success-subtle text-success mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                                badgeFicha.innerText = "Activo";
+                            }
+                            if (puntoLista) {
+                                puntoLista.className = "position-absolute top-0 start-100 translate-middle p-1 bg-success border border-2 rounded-circle";
+                            }
+                        } else {
+                            if (badgeFicha) {
+                                badgeFicha.className = "badge bg-danger-subtle text-danger mb-2 px-3 py-2 rounded-pill text-uppercase fw-bold";
+                                badgeFicha.innerText = "Inactivo";
+                            }
+                            if (puntoLista) {
+                                puntoLista.className = "position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-2 rounded-circle";
+                            }
+                        }
+                    }
+                
+                </script>
+
+            </div>
+    </div>
+
+    </div>
+    </div>
+    </section>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
