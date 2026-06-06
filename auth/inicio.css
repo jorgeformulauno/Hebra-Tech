@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=Graduate&display=swap');
+
 :root {
     --primary: #395B64;       /* Fortaleza */
     --primary-dark: #2C3333;  /* Actitud */
@@ -18,7 +20,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     color: var(--text-main);
     background-color: var(--white);
     overflow-x: hidden;
@@ -55,6 +57,7 @@ body {
 }
 
 h1 {
+    font-family: 'Roboto', serif;
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 25px;
@@ -123,6 +126,7 @@ h1 {
 
 .input-group label {
     display: block;
+    font-family: 'Roboto', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     margin-bottom: 6px;
@@ -130,6 +134,7 @@ h1 {
 
 .input-group input {
     width: 100%;
+    font-family: 'Roboto', sans-serif;
     padding: 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
@@ -257,8 +262,8 @@ h1 {
     z-index: 2;
 }
 
-.promo-text h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary-dark); }
-.promo-text p { color: var(--primary); font-size: 0.95rem; }
+.promo-text h3 { font-family: 'Roboto', serif; font-size: 1.5rem; margin-bottom: 15px; color: var(--primary-dark); }
+.promo-text p { font-family: 'Roboto', sans-serif; color: var(--primary); font-size: 0.95rem; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
@@ -306,4 +311,35 @@ h1 {
     color: #38bdf8;
     transform: translateY(-2px) scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+/* ── LOGO ── */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: 1.55rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+    margin-bottom: 36px;
+    letter-spacing: 0.3px;
+    transition: opacity 0.2s;
+}
+
+.logo:hover { opacity: 0.85; }
+
+.logo-icon {
+    width: 38px;
+    height: 38px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(57,91,100,0.3);
 }
