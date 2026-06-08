@@ -186,11 +186,19 @@
             }
             window.togglePass = togglePass;
 
+           
+            const isGitHubPages = window.location.hostname.includes('github.io');
+            const basePath = isGitHubPages
+                ? `${window.location.origin}/Hebra-Tech/usuarios`
+                : '../usuarios';
+
             const roleMap = {
-                administrador: `${window.location.origin}/Hebra-Tech/usuarios/Admin.html`,
-                operario: `${window.location.origin}/Hebra-Tech/usuarios/Operario.html`,
-                cliente: `${window.location.origin}/Hebra-Tech/usuarios/Cliente.html`
+                administrador: `${basePath}/Admin.html`,
+                operario: `${basePath}/Operario.html`,
+                cliente: `${basePath}/Cliente.html`
             };
+
+
 
             const form = document.getElementById('login-form');
             if (form) {
