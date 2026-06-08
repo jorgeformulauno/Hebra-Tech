@@ -119,18 +119,63 @@
       padding: 2px 5px;
     }
 
-    .btn-support {
-      font-family: var(--ff-body);
-      font-size: 0.78rem;
-      font-weight: 600;
-      padding: 6px 14px;
-      border-radius: 20px;
-      border: 1px solid rgba(165,201,202,0.4);
-      color: var(--accent);
-      background: transparent;
-      transition: all 0.2s;
-    }
-    .btn-support:hover { background: rgba(165,201,202,0.15); color: #fff; }
+  /* ══════════════════════════════════════════
+   BOTÓN FLOTANTE DE WHATSAPP (SOPORTE)
+   ══════════════════════════════════════════ */
+.whatsapp-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio entre el texto y el icono */
+  z-index: 1050;
+}
+
+/* Etiqueta de texto para Soporte */
+.whatsapp-text {
+  background-color: #ffffff;
+  color: #333333;
+  font-family: var(--ff-body); /* Mantiene la tipografía del portal */
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 14px;
+  border-radius: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(165, 201, 202, 0.3);
+  pointer-events: none; /* Evita que interfiera con los clics */
+  transition: all 0.3s ease-in-out;
+  opacity: 0.9; /* Ligeramente sutil */
+}
+
+/* El botón circular (como el de la imagen image_95bfc3.png) */
+.whatsapp-btn-float {
+  width: 56px;
+  height: 56px;
+  background-color: #25D366;
+  color: #FFF !important;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+/* ── Efectos Hover (Al pasar el mouse por la zona) ── */
+.whatsapp-container:hover .whatsapp-btn-float {
+  background-color: #128C7E;
+  transform: scale(1.08);
+  box-shadow: 0px 6px 15px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-container:hover .whatsapp-text {
+  opacity: 1;
+  transform: translateX(-3px); /* Pequeño desplazamiento dinámico hacia la izquierda */
+  background-color: #e7f6f2; /* Cambia sutilmente al color claro de tu paleta */
+}
 
     .avatar {
       width: 32px; height: 32px;
