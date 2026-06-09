@@ -4,14 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hebratech — Administración</title>
-
+    <title>HebraTech — Administración</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <link rel="stylesheet" href="../css/cssadmin.css">
 </head>
 
@@ -21,410 +17,343 @@
         <div class="row">
 
             <aside class="col-lg-2 col-md-3 sidebar d-none d-md-block p-0">
-                
-                <div class="text-center py-4 border-bottom">
-                    <img src="../img/logo.png" class="rounded-circle mb-3" width="90">
-
-
-
-                    <h6 class="graduate mb-0 bg-dark">Admin</h6>
-                    <small class="text-muted">Mery Jeans</small>
+                <div class="text-center py-4 border-bottom border-secondary">
+                    <img src="../img/logo.png" class="rounded-circle mb-3 bg-dark" width="90" alt="Logo">
+                    <h6 class="graduate mb-0 text-light">Admin</h6>
+                    <small class="text-accent">Mery Jeans</small>
                 </div>
 
                 <ul class="nav flex-column p-3">
-
                     <li class="nav-item mb-2">
-                        <a href="#" class="nav-link text-dark">
-                            <i class="fas fa-user-circle fa-lg me-2"></i> Perfil
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="../index.html" class="nav-link text-dark">
+                        <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link text-light">
                             <i class="fas fa-home me-2"></i> Dashboard
                         </a>
                     </li>
 
+                    <li class="nav-item mb-2">
+                        <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link text-light">
+                            <i class="fas fa-user-circle fa-lg me-2"></i> Perfil
+                        </a>
+                    </li>
+
                     <li>
-                        <a class="nav-link text-dark" data-bs-toggle="collapse" href="#usuariosMenu">
-                            <i class="fas fa-users me-2"></i> Nuevo Usuario
+                        <a href="#" class="nav-link text-light" data-bs-toggle="modal" data-bs-target="#modalUsuario">
+                            <i class="fas fa-user-plus me-2"></i> Nuevo Usuario
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-dark" data-bs-toggle="collapse" href="#usuariosMenu">
-                            <i class="fas fa-users me-2"></i> Usuarios
+                        <a class="nav-link text-light" data-bs-toggle="collapse" href="#usuariosMenu">
+                            <i class="fas fa-users me-2"></i> Usuarios <i class="fas fa-caret-down ms-2"></i>
                         </a>
                         
-
                         <div class="collapse" id="usuariosMenu">
                             <ul class="nav flex-column ms-3">
-
                                 <li class="nav-item">
-                                    <a href="../usuarios/Operario.html" class="nav-link text-secondary">
-                                        Operarios
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="../usuarios/Cliente.html" class="nav-link text-secondary">
-                                        clientes
+                                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')" class="nav-link text-secondary">
+                                        Gestión de Estados
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="" class="nav-link text-secondary">
-                                        Proveedores
-                                    </a>
+                                    <a href="#" onclick="cargarHTML('../usuarios/Operario.html')" class="nav-link text-secondary">Operarios</a>
                                 </li>
-                                
-
+                                <li class="nav-item">
+                                    <a href="#" onclick="cargarHTML('../usuarios/Cliente.html')" class="nav-link text-secondary">Clientes</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" onclick="cargarHTML('../usuarios/Proveedor.html')" class="nav-link text-secondary">Proveedores</a>
+                                </li>
                             </ul>
                         </div>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a href="" class="nav-link text-dark">
-                            <i class="fas fa-cogs me-2"></i>
-                            Producción
+                        <a href="#" class="nav-link text-light">
+                            <i class="fas fa-cogs me-2"></i> Producción
                         </a>
                     </li>
-
                 </ul>
             </aside>
-
 
             <main class="col-lg-10 col-md-9 p-0">
 
                 <nav class="navbar custom-navbar px-4 py-3">
-
-                    <button class="btn btn-outline-hebratech d-md-none" data-bs-toggle="offcanvas"
-                        data-bs-target="#menuMobile">
-
+                    <button class="btn btn-outline-hebratech d-md-none" data-bs-toggle="offcanvas" data-bs-target="#menuMobile">
                         <i class="fas fa-bars"></i>
-
                     </button>
 
                     <div class="ms-auto d-flex align-items-center gap-3">
-                        
-                        <a href="index.html" class="btn btn-hebratech ">
-                            <i class="fas fa-bell"></i> 
-                        </a>
-
-
-                        <a href="../iniciosesion.html" class="btn btn-hebratech">
-                            Cerrar sesión
-                        </a>
-
+                        <div class="dropdown">
+                            <button class="btn btn-hebratech dropdown-toggle position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-bell"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark text-light shadow" style="min-width: 250px;">
+                                <li><h6 class="dropdown-header text-accent">Notificaciones</h6></li>
+                                <li><a class="dropdown-item text-light" href="#"># (Nuevo mensaje)</a></li>
+                                <li><a class="dropdown-item text-light" href="#"># (Alerta de sistema)</a></li>
+                            </ul>
+                        </div>
+                        <a href="../auth/iniciosesion.html" class="btn btn-hebratech">Cerrar sesión</a>
                     </div>
-
                 </nav>
 
-                <div class="container-fluid p-4">
+                <div class="container-fluid p-4" id="contenedor-principal">
 
-                    <!-- BIENVENIDA -->
+                    <iframe id="marco-externo" src="" style="width: 100%; height: calc(100vh - 120px); border: none; display: none; border-radius: 15px;"></iframe>
 
-                    <div class="dashboard-card mb-4">
-
-                        <div class="card-body">
-
-                            <h2 class="graduate mb-2">
-                                Hola, Administrador 👋
-                            </h2>
-
-                            <p class="mb-0">
-                                Bienvenido nuevamente al panel de gestión de HebraTech.
-                                Aquí puedes visualizar el estado general del sistema.
-                            </p>
-
+                    <div id="section-dashboard" class="seccion-admin">
+                        
+                        <div id="mensaje-bienvenida" class="dashboard-card mb-4" style="transition: opacity 0.5s ease;">
+                            <div class="card-body">
+                                <h2 class="graduate mb-2">Hola, Administrador 👋</h2>
+                                <p class="mb-0">Bienvenido nuevamente al panel de gestión de HebraTech. Aquí puedes visualizar el estado general del sistema.</p>
+                            </div>
                         </div>
 
+                        <div class="row g-4 mb-4">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-users fa-3x mb-3"></i>
+                                        <h5>Usuarios</h5>
+                                        <h2 class="graduate">14</h2>
+                                        <p>Registrados</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-industry fa-3x mb-3"></i>
+                                        <h5>Producción</h5>
+                                        <h2 class="graduate">245</h2>
+                                        <p>Procesos activos</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-boxes-stacked fa-3x mb-3"></i>
+                                        <h5>Materiales</h5>
+                                        <h2 class="graduate">30</h2>
+                                        <p>Disponibles</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="dashboard-card h-100">
+                                    <div class="card-body text-center">
+                                        <i class="fas fa-file-lines fa-3x mb-3"></i>
+                                        <h5>Reportes</h5>
+                                        <h2 class="graduate">20</h2>
+                                        <p>Generados</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="dashboard-card mb-4">
+                                    <div class="card-body">
+                                        <h4 class="mb-4">Producción Semanal</h4>
+                                        <canvas id="graficaProduccion" height="120"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="dashboard-card">
+                                    <div class="card-body">
+                                        <h4 class="mb-4">Actividad Reciente</h4>
+                                        <div class="d-flex flex-column gap-3">
+                                            <div><i class="fas fa-circle me-2"></i>Nuevo usuario registrado.</div>
+                                            <div><i class="fas fa-circle me-2"></i>Producción actualizada.</div>
+                                            <div><i class="fas fa-circle me-2"></i>Material agregado al inventario.</div>
+                                            <div><i class="fas fa-circle me-2"></i>Reporte generado correctamente.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- TARJETAS -->
-
-                    <div class="row g-4 mb-4">
-
-                        <div class="col-xl-3 col-md-6">
-
-                            <div class="dashboard-card h-100">
-
-                                <div class="card-body text-center">
-
-                                    <i class="fas fa-users fa-3x mb-3"></i>
-
-                                    <h5>Usuarios</h5>
-
-                                    <h2 class="graduate">14</h2>
-
-                                    <p>Registrados</p>
-
-                                </div>
-
+                    <div id="section-perfil" class="seccion-admin" style="display: none;">
+                        <div class="dashboard-card mb-4">
+                            <div class="card-body">
+                                <h2 class="graduate mb-4"><i class="fas fa-user-cog me-2"></i> Perfil</h2>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label text-accent">Nombre</label>
+                                            <input type="text" class="form-control" placeholder="#">
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-label text-accent">Correo</label>
+                                            <input type="email" class="form-control" placeholder="#">
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-hebratech mt-3">Guardar</button>
+                                </form>
                             </div>
-
                         </div>
-
-                        <div class="col-xl-3 col-md-6">
-
-                            <div class="dashboard-card h-100">
-
-                                <div class="card-body text-center">
-
-                                    <i class="fas fa-industry fa-3x mb-3"></i>
-
-                                    <h5>Producción</h5>
-
-                                    <h2 class="graduate">245</h2>
-
-                                    <p>Procesos activos</p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xl-3 col-md-6">
-
-                            <div class="dashboard-card h-100">
-
-                                <div class="card-body text-center">
-
-                                    <i class="fas fa-boxes-stacked fa-3x mb-3"></i>
-
-                                    <h5>Materiales</h5>
-
-                                    <h2 class="graduate">30</h2>
-
-                                    <p>Disponibles</p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                        <div class="col-xl-3 col-md-6">
-
-                            <div class="dashboard-card h-100">
-
-                                <div class="card-body text-center">
-
-                                    <i class="fas fa-file-lines fa-3x mb-3"></i>
-
-                                    <h5>Reportes</h5>
-
-                                    <h2 class="graduate">20</h2>
-
-                                    <p>Generados</p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
-                    <!-- GRAFICA -->
-
-                    <div class="dashboard-card mb-4">
-
-                        <div class="card-body">
-
-                            <h4 class="mb-4">
-                                Producción Semanal
-                            </h4>
-
-                            <canvas id="graficaProduccion" height="120"></canvas>
-
-                        </div>
-
-                    </div>
-
-                    <!-- ACTIVIDAD -->
-
-                    <div class="dashboard-card">
-
-                        <div class="card-body">
-
-                            <h4 class="mb-4">
-                                Actividad Reciente
-                            </h4>
-
-                            <div class="d-flex flex-column gap-3">
-
-                                <div>
-                                    <i class="fas fa-circle me-2"></i>
-                                    Nuevo usuario registrado.
+                    <div id="section-gestion-usuarios" class="seccion-admin" style="display: none;">
+                        <div class="dashboard-card mb-4">
+                            <div class="card-body">
+                                <h2 class="graduate mb-4"><i class="fas fa-users-cog me-2"></i> Activar/Desactivar Usuarios</h2>
+                                <div class="table-responsive">
+                                    <table class="table table-dark table-hover align-middle">
+                                        <thead>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Rol</th>
+                                                <th>Estado</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#</td>
+                                                <td>#</td>
+                                                <td>
+                                                    <div class="form-check form-switch">
+                                                        <input class="form-check-input" type="checkbox" role="switch" checked>
+                                                        <label class="form-check-label text-success">Activo</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-
-                                <div>
-                                    <i class="fas fa-circle me-2"></i>
-                                    Producción actualizada.
-                                </div>
-
-                                <div>
-                                    <i class="fas fa-circle me-2"></i>
-                                    Material agregado al inventario.
-                                </div>
-
-                                <div>
-                                    <i class="fas fa-circle me-2"></i>
-                                    Reporte generado correctamente.
-                                </div>
-
                             </div>
-
                         </div>
-
                     </div>
 
                 </div>
-
             </main>
         </div>
     </div>
 
-
-    <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="menuMobile">
-
-        <div class="offcanvas-header">
-            <h5>Menú</h5>
-
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas">
-            </button>
-        </div>
-
-        <div class="offcanvas-body">
-
-            <ul class="nav flex-column">
-
-                <li class="nav-item">
-                    <a href="/Hebra-Tech/index.html" class="nav-link text-light">
-                        Dashboard
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">
-                        Usuarios
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-light">
-                        Producción
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-    </div>
     <div class="modal fade" id="modalUsuario">
-
         <div class="modal-dialog">
-
-            <div class="modal-content bg-dark text-light">
-
+            <div class="modal-content bg-dark text-light border-secondary">
                 <div class="modal-header border-secondary">
-
-                    <h5 class="modal-title">
-                        Nuevo Usuario
-                    </h5>
-
-                    <button class="btn-close btn-close-white" data-bs-dismiss="modal">
-                    </button>
-
+                    <h5 class="modal-title text-accent">Nuevo Usuario</h5>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-
                 <div class="modal-body">
-
                     <form>
-
                         <div class="mb-3">
-                            <label>Nombre</label>
-
-                            <input type="text" class="form-control">
+                            <label class="text-accent">Nombre</label>
+                            <input type="text" class="form-control" placeholder="#">
                         </div>
-
                         <div class="mb-3">
-                            <label>Rol</label>
-
+                            <label class="text-accent">Rol</label>
                             <select class="form-select">
-
-                                <option>Administrador</option>
-                                <option>Operario</option>
-
+                                <option>#</option>
+                                <option>#</option>
                             </select>
                         </div>
-
                     </form>
-
                 </div>
-
                 <div class="modal-footer border-secondary">
-
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">
-
-                        Cancelar
-                    </button>
-
-                    <button class="btn btn-success">
-                        Guardar
-                    </button>
-
+                    <button class="btn btn-outline-hebratech" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-hebratech">Guardar</button>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-    <script>
-        const ctx = document.getElementById('graficaProduccion');
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
-                datasets: [{
-                    label: 'Producción',
-                    data: [40, 60, 55, 90, 80, 100],
-                    borderColor: '#A5C9CA',
-                    backgroundColor: 'rgba(165,201,202,.15)',
-                    tension: .4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        labels: {
-                            color: '#A5C9CA'
-                        }
-                    }
-                },
-                scales: {
-                    x: {
-                        ticks: {
-                            color: '#A5C9CA'
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            color: '#A5C9CA'
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    <div class="offcanvas offcanvas-start bg-dark text-light" tabindex="-1" id="menuMobile">
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="graduate text-accent">Menú</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item mb-2">
+                    <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link text-light"><i class="fas fa-home me-2"></i> Dashboard</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link text-light"><i class="fas fa-user-circle me-2"></i> Perfil</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')" class="nav-link text-light"><i class="fas fa-users me-2"></i> Gestión de Usuarios</a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a href="#" class="nav-link text-light"><i class="fas fa-cogs me-2"></i> Producción</a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-</body>
+    <script>
+        // Ocultar bienvenida a los 5 segundos
+        setTimeout(() => {
+            const msj = document.getElementById('mensaje-bienvenida');
+            if (msj) {
+                msj.style.opacity = '0';
+                setTimeout(() => msj.style.display = 'none', 500);
+            }
+        }, 5000);
 
+        // FUNCIÓN PARA MOSTRAR SECCIONES LOCALES
+        function cambiarSeccionLocal(idSeccion) {
+            document.getElementById('marco-externo').style.display = 'none'; // Esconde el iframe
+            
+            let secciones = document.querySelectorAll('.seccion-admin');
+            secciones.forEach(sec => sec.style.display = 'none'); // Esconde todas las locales
+            
+            document.getElementById(idSeccion).style.display = 'block'; // Muestra la elegida
+
+            // Cierra el offcanvas en móviles
+            let offcanvasMenu = document.getElementById('menuMobile');
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+            if (bsOffcanvas) {
+                bsOffcanvas.hide();
+            }
+        }
+
+        // FUNCIÓN PARA CARGAR LOS HTML EXTERNOS
+        function cargarHTML(url) {
+            let secciones = document.querySelectorAll('.seccion-admin');
+            secciones.forEach(sec => sec.style.display = 'none'); // Esconde el dashboard local
+            
+            let iframe = document.getElementById('marco-externo');
+            iframe.src = url; // Carga tu archivo (ej. Operario.html)
+            iframe.style.display = 'block'; // Muestra el iframe
+            
+            // Cierra el offcanvas en móviles
+            let offcanvasMenu = document.getElementById('menuMobile');
+            let bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasMenu);
+            if (bsOffcanvas) {
+                bsOffcanvas.hide();
+            }
+        }
+
+        // Gráfica
+        const ctx = document.getElementById('graficaProduccion');
+        if(ctx) {
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'],
+                    datasets: [{
+                        label: 'Producción',
+                        data: [40, 60, 55, 90, 80, 100],
+                        borderColor: '#00E5FF',
+                        backgroundColor: 'rgba(0, 229, 255, 0.15)',
+                        tension: .4, fill: true
+                    }]
+                },
+                options: { responsive: true, plugins: { legend: { labels: { color: '#00E5FF' } } }, scales: { x: { ticks: { color: '#00E5FF' } }, y: { ticks: { color: '#00E5FF' } } } }
+            });
+        }
+    </script>
+</body>
 </html>

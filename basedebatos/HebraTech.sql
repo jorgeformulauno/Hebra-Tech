@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `hebratech` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `hebratech`;
 -- MySQL dump 10.13  Distrib 8.0.44, for Win64 (x86_64)
 --
 -- Host: localhost    Database: hebratech
@@ -14,6 +16,33 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `_migracion_log`
+--
+
+DROP TABLE IF EXISTS `_migracion_log`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `_migracion_log` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `bloque` varchar(80) COLLATE utf8mb4_general_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `ejecutado_en` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `estado` enum('OK','ERROR') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'OK',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci COMMENT='Registro de ejecución de migraciones HebraTech';
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `_migracion_log`
+--
+
+LOCK TABLES `_migracion_log` WRITE;
+/*!40000 ALTER TABLE `_migracion_log` DISABLE KEYS */;
+INSERT INTO `_migracion_log` VALUES (1,'INICIO','Inicio de migración completa HebraTech v1.0','2026-06-08 13:10:06','OK'),(2,'BLOQUE 1','Eliminada productos.cantidad; agregado UNIQUE en inventario.idProducto','2026-06-08 13:10:06','OK'),(3,'BLOQUE 2','devoluciones: FK a ordenes/clientes agregada; columnas redundantes eliminadas','2026-06-08 13:10:06','OK'),(4,'INICIO','Inicio de migración completa HebraTech v1.0','2026-06-08 13:10:15','OK'),(5,'INICIO','Inicio de migración completa HebraTech v1.0','2026-06-08 13:10:19','OK');
+/*!40000 ALTER TABLE `_migracion_log` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `asignacion_tareas`
@@ -149,9 +178,12 @@ CREATE TABLE `clientes` (
   `idUsuario` int NOT NULL COMMENT 'FK a usuarios',
   `tipoCliente` enum('Natural','Empresa') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Natural',
   `empresa` varchar(150) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre empresa (si aplica)',
+  `nombre` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Nombre del contacto principal del cliente',
+  `correoElectronico` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Correo de contacto del cliente (puede diferir del usuario)',
+  `telefono` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Teléfono de contacto',
+  `ciudad` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Ciudad de ubicación del cliente',
+  `direccion` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Dirección de entrega',
   `nit` varchar(30) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'NIT o cédula tributaria',
-  `limiteCredito` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `fechaRegistro` date NOT NULL,
   `estado` enum('activo','inactivo','bloqueado') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'activo',
   PRIMARY KEY (`idCliente`),
   UNIQUE KEY `uq_cliente_usuario` (`idUsuario`),
@@ -166,7 +198,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,10,'Empresa','Almacenes Éxito S.A.','860502316-1',5000000.00,'2025-05-01','activo'),(2,11,'Empresa','Koaj Colombia','830115498-2',3000000.00,'2025-05-01','activo'),(3,12,'Empresa','Manufacturas Eliot','900456789-0',4000000.00,'2025-06-01','activo'),(4,13,'Natural','Arturo Calle','800234567-1',2500000.00,'2025-06-01','activo'),(5,14,'Empresa','Tennis S.A.','890123456-3',2000000.00,'2025-07-01','activo'),(6,15,'Natural','Punto Blanco','701234567-2',1500000.00,'2025-07-01','activo'),(7,16,'Empresa','Studio F','901098765-4',3500000.00,'2025-08-01','activo');
+INSERT INTO `clientes` VALUES (1,10,'Empresa','Almacenes Éxito S.A.',NULL,NULL,NULL,NULL,NULL,'860502316-1','activo'),(2,11,'Empresa','Koaj Colombia',NULL,NULL,NULL,NULL,NULL,'830115498-2','activo'),(3,12,'Empresa','Manufacturas Eliot',NULL,NULL,NULL,NULL,NULL,'900456789-0','activo'),(4,13,'Natural','Arturo Calle',NULL,NULL,NULL,NULL,NULL,'800234567-1','activo'),(5,14,'Empresa','Tennis S.A.',NULL,NULL,NULL,NULL,NULL,'890123456-3','activo'),(6,15,'Natural','Punto Blanco',NULL,NULL,NULL,NULL,NULL,'701234567-2','activo'),(7,16,'Empresa','Studio F',NULL,NULL,NULL,NULL,NULL,'901098765-4','activo');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -216,11 +248,15 @@ DROP TABLE IF EXISTS `devoluciones`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `devoluciones` (
   `idDevolucion` int NOT NULL AUTO_INCREMENT,
+  `idOrden` int DEFAULT NULL COMMENT 'FK a la orden de origen de la devolución',
+  `idCliente` int DEFAULT NULL COMMENT 'Desnormalización para consultas rápidas por cliente',
   `fechaDevolucion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `cantidadDevuelta` int NOT NULL,
-  `motivo` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `estadoDevolucion` enum('Recibida','Inspeccionada','Rechazada','Completada') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'Recibida',
-  PRIMARY KEY (`idDevolucion`)
+  PRIMARY KEY (`idDevolucion`),
+  KEY `fk_dev_orden` (`idOrden`),
+  KEY `fk_dev_cliente` (`idCliente`),
+  CONSTRAINT `fk_dev_cliente` FOREIGN KEY (`idCliente`) REFERENCES `clientes` (`idCliente`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `fk_dev_orden` FOREIGN KEY (`idOrden`) REFERENCES `ordenes` (`idOrden`) ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -230,7 +266,7 @@ CREATE TABLE `devoluciones` (
 
 LOCK TABLES `devoluciones` WRITE;
 /*!40000 ALTER TABLE `devoluciones` DISABLE KEYS */;
-INSERT INTO `devoluciones` VALUES (1,'2026-01-26 09:00:00',20,'Costuras defectuosas en hombros de camisetas lote #1','Inspeccionada'),(2,'2026-01-31 10:00:00',10,'Talla incorrecta en lote de pantalones talla 34','Completada'),(3,'2026-02-16 11:00:00',5,'Estampado corrido en vestidos del lote inicial','Recibida'),(4,'2026-02-11 08:30:00',8,'Cremalleras defectuosas en bolsillos de chaquetas denim','Inspeccionada'),(5,'2026-02-26 14:00:00',15,'Elástico flojo en cintura de bermudas deportivas','Recibida'),(6,'2026-03-06 09:30:00',6,'Bordado incompleto en pecho de blusas formales','Recibida'),(7,'2026-03-19 10:00:00',12,'Pliegues mal formados en faldas plisadas por exceso de calor','Recibida');
+INSERT INTO `devoluciones` VALUES (1,1,1,'2026-01-26 09:00:00','Inspeccionada'),(2,2,2,'2026-01-31 10:00:00','Completada'),(3,7,7,'2026-02-16 11:00:00','Recibida'),(4,3,3,'2026-02-11 08:30:00','Inspeccionada'),(5,5,5,'2026-02-26 14:00:00','Recibida'),(6,4,4,'2026-03-06 09:30:00','Recibida'),(7,6,6,'2026-03-19 10:00:00','Recibida');
 /*!40000 ALTER TABLE `devoluciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -327,6 +363,7 @@ CREATE TABLE `inventario` (
   `fechaIngreso` date DEFAULT NULL COMMENT 'Fecha del último ingreso de unidades',
   `fechaSalida` date DEFAULT NULL COMMENT 'Fecha de la última salida de unidades',
   PRIMARY KEY (`idInventario`),
+  UNIQUE KEY `uq_inv_producto` (`idProducto`),
   KEY `fk_inv_producto` (`idProducto`),
   CONSTRAINT `fk_inv_producto` FOREIGN KEY (`idProducto`) REFERENCES `productos` (`idProducto`) ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -487,7 +524,6 @@ CREATE TABLE `productos` (
   `descripcion` text COLLATE utf8mb4_general_ci NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `categoria` varchar(100) COLLATE utf8mb4_general_ci NOT NULL,
-  `cantidad` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`idProducto`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -498,7 +534,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,'Camiseta Básica','Camiseta 100% algodón peinado 180 g/m², corte recto unisex',35000.00,'Camisetas',0),(2,'Pantalón Clásico','Pantalón gabardina stretch corte slim, tallas 28-38',85000.00,'Pantalones',0),(3,'Vestido Casual','Vestido viscosa estampada manga corta, talla única ajustable',95000.00,'Vestidos',0),(4,'Chaqueta Denim','Chaqueta denim 12 oz acabado desgastado, botones metálicos',130000.00,'Chaquetas',0),(5,'Bermuda Deportiva','Bermuda tela sintética transpirable con bolsillos laterales',55000.00,'Bermudas',0),(6,'Blusa Formal','Blusa popelina con bordado exclusivo en pecho, manga larga',75000.00,'Blusas',0),(7,'Falda Plisada','Falda plisada poliéster largo midi, pretina elástica reforzada',70000.00,'Faldas',0),(8,'Jeans azules','pantalones unisex baggy',20000.00,'[value-5]',0);
+INSERT INTO `productos` VALUES (1,'Camiseta Básica','Camiseta 100% algodón peinado 180 g/m², corte recto unisex',35000.00,'Camisetas'),(2,'Pantalón Clásico','Pantalón gabardina stretch corte slim, tallas 28-38',85000.00,'Pantalones'),(3,'Vestido Casual','Vestido viscosa estampada manga corta, talla única ajustable',95000.00,'Vestidos'),(4,'Chaqueta Denim','Chaqueta denim 12 oz acabado desgastado, botones metálicos',130000.00,'Chaquetas'),(5,'Bermuda Deportiva','Bermuda tela sintética transpirable con bolsillos laterales',55000.00,'Bermudas'),(6,'Blusa Formal','Blusa popelina con bordado exclusivo en pecho, manga larga',75000.00,'Blusas'),(7,'Falda Plisada','Falda plisada poliéster largo midi, pretina elástica reforzada',70000.00,'Faldas'),(8,'Jeans azules','pantalones unisex baggy',20000.00,'[value-5]');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -652,11 +688,7 @@ CREATE TABLE `usuarios` (
   `telefono` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `direccion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
   `rol` enum('administrador','operario','cliente') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'cliente',
-  `especialidad` varchar(100) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT 'Solo aplica a operarios',
-  `fechaIngreso` date DEFAULT NULL COMMENT 'Solo aplica a operarios',
   `estado` enum('activo','inactivo','reportado') COLLATE utf8mb4_general_ci NOT NULL DEFAULT 'activo',
-  `fechaCreacion` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ultimaConexion` datetime DEFAULT NULL,
   PRIMARY KEY (`idUsuario`),
   UNIQUE KEY `uq_correo` (`correoElectronico`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -668,7 +700,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'Andrea','Rios','andrea.rios@hebratech.com','$2b$10$HASH_PENDIENTE','3001000001','Bogotá','administrador',NULL,NULL,'activo','2025-01-01 08:00:00','2026-03-17 09:00:00'),(2,'Miguel','Torres','miguel.torres@hebratech.com','$2b$10$HASH_PENDIENTE','3001000002','Bogotá','administrador',NULL,NULL,'activo','2025-01-01 08:00:00','2026-03-17 08:30:00'),(4,'Carlos','Méndez','carlos.mendez@hebratech.com','$2b$10$HASH_PENDIENTE','3101000002',NULL,'operario','Confección','2025-02-01','activo','2025-02-01 08:00:00',NULL),(5,'Diana','Puentes','diana.puentes@hebratech.com','$2b$10$HASH_PENDIENTE','3101000003',NULL,'operario','Bordado','2025-02-15','activo','2025-02-15 08:00:00',NULL),(6,'Felipe','Mora','felipe.mora@hebratech.com','$2b$10$HASH_PENDIENTE','3101000004',NULL,'operario','Estampado','2025-03-01','activo','2025-03-01 08:00:00',NULL),(7,'Valentina','Cruz','valentina.cruz@hebratech.com','$2b$10$HASH_PENDIENTE','3101000005',NULL,'operario','Planchado','2025-03-01','activo','2025-03-01 08:00:00',NULL),(8,'Sergio','Leal','sergio.leal@hebratech.com','$2b$10$HASH_PENDIENTE','3101000006',NULL,'operario','Control de Calidad','2025-03-15','activo','2025-03-15 08:00:00',NULL),(9,'Natalia','Ossa','natalia.ossa@hebratech.com','$2b$10$HASH_PENDIENTE','3101000007',NULL,'operario','Empaque','2025-04-01','activo','2025-04-01 08:00:00',NULL),(10,'Compras','Exito','compras@exito.com','$2b$10$HASH_PENDIENTE','6017001000','Cra 43A #1 Sur, Medellín','cliente',NULL,NULL,'activo','2025-05-01 08:00:00',NULL),(11,'Pedidos','Koaj','pedidos@koaj.com','$2b$10$HASH_PENDIENTE','6017002000','Calle 80 #50-30, Bogotá','cliente',NULL,NULL,'activo','2025-05-01 08:00:00',NULL),(12,'Compras','Eliot','compras@eliot.com','$2b$10$HASH_PENDIENTE','6017003000','Carrera 7 #12-40, Bogotá','cliente',NULL,NULL,'activo','2025-06-01 08:00:00',NULL),(13,'Pedidos','ArturoCalle','pedidos@arturocalle.com','$2b$10$HASH_PENDIENTE','6017004000','El Poblado, Medellín','cliente',NULL,NULL,'activo','2025-06-01 08:00:00',NULL),(14,'Compras','Tennis','compras@tennis.com','$2b$10$HASH_PENDIENTE','6017005000','Calle 97 #60-30, Bogotá','cliente',NULL,NULL,'activo','2025-07-01 08:00:00',NULL),(15,'Pedidos','PuntoBlanco','pedidos@puntoblanco.com','$2b$10$HASH_PENDIENTE','6017006000','Av. 6N #24-01, Cali','cliente',NULL,NULL,'activo','2025-07-01 08:00:00',NULL),(16,'Compras','StudioF','compras@studiof.com','$2b$10$HASH_PENDIENTE','6017007000','Calle 122 #15-80, Bogotá','cliente',NULL,NULL,'activo','2025-08-01 08:00:00',NULL),(23,'Laura','Gomez','lucia.vargas@hebratech.com','$2b$10$HASH_PENDIENTE','3101000001',NULL,'operario','Corte','2025-02-01','activo','2025-02-01 08:00:00',NULL);
+INSERT INTO `usuarios` VALUES (1,'Andrea','Rios','andrea.rios@hebratech.com','$2b$10$HASH_PENDIENTE','3001000001','Bogotá','administrador','activo'),(2,'Miguel','Torres','miguel.torres@hebratech.com','$2b$10$HASH_PENDIENTE','3001000002','Bogotá','administrador','activo'),(4,'Carlos','Méndez','carlos.mendez@hebratech.com','$2b$10$HASH_PENDIENTE','3101000002',NULL,'operario','activo'),(5,'Diana','Puentes','diana.puentes@hebratech.com','$2b$10$HASH_PENDIENTE','3101000003',NULL,'operario','activo'),(6,'Felipe','Mora','felipe.mora@hebratech.com','$2b$10$HASH_PENDIENTE','3101000004',NULL,'operario','activo'),(7,'Valentina','Cruz','valentina.cruz@hebratech.com','$2b$10$HASH_PENDIENTE','3101000005',NULL,'operario','activo'),(8,'Sergio','Leal','sergio.leal@hebratech.com','$2b$10$HASH_PENDIENTE','3101000006',NULL,'operario','activo'),(9,'Natalia','Ossa','natalia.ossa@hebratech.com','$2b$10$HASH_PENDIENTE','3101000007',NULL,'operario','activo'),(10,'Compras','Exito','compras@exito.com','$2b$10$HASH_PENDIENTE','6017001000','Cra 43A #1 Sur, Medellín','cliente','activo'),(11,'Pedidos','Koaj','pedidos@koaj.com','$2b$10$HASH_PENDIENTE','6017002000','Calle 80 #50-30, Bogotá','cliente','activo'),(12,'Compras','Eliot','compras@eliot.com','$2b$10$HASH_PENDIENTE','6017003000','Carrera 7 #12-40, Bogotá','cliente','activo'),(13,'Pedidos','ArturoCalle','pedidos@arturocalle.com','$2b$10$HASH_PENDIENTE','6017004000','El Poblado, Medellín','cliente','activo'),(14,'Compras','Tennis','compras@tennis.com','$2b$10$HASH_PENDIENTE','6017005000','Calle 97 #60-30, Bogotá','cliente','activo'),(15,'Pedidos','PuntoBlanco','pedidos@puntoblanco.com','$2b$10$HASH_PENDIENTE','6017006000','Av. 6N #24-01, Cali','cliente','activo'),(16,'Compras','StudioF','compras@studiof.com','$2b$10$HASH_PENDIENTE','6017007000','Calle 122 #15-80, Bogotá','cliente','activo'),(23,'Laura','Gomez','lucia.vargas@hebratech.com','$2b$10$HASH_PENDIENTE','3101000001',NULL,'operario','activo');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -746,4 +778,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2026-03-26 18:14:40
+-- Dump completed on 2026-06-08 13:24:32

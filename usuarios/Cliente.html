@@ -1,18 +1,21 @@
 <!doctype html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HebraTech - Portal de Clientes</title>
-
   <!-- Bootstrap 5 CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Bootstrap Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Graduate&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Roboto:wght@300;400;500;700&family=Graduate&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/cliente.css">
 </head>
+
 <body>
 
   <!-- ══════════════════════════════════════════
@@ -64,9 +67,12 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end p-2" style="min-width:280px;" aria-labelledby="notifDropdown">
             <li class="dropdown-header">Notificaciones</li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li class="px-2 py-2">
-              <div class="small"><i class="bi bi-box-seam me-1 text-info"></i>Pedido #A1023: <strong>Listo para calidad</strong></div>
+              <div class="small"><i class="bi bi-box-seam me-1 text-info"></i>Pedido #A1023: <strong>Listo para
+                  calidad</strong></div>
               <div class="text-muted small">Hace 2 horas</div>
             </li>
             <li class="px-2 py-2">
@@ -74,28 +80,40 @@
               <div class="text-muted small">Ayer</div>
             </li>
             <li class="px-2 py-2">
-              <div class="small"><i class="bi bi-chat-dots me-1 text-success"></i>Nuevo mensaje del equipo de producción</div>
+              <div class="small"><i class="bi bi-chat-dots me-1 text-success"></i>Nuevo mensaje del equipo de producción
+              </div>
               <div class="text-muted small">Hace 3 días</div>
             </li>
-            <li><hr class="dropdown-divider"></li>
-            <li class="text-center"><a href="#" class="small text-primary">Ver todas</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="text-center">
+              <button class="btn btn-link btn-sm text-primary text-decoration-none w-100" data-bs-toggle="modal"
+                data-bs-target="#allNotificationsModal">
+                Ver todas
+              </button>
+            </li>
           </ul>
         </div>
 
         <!-- Soporte -->
-        <button class="btn-support d-none d-sm-flex align-items-center gap-1" id="supportBtn">
-          <i class="bi bi-life-preserver"></i>
-          <span class="d-none d-md-inline">Soporte</span>
-        </button>
+        <div class="whatsapp-container">
+          <span class="whatsapp-text">Soporte HebraTech</span>
+          <a href="https://wa.me/573001234567?text=Hola%20HebraTech,%20necesito%20soporte%20con%20mi%20cuenta%20de%20cliente."
+            class="whatsapp-btn-float" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+          </a>
+        </div>
 
         <div class="nav-divider d-none d-md-block"></div>
 
         <!-- Perfil -->
         <div class="dropdown">
-          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle gap-2"
-             href="#" id="profileMenu" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="avatar bg-white text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold"
-                 style="width:32px;height:32px;font-family:var(--ff-display);font-size:0.9rem;">H</div>
+          <a class="d-flex align-items-center text-white text-decoration-none dropdown-toggle gap-2" href="#"
+            id="profileMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <div
+              class="avatar bg-white text-primary rounded-circle d-flex align-items-center justify-content-center fw-bold"
+              style="width:32px;height:32px;font-family:var(--ff-display);font-size:0.9rem;">H</div>
             <div class="d-none d-md-block text-start">
               <div style="font-family:var(--ff-body);font-size:0.8rem;font-weight:600;line-height:1;">Hector</div>
               <div style="font-family:var(--ff-body);font-size:0.68rem;color:var(--accent);opacity:0.8;">Falabella</div>
@@ -103,12 +121,17 @@
           </a>
           <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenu">
             <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#profileModal">
-              <i class="bi bi-person me-2"></i>Mi perfil</a></li>
-            <li><a class="dropdown-item" href="#">
-              <i class="bi bi-gear me-2"></i>Configuración</a></li>
-            <li><hr class="dropdown-divider"></li>
+                <i class="bi bi-person me-2"></i>Mi perfil</a></li>
+            <li>
+              <button class="dropdown-item d-flex align-items-center gap-2" data-bs-toggle="modal"
+                data-bs-target="#settingsModal">
+                <i class="bi bi-gear text-muted"></i> Configuración
+              </button>
+            </li>
+            <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item text-danger" href="../index.html">
-              <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
+                <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión</a></li>
           </ul>
         </div>
 
@@ -171,13 +194,16 @@
                   </div>
                   <i class="bi bi-box-seam summary-icon"></i>
                 </div>
-                <div class="progress mt-2" style="height:6px;"><div class="progress-bar" style="background:var(--primary);width:45%"></div></div>
+                <div class="progress mt-2" style="height:6px;">
+                  <div class="progress-bar" style="background:var(--primary);width:45%"></div>
+                </div>
                 <div class="small text-muted mt-1">45% en producción <i class="bi bi-arrow-down-short"></i></div>
               </div>
             </a>
           </div>
           <div class="col-6 col-md-4">
-            <a href="#secHistorialPedidos" class="card summary-card h-100 text-decoration-none" title="Ver historial de pedidos">
+            <a href="#secHistorialPedidos" class="card summary-card h-100 text-decoration-none"
+              title="Ver historial de pedidos">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                   <div>
@@ -186,13 +212,16 @@
                   </div>
                   <i class="bi bi-check2-square summary-icon"></i>
                 </div>
-                <div class="progress mt-2" style="height:6px;"><div class="progress-bar bg-success" style="width:80%"></div></div>
+                <div class="progress mt-2" style="height:6px;">
+                  <div class="progress-bar bg-success" style="width:80%"></div>
+                </div>
                 <div class="small text-muted mt-1">Entrega a tiempo 92% <i class="bi bi-arrow-down-short"></i></div>
               </div>
             </a>
           </div>
           <div class="col-6 col-md-4">
-            <a href="#secHistorialFacturas" class="card summary-card h-100 text-decoration-none" title="Ver facturas pendientes">
+            <a href="#secHistorialFacturas" class="card summary-card h-100 text-decoration-none"
+              title="Ver facturas pendientes">
               <div class="card-body">
                 <div class="d-flex justify-content-between align-items-start">
                   <div>
@@ -201,7 +230,9 @@
                   </div>
                   <i class="bi bi-receipt summary-icon"></i>
                 </div>
-                <div class="progress mt-2" style="height:6px;"><div class="progress-bar bg-warning" style="width:20%"></div></div>
+                <div class="progress mt-2" style="height:6px;">
+                  <div class="progress-bar bg-warning" style="width:20%"></div>
+                </div>
                 <div class="small text-muted mt-1">Vencimiento próximo <i class="bi bi-arrow-down-short"></i></div>
               </div>
             </a>
@@ -229,10 +260,12 @@
         <!-- Historial de pedidos -->
         <div class="card mb-4 shadow-sm" id="secHistorialPedidos" style="scroll-margin-top:78px;">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h6 class="mb-0"><i class="bi bi-clock-history me-2" style="color:var(--primary);"></i>Historial de pedidos</h6>
-            <a href="#" class="btn btn-outline-secondary btn-sm">
-              <i class="bi bi-clock-history me-1"></i> Ver todo
-            </a>
+            <h6 class="mb-0"><i class="bi bi-clock-history me-2" style="color:var(--primary);"></i>Historial de pedidos
+            </h6>
+            <button class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+              data-bs-target="#historyQuotationsModal">
+              <i class="bi bi-eye me-1"></i> Ver todo
+            </button>
           </div>
           <div class="card-body">
             <ul class="timeline">
@@ -331,7 +364,8 @@
                 </tbody>
               </table>
             </div>
-            <div class="px-3 py-2 d-flex justify-content-between align-items-center" style="border-top:1px solid rgba(165,201,202,0.2);">
+            <div class="px-3 py-2 d-flex justify-content-between align-items-center"
+              style="border-top:1px solid rgba(165,201,202,0.2);">
               <small class="text-muted">4 facturas · 2 pendientes de pago</small>
               <span style="font-family:var(--ff-display);font-size:0.85rem;color:var(--warning);font-weight:700;">
                 <i class="bi bi-exclamation-circle me-1"></i>Total pendiente: $11.000.000
@@ -348,8 +382,10 @@
         <!-- Contacto / Soporte -->
         <div class="card mb-4 shadow-sm">
           <div class="card-header d-flex justify-content-between align-items-center">
-            <h6 class="mb-0"><i class="bi bi-envelope-paper me-2" style="color:var(--primary);"></i>Contactar a Mery Jeans</h6>
-            <span class="badge" style="background:var(--bg-light);color:var(--primary);font-family:var(--ff-body);font-size:0.68rem;">
+            <h6 class="mb-0"><i class="bi bi-envelope-paper me-2" style="color:var(--primary);"></i>Contactar a Mery
+              Jeans</h6>
+            <span class="badge"
+              style="background:var(--bg-light);color:var(--primary);font-family:var(--ff-body);font-size:0.68rem;">
               <i class="bi bi-clock me-1"></i>Resp. en &lt; 2 h
             </span>
           </div>
@@ -358,13 +394,11 @@
             <!-- Canales rápidos -->
             <div class="d-flex gap-2 mb-3 flex-wrap">
               <a href="mailto:meryjeans@gmail.com?subject=Consulta%20Portal%20Cliente"
-                 class="btn btn-sm btn-outline-primary flex-fill">
+                class="btn btn-sm btn-outline-primary flex-fill">
                 <i class="bi bi-envelope me-1"></i>Correo directo
               </a>
               <a href="https://wa.me/573016540378?text=Hola%20Mery%20Jeans,%20soy%20Hector%20de%20Falabella"
-                 target="_blank"
-                 class="btn btn-sm flex-fill"
-                 style="border:1px solid #25D366;color:#25D366;">
+                target="_blank" class="btn btn-sm flex-fill" style="border:1px solid #25D366;color:#25D366;">
                 <i class="bi bi-whatsapp me-1"></i>WhatsApp
               </a>
             </div>
@@ -403,7 +437,8 @@
                 <div class="d-flex align-items-center gap-2">
                   <label class="btn btn-outline-secondary btn-sm mb-0" style="cursor:pointer;">
                     <i class="bi bi-paperclip me-1"></i>Seleccionar
-                    <input type="file" class="d-none" id="contactFile" multiple accept=".pdf,.png,.jpg,.xlsx" onchange="previewContactFile(this)">
+                    <input type="file" class="d-none" id="contactFile" multiple accept=".pdf,.png,.jpg,.xlsx"
+                      onchange="previewContactFile(this)">
                   </label>
                   <span class="small text-muted" id="contactFileLabel">Sin archivos</span>
                 </div>
@@ -419,9 +454,12 @@
             <!-- Confirmación -->
             <div id="contactConfirm" class="text-center py-3 d-none">
               <div style="font-size:2.5rem;">✅</div>
-              <div style="font-family:var(--ff-display);font-size:1rem;color:var(--primary-dark);margin-top:8px;">¡Mensaje enviado!</div>
-              <div class="small text-muted mt-1">Te responderemos a <strong>hector@falabella.com</strong> en menos de 2 horas.</div>
-              <button class="btn btn-outline-primary btn-sm mt-3" onclick="resetContactForm()">Enviar otro mensaje</button>
+              <div style="font-family:var(--ff-display);font-size:1rem;color:var(--primary-dark);margin-top:8px;">
+                ¡Mensaje enviado!</div>
+              <div class="small text-muted mt-1">Te responderemos a <strong>hector@falabella.com</strong> en menos de 2
+                horas.</div>
+              <button class="btn btn-outline-primary btn-sm mt-3" onclick="resetContactForm()">Enviar otro
+                mensaje</button>
             </div>
 
           </div>
@@ -437,43 +475,53 @@
             </label>
           </div>
           <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="#"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
               <span><i class="bi bi-file-earmark-pdf me-2 text-danger"></i>Cotización #C-2026</span>
               <span class="badge" style="background:var(--bg-light);color:var(--primary-dark);">PDF</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="#"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
               <span><i class="bi bi-file-earmark-text me-2 text-warning"></i>Factura #F-2026</span>
               <span class="badge bg-warning text-dark">Pendiente</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            <a href="#"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
               <span><i class="bi bi-file-earmark-spreadsheet me-2 text-success"></i>Ficha técnica - Polo</span>
               <span class="badge" style="background:var(--bg-light);color:var(--primary-dark);">XLSX</span>
             </a>
-            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-              <span><i class="bi bi-file-earmark-check me-2" style="color:var(--primary);"></i>Comprobante entrega #D-1001</span>
+            <a href="#"
+              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+              <span><i class="bi bi-file-earmark-check me-2" style="color:var(--primary);"></i>Comprobante entrega
+                #D-1001</span>
               <span class="badge bg-success">OK</span>
             </a>
           </div>
-          <div class="card-footer" style="background:transparent;border-top:1px solid rgba(165,201,202,0.3);padding:10px 16px;">
+          <div class="card-footer"
+            style="background:transparent;border-top:1px solid rgba(165,201,202,0.3);padding:10px 16px;">
             <small class="text-muted">Formatos aceptados: PDF, PNG, JPG, XLSX — Máx. 10 MB</small>
           </div>
         </div>
 
         <!-- Acciones rápidas -->
         <div class="card shadow-sm">
-          <div class="card-header"><h6 class="mb-0">Acciones rápidas</h6></div>
+          <div class="card-header">
+            <h6 class="mb-0">Acciones rápidas</h6>
+          </div>
           <div class="card-body d-flex flex-column gap-2">
-            <a href="#" class="btn btn-outline-primary w-100 text-start">
+            <button class="btn btn-outline-primary w-100 text-start" data-bs-toggle="modal"
+              data-bs-target="#quoteModal">
               <i class="bi bi-file-earmark-text me-2"></i>Solicitar cotización
-            </a>
-            <a href="#" class="btn btn-outline-secondary w-100 text-start">
+            </button>
+            <button class="btn btn-outline-secondary w-100 text-start" data-bs-toggle="modal"
+              data-bs-target="#historyQuotationsModal">
               <i class="bi bi-clock-history me-2"></i>Ver historial completo
-            </a>
+            </button>
             <a href="#" class="btn btn-outline-success w-100 text-start">
               <i class="bi bi-download me-2"></i>Descargar documentos
             </a>
             <a href="#" class="btn w-100 text-start" style="border:1px solid var(--border-solid);color:var(--primary);"
-               data-bs-toggle="modal" data-bs-target="#profileModal">
+              data-bs-toggle="modal" data-bs-target="#profileModal">
               <i class="bi bi-person-gear me-2"></i>Editar mi perfil
             </a>
           </div>
@@ -517,7 +565,8 @@
               </div>
               <div class="col-12">
                 <label class="form-label">Descripción</label>
-                <textarea class="form-control" rows="3" placeholder="Detalles, tallas, colores, especificaciones..." required></textarea>
+                <textarea class="form-control" rows="3" placeholder="Detalles, tallas, colores, especificaciones..."
+                  required></textarea>
                 <div class="invalid-feedback">Agrega una descripción.</div>
               </div>
               <div class="col-md-6">
@@ -542,74 +591,6 @@
             </button>
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════════════
-       MODAL — Aprobación de muestra
-  ══════════════════════════════════════════ -->
-  <div class="modal fade" id="approvalModal" tabindex="-1" aria-labelledby="approvalModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="border-radius:16px;border:1px solid var(--border-solid);">
-        <div class="modal-header" style="border-bottom:1px solid rgba(165,201,202,0.3);">
-          <h5 class="modal-title" style="font-family:var(--ff-display);" id="approvalModalLabel">
-            <i class="bi bi-patch-check me-2" style="color:var(--primary);"></i>Revisión de muestra
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3 p-3 rounded-3" style="background:var(--bg-light);border:1px solid var(--border-solid);">
-            <div class="small text-muted mb-1">Pedido</div>
-            <strong style="font-family:var(--ff-display);">#A1023 — Camiseta Polo</strong>
-            <div class="small text-muted mt-1">Muestra enviada por: Equipo HebraTech • 03 Jun 2026</div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Archivo de muestra</label>
-            <div class="d-flex align-items-center gap-2 p-2 rounded-2" style="border:1px solid var(--border-solid);background:#fff;">
-              <i class="bi bi-file-earmark-image text-primary" style="font-size:1.3rem;"></i>
-              <div>
-                <div style="font-size:0.82rem;font-weight:600;">muestra_polo_v1.pdf</div>
-                <div style="font-size:0.7rem;color:var(--inactive);">Compartido hace 2 horas</div>
-              </div>
-              <a href="#" class="btn btn-outline-primary btn-sm ms-auto">
-                <i class="bi bi-download"></i>
-              </a>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Tu decisión</label>
-            <div class="d-flex gap-3">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="approvalDecision" id="approveYes" value="aprobado" checked>
-                <label class="form-check-label text-success fw-600" for="approveYes" style="font-size:0.83rem;">
-                  <i class="bi bi-check-circle me-1"></i>Aprobar muestra
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="approvalDecision" id="approveNo" value="rechazado">
-                <label class="form-check-label text-danger" for="approveNo" style="font-size:0.83rem;">
-                  <i class="bi bi-x-circle me-1"></i>Rechazar
-                </label>
-              </div>
-            </div>
-          </div>
-          <div id="rejectCommentWrap" class="mb-2 d-none">
-            <label class="form-label">Comentario de rechazo <span class="text-danger">*</span></label>
-            <textarea class="form-control" rows="3" placeholder="Describe qué debe corregirse..." id="rejectComment"></textarea>
-            <div class="form-text text-danger d-none" id="rejectCommentError">El comentario es obligatorio para rechazar.</div>
-          </div>
-          <div>
-            <label class="form-label">Observaciones adicionales</label>
-            <textarea class="form-control" rows="2" placeholder="Comentarios opcionales..."></textarea>
-          </div>
-        </div>
-        <div class="modal-footer" style="border-top:1px solid rgba(165,201,202,0.3);">
-          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary" onclick="submitApproval()">
-            <i class="bi bi-send me-1"></i>Enviar decisión
-          </button>
-        </div>
       </div>
     </div>
   </div>
@@ -671,412 +652,435 @@
     </div>
   </div>
 
+  <!-- ══════════════════════════════════════════
+     MODAL — Solicitar Cotización (HebraTech)
+     Basado en esquema de tabla 'ordenes'
+     ══════════════════════════════════════════ -->
+  <div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="quoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius:16px; border:1px solid var(--border-solid);">
+
+        <!-- Encabezado -->
+        <div class="modal-header" style="border-bottom:1px solid rgba(165,201,202,0.3);">
+          <h5 class="modal-title" style="font-family:var(--ff-display);" id="quoteModalLabel">
+            <i class="bi bi-file-earmark-text-fill me-2" style="color:var(--primary);"></i>Solicitar Nueva Cotización
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <!-- Formulario -->
+        <form class="needs-validation" id="formCotizacion" novalidate>
+          <div class="modal-body">
+            <p class="text-muted small mb-4">Completa los siguientes campos para registrar tu solicitud en el sistema de
+              producción.</p>
+
+            <div class="row g-3">
+              <!-- Tipo de Prenda / Producto -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Tipo de Prenda</label>
+                <select class="form-select" id="quotePrenda" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="12000">Camiseta Polo — $12.000</option>
+                  <option value="31000">Chaqueta Softshell — $310.000</option>
+                  <option value="13000">Pantalón Cargo — $13.000</option>
+                  <option value="25000">Sudadera — $25.000</option>
+                </select>
+                <div class="invalid-feedback">Por favor selecciona un tipo de prenda.</div>
+              </div>
+
+              <!-- Prioridad (Mapeado a ENUM de la base de datos) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Prioridad</label>
+                <select class="form-select" id="quotePrioridad" required>
+                  <option value="Baja">Baja</option>
+                  <option value="Media" selected>Media</option>
+                  <option value="Alta">Alta</option>
+                  <option value="Urgente">Urgente</option>
+                </select>
+              </div>
+
+              <!-- Cantidad (Mapeado a cantidad INT) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Cantidad (Unidades)</label>
+                <input type="number" class="form-control" id="quoteCantidad" min="1" placeholder="Ej. 150" required>
+                <div class="invalid-feedback">Ingresa una cantidad válida mayor a 0.</div>
+              </div>
+
+              <!-- Precio Unitario (Mapeado a precioUnitario DECIMAL) -->
+              <div class="col-md-6">
+                <label class="form-label fw-semibold">Precio Unitario Estimado</label>
+                <div class="input-group">
+                  <span class="input-group-text">$</span>
+                  <input type="text" class="form-control" id="quotePrecioUnitario" readonly
+                    style="background-color: #f8f9fa;">
+                </div>
+              </div>
+
+              <!-- Instrucciones (Mapeado a instrucciones VARCHAR(1000)) -->
+              <div class="col-12">
+                <label class="form-label fw-semibold">Instrucciones y Especificaciones Técnicas</label>
+                <textarea class="form-control" id="quoteInstrucciones" rows="3" maxlength="1000"
+                  placeholder="Detalla combinaciones de colores, distribución de tallas, logotipos o detalles de empaque..."
+                  required></textarea>
+                <div class="form-text text-end">Máximo 1000 caracteres.</div>
+                <div class="invalid-feedback">Por favor agrega especificaciones para la cotización.</div>
+              </div>
+
+              <!-- Visualización del Subtotal (Mapeado a subtotal DECIMAL) -->
+              <div class="col-12 mt-4">
+                <div class="p-3 rounded-3 d-flex justify-content-between align-items-center"
+                  style="background-color: rgba(57, 91, 100, 0.08); border: 1px dashed var(--primary);">
+                  <span class="fw-bold text-uppercase" style="font-size: 0.85rem; color: var(--primary-dark);">Subtotal
+                    Estimado:</span>
+                  <span class="h4 mb-0 fw-bold text-primary" id="quoteSubtotalDisplay">$0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Acciones del Modal -->
+          <div class="modal-footer" style="border-top:1px solid rgba(165,201,202,0.3);">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-file-earmark-plus me-1"></i>Generar Cotización
+            </button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+     MODAL — Historial de Órdenes y Cotizaciones
+     Basado en esquema de tabla 'ordenes'
+     ══════════════════════════════════════════ -->
+
+  <div class="modal fade" id="historyQuotationsModal" tabindex="-1" aria-labelledby="historyQuotationsModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius:16px; border:1px solid var(--border-solid);">
+
+        <div class="modal-header" style="border-bottom:1px solid rgba(165,201,202,0.3);">
+          <h5 class="modal-title" style="font-family:var(--ff-display);" id="historyQuotationsModalLabel">
+            <i class="bi bi-folder-check me-2" style="color:var(--primary);"></i>Historial de Órdenes y Cotizaciones
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0" style="font-size: 0.88rem;">
+              <thead class="table-light">
+                <tr>
+                  <th class="ps-3">ID Orden</th>
+                  <th>Fecha Solicitud</th>
+                  <th>Prenda / Cantidad</th>
+                  <th>Precio Unit.</th>
+                  <th>Subtotal</th>
+                  <th>Estado</th>
+                  <th class="pe-3 text-end">Cotización</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="ps-3"><strong>#A1009</strong></td>
+                  <td>05 May 2026</td>
+                  <td>
+                    <div class="fw-semibold">Camisetas</div>
+                    <small class="text-muted">150 unidades</small>
+                  </td>
+                  <td>$14.000</td>
+                  <td class="fw-bold">$2.100.000</td>
+                  <td><span class="badge bg-success-subtle text-success border border-success-subtle">Completado</span>
+                  </td>
+                  <td class="pe-3 text-end">
+                    <a href="#" class="btn btn-sm btn-light text-primary" title="Descargar Cotización">
+                      <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="ps-3"><strong>#A1018</strong></td>
+                  <td>20 May 2026</td>
+                  <td>
+                    <div class="fw-semibold">Pantalones Cargo</div>
+                    <small class="text-muted">300 unidades</small>
+                  </td>
+                  <td>$13.000</td>
+                  <td class="fw-bold">$3.900.000</td>
+                  <td><span class="badge bg-success-subtle text-success border border-success-subtle">Completado</span>
+                  </td>
+                  <td class="pe-3 text-end">
+                    <a href="#" class="btn btn-sm btn-light text-primary" title="Descargar Cotización">
+                      <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="ps-3"><strong>#A1023</strong></td>
+                  <td>01 Jun 2026</td>
+                  <td>
+                    <div class="fw-semibold">Camiseta Polo</div>
+                    <small class="text-muted">500 unidades</small>
+                  </td>
+                  <td>$9.600</td>
+                  <td class="fw-bold">$4.800.000</td>
+                  <td><span class="badge bg-info-subtle text-info border border-info-subtle">En Confección</span></td>
+                  <td class="pe-3 text-end">
+                    <a href="#" class="btn btn-sm btn-light text-primary" title="Descargar Cotización">
+                      <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                    </a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="ps-3"><strong>#A1030</strong></td>
+                  <td>28 May 2026</td>
+                  <td>
+                    <div class="fw-semibold">Chaqueta Softshell</div>
+                    <small class="text-muted">200 unidades</small>
+                  </td>
+                  <td>$31.000</td>
+                  <td class="fw-bold">$6.200.000</td>
+                  <td><span class="badge bg-warning-subtle text-warning-dominant border border-warning-subtle">En
+                      Corte</span></td>
+                  <td class="pe-3 text-end">
+                    <a href="#" class="btn btn-sm btn-light text-primary" title="Descargar Cotización">
+                      <i class="bi bi-file-earmark-pdf-fill"></i> PDF
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="modal-footer"
+          style="border-top:1px solid rgba(165,201,202,0.3); background-color: #f8f9fa; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+     MODAL — Historial de Notificaciones
+     Basado en esquema de tabla 'notificaciones'
+     ══════════════════════════════════════════ -->
+
+  <div class="modal fade" id="allNotificationsModal" tabindex="-1" aria-labelledby="allNotificationsLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content" style="border-radius:16px; border:1px solid rgba(165,201,202,0.3);">
+        <div class="modal-header">
+          <h5 class="modal-title" id="allNotificationsLabel">
+            <i class="bi bi-bell me-2 text-primary"></i>Historial de Notificaciones
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="d-flex gap-2 p-3 bg-light border-bottom">
+            <button class="btn btn-sm btn-primary" id="btnFilterAll" onclick="filterNotifications('all')">Todas</button>
+            <button class="btn btn-sm btn-outline-secondary" id="btnFilterUnread"
+              onclick="filterNotifications('unread')">No leídas</button>
+          </div>
+          <div class="list-group list-group-flush" id="modalNotificationsList">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary btn-sm" onclick="markAllAsRead()">Marcar todas como
+            leídas</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="notifDetailModal" tabindex="-1" aria-labelledby="notifDetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:16px; border:1px solid rgba(165,201,202,0.3);">
+        <div class="modal-header">
+          <h5 class="modal-title" id="notifDetailLabel">
+            <i class="bi bi-envelope-open me-2 text-primary"></i>Detalle del Mensaje
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <span class="badge" id="notifDetailBadge">Tipo</span>
+            <small class="text-muted" id="notifDetailTime">Haceinstantes</small>
+          </div>
+          <h6 class="fw-bold mb-2" id="notifDetailTitle">Título de la notificación</h6>
+          <div class="p-3 rounded-3 bg-light border" id="notifDetailMessage"
+            style="font-size:0.9rem; line-height:1.5; color:#333;">
+            Contenido completo del mensaje enviado por el equipo de producción...
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal">Entendido</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+     MODAL — Configuración de Cuenta (Cliente)
+     ══════════════════════════════════════════ -->
+  <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content" style="border-radius:16px; border:1px solid rgba(165,201,202,0.3);">
+
+        <div class="modal-header" style="border-bottom:1px solid rgba(165,201,202,0.3);">
+          <h5 class="modal-title" id="settingsModalLabel" style="font-family:var(--ff-display);">
+            <i class="bi bi-gear-fill me-2 style-primary" style="color:var(--primary);"></i>Configuración del Portal
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+
+        <div class="modal-body p-4">
+          <!-- Navegación por pestañas interna para ordenar el contenido -->
+          <ul class="nav nav-tabs mb-3" id="settingsTabs" role="tablist" style="font-size:0.9rem;">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="notif-tab" data-bs-toggle="tab" data-bs-target="#tab-notif"
+                type="button" role="tab" aria-controls="tab-notif" aria-selected="true">
+                <i class="bi bi-bell-css me-1"></i> Preferencias de Alertas
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="shipping-tab" data-bs-toggle="tab" data-bs-target="#tab-shipping"
+                type="button" role="tab" aria-controls="tab-shipping" aria-selected="false">
+                <i class="bi bi-geo-alt me-1"></i> Puntos de Entrega / Sedes
+              </button>
+            </li>
+          </ul>
+
+          <div class="tab-content" id="settingsTabsContent" style="font-size:0.88rem;">
+
+            <!-- PESTAÑA 1: PREFERENCIAS DE ALERTAS -->
+            <div class="tab-pane fade show active" id="tab-notif" role="tabpanel" aria-labelledby="notif-tab">
+              <p class="text-muted mb-4 small">Selecciona cómo y cuándo deseas que HebraTech te notifique sobre el
+                estado de tus lotes textiles y documentos de facturación.</p>
+
+              <div class="card p-3 mb-3 border-light-subtle bg-light bg-opacity-50">
+                <div class="form-check form-switch d-flex justify-content-between align-items-center ps-0">
+                  <div>
+                    <label class="form-check-label fw-semibold text-dark" for="switchNotifEmail">Notificaciones por
+                      Correo Electrónico</label>
+                    <div class="text-muted small">Recibir copias de los estados de producción y guías de despacho
+                      directamente en tu bandeja.</div>
+                  </div>
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchNotifEmail" checked
+                    style="cursor:pointer; width: 2.5em; height: 1.25em;">
+                </div>
+              </div>
+
+              <div class="card p-3 mb-3 border-light-subtle bg-light bg-opacity-50">
+                <div class="form-check form-switch d-flex justify-content-between align-items-center ps-0">
+                  <div>
+                    <label class="form-check-label fw-semibold text-dark" for="switchNotifQuality">Alertas de Control de
+                      Calidad</label>
+                    <div class="text-muted small">Notificar de inmediato en el panel superior apenas un lote pase a
+                      auditoría final.</div>
+                  </div>
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchNotifQuality" checked
+                    style="cursor:pointer; width: 2.5em; height: 1.25em;">
+                </div>
+              </div>
+
+              <div class="card p-3 mb-2 border-light-subtle bg-light bg-opacity-50">
+                <div class="form-check form-switch d-flex justify-content-between align-items-center ps-0">
+                  <div>
+                    <label class="form-check-label fw-semibold text-dark" for="switchNotifInvoice">Recordatorios de Pago
+                      y Facturación</label>
+                    <div class="text-muted small">Alertar 5 días antes sobre el vencimiento de facturas de órdenes
+                      finalizadas.</div>
+                  </div>
+                  <input class="form-check-input" type="checkbox" role="switch" id="switchNotifInvoice"
+                    style="cursor:pointer; width: 2.5em; height: 1.25em;">
+                </div>
+              </div>
+            </div>
+
+            <!-- PESTAÑA 2: SEDES DE ENTREGA -->
+            <!-- PESTAÑA 2: SEDES DE ENTREGA (Actualizada con Agregar, Editar y Eliminar) -->
+            <div class="tab-pane fade" id="tab-shipping" role="tabpanel" aria-labelledby="shipping-tab">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted small">Direcciones corporativas registradas para la distribución de dotaciones o
+                  pedidos.</span>
+                <!-- El botón ahora activa el formulario de agregar -->
+                <button class="btn btn-sm btn-outline-primary" type="button" onclick="showSedeForm()">
+                  <i class="bi bi-plus-lg me-1"></i> Agregar Sede
+                </button>
+              </div>
+
+              <!-- Formulario oculto (Collapse) para Agregar/Editar Sede -->
+              <div class="collapse mb-3" id="formSedeCollapse">
+                <div class="card card-body border-primary-subtle bg-light bg-opacity-25">
+                  <h6 class="fw-bold mb-3 text-primary" id="formSedeTitle">Nueva Sede de Despacho</h6>
+                  <input type="hidden" id="sedeId"> <!-- Input invisible para saber qué ID editamos -->
+                  <div class="row g-2">
+                    <div class="col-md-4">
+                      <input type="text" class="form-control form-control-sm" id="sedeNombre"
+                        placeholder="Nombre (Ej: Sede Norte)">
+                    </div>
+                    <div class="col-md-5">
+                      <input type="text" class="form-control form-control-sm" id="sedeDireccion"
+                        placeholder="Dirección (Ej: Calle 100 #15-23)">
+                    </div>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control form-control-sm" id="sedeCiudad" placeholder="Ciudad"
+                        value="Bogotá, D.C.">
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-end gap-2 mt-3">
+                    <button type="button" class="btn btn-xs btn-light text-secondary border btn-sm"
+                      onclick="hideSedeForm()">Cancelar</button>
+                    <button type="button" class="btn btn-xs btn-primary btn-sm" onclick="saveSedeData()">Guardar
+                      Sede</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tabla de Sedes de la imagen image_94e973.png -->
+              <div class="table-responsive border rounded-3">
+                <table class="table table-hover align-middle mb-0" style="font-size:0.85rem;">
+                  <thead class="table-light">
+                    <tr>
+                      <th class="ps-3">Nombre Sede</th>
+                      <th>Dirección de Despacho</th>
+                      <th>Ciudad</th>
+                      <th class="text-end pe-3">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tablaSedesBody">
+                    <!-- El contenido se cargará dinámicamente desde el archivo JS -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="modal-footer"
+          style="border-top:1px solid rgba(165,201,202,0.3); background-color: #f8f9fa; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;">
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary btn-sm" data-bs-dismiss="modal"
+            onclick="mostrarToast('Configuración guardada', 'Los ajustes se actualizaron correctamente.')">Guardar
+            Cambios</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-  <script>
-    /* ── Reloj en tiempo real ── */
-    function updateClock() {
-      const now = new Date();
-      const h = String(now.getHours()).padStart(2,'0');
-      const m = String(now.getMinutes()).padStart(2,'0');
-      const s = String(now.getSeconds()).padStart(2,'0');
-      document.getElementById('clockDisplay').textContent = `${h}:${m}:${s}`;
-
-      const dias = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
-      const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
-      const diaSemana = dias[now.getDay()];
-      const diaMes = now.getDate();
-      const mes = meses[now.getMonth()];
-      const anio = now.getFullYear();
-      document.getElementById('dateDisplay').textContent = `${diaSemana} ${diaMes} ${mes} ${anio}`;
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
-
-    /* ── Validación de formulario (Nueva Orden) ── */
-    (function () {
-      'use strict';
-      document.querySelectorAll('.needs-validation').forEach(function (form) {
-        form.addEventListener('submit', function (event) {
-          if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-          } else {
-            event.preventDefault();
-            bootstrap.Modal.getInstance(document.getElementById('newOrderModal')).hide();
-          }
-          form.classList.add('was-validated');
-        }, false);
-      });
-    })();
-
-    /* ── Aprobación de muestra: mostrar campo si rechaza ── */
-    document.querySelectorAll('input[name="approvalDecision"]').forEach(function(radio) {
-      radio.addEventListener('change', function() {
-        const wrap = document.getElementById('rejectCommentWrap');
-        wrap.classList.toggle('d-none', this.value !== 'rechazado');
-      });
-    });
-
-    function submitApproval() {
-      const decision = document.querySelector('input[name="approvalDecision"]:checked').value;
-      if (decision === 'rechazado') {
-        const comment = document.getElementById('rejectComment').value.trim();
-        const errorEl = document.getElementById('rejectCommentError');
-        if (!comment) {
-          errorEl.classList.remove('d-none');
-          return;
-        }
-        errorEl.classList.add('d-none');
-      }
-      bootstrap.Modal.getInstance(document.getElementById('approvalModal')).hide();
-    }
-
-    /* ── Simulación envío de mensaje ── */
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      if (!input.value.trim()) return;
-      input.value = '';
-    }
-
-    /* ══════════════════════════════════════════
-       ORDER TRACKER — datos y renderizado
-    ══════════════════════════════════════════ */
-    const ETAPAS = [
-      { key: 'recibido',   label: 'Pedido\nRecibido',  icon: 'bi-clipboard-check' },
-      { key: 'corte',      label: 'Corte',              icon: 'bi-scissors'        },
-      { key: 'confeccion', label: 'Confección',         icon: 'bi-threads'         },
-      { key: 'calidad',    label: 'Control\nCalidad',   icon: 'bi-patch-check'     },
-      { key: 'despachado', label: 'Despachado',         icon: 'bi-truck'           },
-      { key: 'entregado',  label: 'Entregado',          icon: 'bi-house-check'     },
-    ];
-
-    const PEDIDOS_DATA = [
-      {
-        id: '#A1023',
-        producto: 'Camiseta Polo',
-        cantidad: '500 uds.',
-        fechaCreacion: '01 Jun 2026',
-        total: '$4.800.000',
-        estadoActual: 'confeccion',
-        fechaEstimada: '18 Jun 2026',
-        transportadora: 'Servientrega',
-        tracking: 'SRV-2026-1023',
-        historial: [
-          { estado: 'Pedido recibido',       fecha: '01/06/2026 08:00', etapa: 'recibido'   },
-          { estado: 'Iniciado corte',        fecha: '03/06/2026 09:30', etapa: 'corte'      },
-          { estado: 'Corte completado',      fecha: '07/06/2026 17:00', etapa: 'corte'      },
-          { estado: 'En confección — Línea 3', fecha: '08/06/2026 08:30', etapa: 'confeccion' },
-        ]
-      },
-      {
-        id: '#A1030',
-        producto: 'Chaqueta Softshell',
-        cantidad: '200 uds.',
-        fechaCreacion: '28 May 2026',
-        total: '$6.200.000',
-        estadoActual: 'corte',
-        fechaEstimada: '22 Jun 2026',
-        transportadora: null,
-        tracking: null,
-        historial: [
-          { estado: 'Pedido recibido',    fecha: '28/05/2026 10:15', etapa: 'recibido' },
-          { estado: 'Iniciado corte',     fecha: '01/06/2026 09:00', etapa: 'corte'    },
-        ]
-      },
-      {
-        id: '#A1018',
-        producto: 'Pantalón Cargo',
-        cantidad: '300 uds.',
-        fechaCreacion: '15 May 2026',
-        total: '$3.900.000',
-        estadoActual: 'entregado',
-        fechaEstimada: '05 Jun 2026',
-        transportadora: 'TCC',
-        tracking: 'TCC-789012',
-        historial: [
-          { estado: 'Pedido recibido',       fecha: '15/05/2026 08:00', etapa: 'recibido'   },
-          { estado: 'Corte completado',      fecha: '20/05/2026 16:00', etapa: 'corte'      },
-          { estado: 'Confección terminada',  fecha: '27/05/2026 18:00', etapa: 'confeccion' },
-          { estado: 'Control de calidad OK', fecha: '30/05/2026 11:00', etapa: 'calidad'    },
-          { estado: 'Despachado',            fecha: '02/06/2026 09:00', etapa: 'despachado' },
-          { estado: 'Entregado al cliente',  fecha: '05/06/2026 14:30', etapa: 'entregado'  },
-        ]
-      },
-    ];
-
-    const STATUS_COLORS = {
-      recibido:   { bg: '#e7f6f2', color: '#395B64',  label: 'Pedido recibido'    },
-      corte:      { bg: '#fff3cd', color: '#b07800',  label: 'En corte'            },
-      confeccion: { bg: '#cff4fc', color: '#0c6578',  label: 'En confección'       },
-      calidad:    { bg: '#e2d9f3', color: '#6a3d9a',  label: 'Control de calidad'  },
-      despachado: { bg: '#ffd8a8', color: '#994500',  label: 'Despachado'          },
-      entregado:  { bg: '#d1fae5', color: '#166534',  label: 'Entregado ✓'         },
-    };
-
-    function getEtapaIdx(key) {
-      return ETAPAS.findIndex(e => e.key === key);
-    }
-
-    function calcProgressPct(estadoActual) {
-      const idx = getEtapaIdx(estadoActual);
-      if (idx < 0) return 0;
-      return Math.round(((idx) / (ETAPAS.length - 1)) * 100);
-    }
-
-    function renderPedido(p, expanded) {
-      const etapaIdx = getEtapaIdx(p.estadoActual);
-      const sc = STATUS_COLORS[p.estadoActual] || STATUS_COLORS['recibido'];
-      const pct = calcProgressPct(p.estadoActual);
-      // Ancho de la línea de progreso entre nodos
-      const linePct = etapaIdx === 0 ? 0 : Math.round((etapaIdx / (ETAPAS.length - 1)) * 100);
-
-      // Stages HTML
-      const stagesHtml = ETAPAS.map((etapa, i) => {
-        let cls = 'pending';
-        if (i < etapaIdx) cls = 'completed';
-        if (i === etapaIdx) cls = 'active';
-        const dotIcon = cls === 'completed'
-          ? '<i class="bi bi-check-lg"></i>'
-          : `<i class="${etapa.icon}"></i>`;
-        // Tooltip: buscar en historial
-        const hEntry = p.historial.find(h => h.etapa === etapa.key);
-        const tooltipText = hEntry ? `${hEntry.fecha}<br>${hEntry.estado}` : etapa.label.replace('\n',' ');
-        return `
-          <div class="ot-stage ${cls}">
-            <div class="ot-stage-dot">${dotIcon}</div>
-            <div class="ot-stage-label">${etapa.label.replace('\n','<br>')}</div>
-            <div class="ot-stage-tooltip">${tooltipText}</div>
-          </div>`;
-      }).join('');
-
-      // Historial rows
-      const histHtml = p.historial.slice().reverse().map(h => {
-        const hsc = STATUS_COLORS[h.etapa] || STATUS_COLORS['recibido'];
-        return `
-          <div class="ot-history-row">
-            <div class="ot-history-dot" style="background:${hsc.color};"></div>
-            <div class="ot-history-date">${h.fecha}</div>
-            <div class="ot-history-desc">
-              ${h.estado}
-              <span class="ot-history-badge ms-2" style="background:${hsc.bg};color:${hsc.color};">${ETAPAS.find(e=>e.key===h.etapa)?.label.replace('\n',' ') || h.etapa}</span>
-            </div>
-          </div>`;
-      }).join('');
-
-      // Delivery
-      const deliveryHtml = p.transportadora ? `
-        <div class="ot-delivery-item">
-          <span class="label">Transportadora</span>
-          <strong>${p.transportadora}</strong>
-        </div>
-        <div class="ot-delivery-item">
-          <span class="label">Nº de guía</span>
-          <strong>${p.tracking}</strong>
-        </div>
-        <button class="btn-seguir ms-auto" onclick="alert('Seguimiento de ${p.tracking}')">
-          <i class="bi bi-geo-alt me-1"></i>Seguir pedido
-        </button>` : `
-        <div class="ot-delivery-item">
-          <span class="label">Seguimiento</span>
-          <strong>Aún no despachado</strong>
-        </div>`;
-
-      const bodyDisplay = expanded ? 'block' : 'none';
-      return `
-        <div class="ot-order-wrap" id="wrap-${p.id.replace('#','')}">
-          <!-- ENCABEZADO -->
-          <div class="ot-header" onclick="toggleOrder('${p.id.replace('#','')}')">
-            <div class="ot-order-id">${p.id}</div>
-            <div class="ot-meta-item"><span class="label">Producto</span> <strong>${p.producto}</strong></div>
-            <div class="ot-meta-item d-none d-md-block">Cant: <strong>${p.cantidad}</strong></div>
-            <div class="ot-meta-item d-none d-md-block">Solicitado: <strong>${p.fechaCreacion}</strong></div>
-            <div class="ot-meta-item d-none d-lg-block">Entrega est: <strong>${p.fechaEstimada}</strong></div>
-            <div class="ot-meta-item d-none d-lg-block">Total: <strong>${p.total}</strong></div>
-            <span class="ot-status-badge ms-auto" style="background:${sc.bg};color:${sc.color};">${sc.label}</span>
-            <button class="ot-toggle-btn ${expanded ? 'open' : ''}" id="btn-${p.id.replace('#','')}">
-              <i class="bi bi-chevron-down"></i>
-            </button>
-          </div>
-          <!-- CUERPO -->
-          <div class="ot-body" id="body-${p.id.replace('#','')}" style="display:${bodyDisplay};">
-            <!-- Barra global -->
-            <div class="d-flex justify-content-between align-items-center mb-1">
-              <span style="font-family:var(--ff-body);font-size:0.72rem;color:var(--inactive);">Progreso general</span>
-              <span style="font-family:var(--ff-display);font-size:0.78rem;color:var(--primary);font-weight:700;">${pct}%</span>
-            </div>
-            <div class="ot-global-progress mb-3">
-              <div class="ot-global-progress-bar" style="width:${pct}%"></div>
-            </div>
-
-            <!-- Stages timeline -->
-            <div class="ot-stages" id="stages-${p.id.replace('#','')}">
-              <div class="ot-stages-progress-line" style="width:${linePct}%;"></div>
-              ${stagesHtml}
-            </div>
-
-            <!-- Info de entrega -->
-            <div class="ot-delivery-info">
-              <div class="ot-delivery-item">
-                <span class="label">Fecha estimada</span>
-                <strong><i class="bi bi-calendar3 me-1"></i>${p.fechaEstimada}</strong>
-              </div>
-              ${deliveryHtml}
-            </div>
-
-            <!-- Historial -->
-            <div class="ot-history-title"><i class="bi bi-clock-history me-1"></i>Historial del pedido</div>
-            ${histHtml}
-          </div>
-        </div>`;
-    }
-
-    function toggleOrder(rawId) {
-      const body = document.getElementById('body-' + rawId);
-      const btn  = document.getElementById('btn-'  + rawId);
-      const isOpen = body.style.display !== 'none';
-      body.style.display = isOpen ? 'none' : 'block';
-      btn.classList.toggle('open', !isOpen);
-    }
-
-    function renderAllOrders() {
-      const container = document.getElementById('orderTrackerContainer');
-      if (!container) return;
-      container.innerHTML = PEDIDOS_DATA.map((p, i) => renderPedido(p, i === 0)).join('');
-    }
-
-    renderAllOrders();
-
-    /* ══════════════════════════════════════════
-       TOAST SYSTEM
-    ══════════════════════════════════════════ */
-    const NOTIFICACIONES = [
-      {
-        tipo: 'warning',
-        icono: 'bi-exclamation-triangle-fill',
-        titulo: 'Muestra pendiente de aprobación',
-        mensaje: 'Pedido #A1023 — Camiseta Polo. El equipo espera tu revisión.',
-        accion: { texto: 'Revisar muestra', modal: 'approvalModal' }
-      },
-      {
-        tipo: 'info',
-        icono: 'bi-box-seam',
-        titulo: 'Pedido #A1030 actualizado',
-        mensaje: 'Chaqueta Softshell avanzó al 40% en etapa de corte.',
-        accion: null
-      },
-      {
-        tipo: 'success',
-        icono: 'bi-receipt',
-        titulo: 'Factura #F-2026 disponible',
-        mensaje: 'Tu nueva factura está lista para descargar.',
-        accion: null
-      }
-    ];
-
-    function mostrarToast(notif, delay = 0) {
-      setTimeout(() => {
-        const id = 'toast-' + Date.now() + Math.random().toString(36).slice(2);
-        const duracion = 6000;
-
-        const accionHtml = notif.accion
-          ? `<button class="ht-toast-action" onclick="document.getElementById('${id}').remove();bootstrap.Modal.getOrCreateInstance(document.getElementById('${notif.accion.modal}')).show();">${notif.accion.texto} →</button>`
-          : '';
-
-        const el = document.createElement('div');
-        el.className = 'ht-toast';
-        el.id = id;
-        el.innerHTML = `
-          <div class="ht-toast-icon ${notif.tipo}"><i class="bi ${notif.icono}"></i></div>
-          <div class="ht-toast-body">
-            <div class="ht-toast-title">${notif.titulo}</div>
-            <div class="ht-toast-msg">${notif.mensaje}</div>
-            ${accionHtml}
-          </div>
-          <button class="ht-toast-close" onclick="cerrarToast('${id}')"><i class="bi bi-x"></i></button>
-          <div class="ht-toast-progress" id="prog-${id}" style="width:100%;"></div>
-        `;
-
-        document.getElementById('toastContainer').appendChild(el);
-
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => { el.classList.add('show'); });
-        });
-
-        const prog = document.getElementById('prog-' + id);
-        if (prog) {
-          prog.style.transition = `width ${duracion}ms linear`;
-          setTimeout(() => { prog.style.width = '0%'; }, 50);
-        }
-
-        setTimeout(() => cerrarToast(id), duracion);
-      }, delay);
-    }
-
-    function cerrarToast(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.classList.remove('show');
-      el.classList.add('hide');
-      setTimeout(() => el.remove(), 400);
-    }
-
-    window.addEventListener('load', () => {
-      NOTIFICACIONES.forEach((n, i) => mostrarToast(n, i * 1200));
-    });
-
-    /* ══════════════════════════════════════════
-       FORMULARIO DE CONTACTO
-    ══════════════════════════════════════════ */
-    function previewContactFile(input) {
-      const label = document.getElementById('contactFileLabel');
-      label.textContent = input.files.length > 0
-        ? Array.from(input.files).map(f => f.name).join(', ')
-        : 'Sin archivos';
-    }
-
-    function enviarContacto() {
-      const asunto  = document.getElementById('contactAsunto').value;
-      const pedido  = document.getElementById('contactPedido').value;
-      const mensaje = document.getElementById('contactMensaje').value.trim();
-
-      if (!asunto || !mensaje) {
-        mostrarToast({ tipo: 'warning', icono: 'bi-exclamation-circle',
-          titulo: 'Campos requeridos',
-          mensaje: 'Por favor selecciona un asunto y escribe tu mensaje.', accion: null });
-        return;
-      }
-
-      // mailto — reemplazar por fetch('/api/contacto', {...}) al integrar backend
-      const pedidoText = pedido ? `\nPedido: ${pedido}` : '';
-      const body    = encodeURIComponent(`Asunto: ${asunto}${pedidoText}\n\n${mensaje}\n\n— Hector, Falabella`);
-      const subject = encodeURIComponent(`[Portal Cliente] ${asunto}${pedido ? ' — ' + pedido : ''}`);
-      window.location.href = `mailto:produccion@hebratech.com?subject=${subject}&body=${body}`;
-
-      document.getElementById('contactFormWrap').classList.add('d-none');
-      document.getElementById('contactConfirm').classList.remove('d-none');
-    }
-
-    function resetContactForm() {
-      document.getElementById('contactAsunto').value = '';
-      document.getElementById('contactPedido').value = '';
-      document.getElementById('contactMensaje').value = '';
-      document.getElementById('contactFileLabel').textContent = 'Sin archivos';
-      document.getElementById('contactFormWrap').classList.remove('d-none');
-      document.getElementById('contactConfirm').classList.add('d-none');
-    }
-
-    /* ── Upload feedback ── */
-    function handleUpload(input) {
-      if (input.files.length > 0) {
-        const names = Array.from(input.files).map(f => f.name).join(', ');
-        mostrarToast({ tipo: 'success', icono: 'bi-cloud-check',
-          titulo: 'Archivo subido', mensaje: names, accion: null });
-      }
-    }
-  </script>
+  <script src="../js/cliente.js"></script>
 
 </body>
+
 </html>
