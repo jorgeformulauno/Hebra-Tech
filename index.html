@@ -43,10 +43,12 @@
 
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav mx-auto gap-1">
-                    <li class="nav-item"><a class="ht-nav-link active" href="#">Inicio</a></li>
-                    <li class="nav-item"><a class="ht-nav-link" href="#">Producción</a></li>
-                    <li class="nav-item"><a class="ht-nav-link" href="#">Inventario</a></li>
-                    <li class="nav-item"><a class="ht-nav-link" href="#">Reportes</a></li>
+                    <li class="nav-item"><a class="ht-nav-link active" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="ht-nav-link" href="#modulos">Módulos</a></li>
+                    <li class="nav-item"><a class="ht-nav-link" href="#como-funciona">Cómo funciona</a></li>
+                    <li class="nav-item"><a class="ht-nav-link" href="#mision-vision">Misión & Visión</a></li>
+                    <li class="nav-item"><a class="ht-nav-link" href="#equipo">Equipo</a></li>
+                    <li class="nav-item"><a class="ht-nav-link" href="#contacto">Contáctanos</a></li>
                 </ul>
                 <a href="auth/iniciosesion.html" class="btn-ht-login">
                     <i class="fas fa-right-to-bracket"></i>
@@ -59,7 +61,7 @@
 
 
     <!-- ── HERO ── -->
-    <section class="ht-hero">
+    <section class="ht-hero" id="inicio">
         <div class="hero-grid-overlay"></div>
         <div class="orb orb-1"></div>
         <div class="orb orb-2"></div>
@@ -155,7 +157,7 @@
     </section>
 
     <!-- ── FEATURES ── -->
-    <section class="ht-features" id="features">
+    <section class="ht-features" id="modulos">
         <div class="container-xl">
             <div class="text-center section-head">
                 <div class="section-eyebrow">MÓDULOS DEL SISTEMA</div>
@@ -381,7 +383,7 @@
     </section>
 
     <!-- ── HOW IT WORKS ── -->
-    <section class="ht-how">
+    <section class="ht-how" id="como-funciona">
         <div class="container-xl">
             <div class="text-center section-head">
                 <div class="section-eyebrow">FLUJO DE TRABAJO</div>
@@ -615,10 +617,10 @@
                 <div class="col-md-3">
                     <h5 class="fw-bold mb-3" style="color: #ffffff;">Navegación</h5>
                     <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#" class="text-secondary text-decoration-none hover-link">Inicio</a></li>
+                        <li><a href="#inicio" class="text-secondary text-decoration-none hover-link">Inicio</a></li>
                         <li><a href="#soluciones" class="text-secondary text-decoration-none hover-link">Soluciones</a>
                         </li>
-                        <li><a href="#features" class="text-secondary text-decoration-none hover-link">Módulos</a></li>
+                        <li><a href="#modulos" class="text-secondary text-decoration-none hover-link">Módulos</a></li>
                         <li><a href="#contacto" class="text-secondary text-decoration-none hover-link">Soporte
                                 Técnico</a></li>
                     </ul>
@@ -645,6 +647,25 @@
 
     <!-- Bootstrap JS -->
     <script>
+        // Smooth scroll para links ancla del navbar
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                    // Cierra el menú móvil si está abierto
+                    const navCollapse = document.querySelector('#mainNav');
+                    if (navCollapse && navCollapse.classList.contains('show')) {
+                        const toggler = document.querySelector('.navbar-toggler');
+                        toggler && toggler.click();
+                    }
+                }
+            });
+        });
         // Intersection Observer para las animaciones de aparición
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(e => {
