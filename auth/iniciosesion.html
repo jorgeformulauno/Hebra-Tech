@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="inicio.css">
 </head>
@@ -72,15 +71,13 @@
                                 <i class="fas fa-eye toggle-password position-absolute top-50 end-0 translate-middle-y me-3"
                                     onclick="togglePass('login-pass')" style="cursor:pointer;"></i>
                             </div>
-                            <div></div>
                         </div>
                         <a href="recuperar.html" class="forgot-link d-block text-end mb-3">¿Olvidaste tu contraseña?</a>
                         <button type="submit" class="btn-primary w-100">Iniciar sesión</button>
                     </form>
 
                     <p class="legal text-center mt-3 small">
-                        Al continuar, aceptas nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de
-                            privacidad</a>.
+                        Al continuar, aceptas nuestros <a href="#">Términos de servicio</a> y <a href="#">Política de privacidad</a>.
                     </p>
                     <p class="switch-text text-center mt-2">
                         ¿No tienes cuenta? <a href="javascript:void(0)" onclick="switchAuth()">Regístrate</a>
@@ -113,7 +110,7 @@
                             <label class="form-label">Confirmar contraseña</label>
                             <input type="password" class="form-control" placeholder="Repite tu contraseña" required>
                         </div>
-                        <button type="submit" class="btn-primary w-100">Crear cuenta</button>
+                        <button type="submit" class="btn-primary w-100">Crea cuenta</button>
                     </form>
 
                     <p class="switch-text text-center mt-3">
@@ -125,8 +122,7 @@
         </section>
 
         <!-- ── VISUAL SIDE ── -->
-        <section
-            class="visual-side d-none d-lg-flex flex-column align-items-center justify-content-center p-5 position-relative">
+        <section class="visual-side d-none d-lg-flex flex-column align-items-center justify-content-center p-5 position-relative">
             <div class="cards-container mb-4">
                 <div class="task-card card-1 d-flex align-items-center gap-2">
                     <i class="far fa-circle"></i>
@@ -160,11 +156,11 @@
         <i class="fas fa-arrow-left"></i>
     </a>
 
-    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
+            // ── Cambiar entre login y registro ──
             function switchAuth() {
                 const login = document.getElementById('login-view');
                 const register = document.getElementById('register-view');
@@ -179,6 +175,7 @@
             }
             window.switchAuth = switchAuth;
 
+            // ── Mostrar / ocultar contraseña ──
             function togglePass(id) {
                 const input = document.getElementById(id);
                 if (!input) return;
@@ -186,26 +183,66 @@
             }
             window.togglePass = togglePass;
 
-            const roleMap = {
-                administrador: `${window.location.origin}/Hebra-Tech/usuarios/Admin.html`,
-                operario: `${window.location.origin}/Hebra-Tech/usuarios/Operario.html`,
-                cliente: `${window.location.origin}/Hebra-Tech/usuarios/Cliente.html`
-            };
-
+            // ── Lógica de Login ──
             const form = document.getElementById('login-form');
             if (form) {
                 form.addEventListener('submit', function (e) {
                     e.preventDefault();
-                    const role = document.getElementById('role-select').value;
-                    if (!role) { alert('Por favor selecciona un rol.'); return; }
-                    const target = roleMap[role];
-                    if (target) { window.location.href = target; }
-                    else { alert('Rol no válido'); }
+
+                    const emailInput = form.querySelector('input[type="email"]').value.trim();
+                    const roleSelect = document.getElementById('role-select');
+                    const role = roleSelect ? roleSelect.value : '';
+
+                    if (!role) {
+                        alert('Por favor selecciona un rol.');
+                        return;
+                    }
+
+                    // CASO 1: Administrador → acceso directo
+                    if (role === 'administrador') {
+                        window.location.href = "../usuarios/Admin.html";
+                        return;
+                    }
+
+                    // CASO 2: Cliente u Operario → revisamos localStorage
+                    let solicitudes = JSON.parse(localStorage.getItem('solicitudesHebraTech')) || [];
+                    let usuarioEncontrado = solicitudes.find(
+                        s => s.correo.toLowerCase() === emailInput.toLowerCase()
+                    );
+
+                    if (!usuarioEncontrado) {
+                        // No existe → registrar como Pendiente
+                        let nombreLimpio = emailInput.split('@')[0].replace('.', ' ');
+                        nombreLimpio = nombreLimpio.charAt(0).toUpperCase() + nombreLimpio.slice(1);
+
+                        solicitudes.push({
+                            nombre: nombreLimpio,
+                            correo: emailInput,
+                            rol: role.charAt(0).toUpperCase() + role.slice(1),
+                            estado: "Pendiente"
+                        });
+                        localStorage.setItem('solicitudesHebraTech', JSON.stringify(solicitudes));
+
+                        alert(`📋 Solicitud de registro enviada.\n\nTu usuario (${emailInput}) ha sido enviado al Administrador.\nEstado: PENDIENTE.\nNo puedes ingresar hasta que te aprueben.`);
+                        return;
+                    }
+
+                    // Ya existe → revisar estado
+                    if (usuarioEncontrado.estado === "Pendiente") {
+                        alert(`🚫 Acceso Denegado:\n\nTu solicitud (${emailInput}) sigue PENDIENTE de aprobación. Por favor espera.`);
+                    } else if (usuarioEncontrado.estado === "Aprobado") {
+                        alert(`✅ ¡Acceso Concedido!\n\nBienvenido a HebraTech.`);
+                        if (role === 'cliente') {
+                            window.location.href = "../usuarios/Cliente.html";
+                        } else {
+                            window.location.href = "../usuarios/Operario.html";
+                        }
+                    }
                 });
             }
 
         });
     </script>
-</body>
 
+</body>
 </html>
