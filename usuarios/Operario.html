@@ -8,6 +8,35 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    .task-card {
+      cursor: grab;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    }
+    .task-card:active {
+      cursor: grabbing;
+    }
+    .task-card.dragging {
+      opacity: 0.4;
+      transform: scale(0.97);
+    }
+    .drop-zone {
+      transition: background 0.2s ease, border-color 0.2s ease;
+      min-height: 60px;
+    }
+    .drop-zone.drag-over {
+      background: rgba(165, 201, 202, 0.08) !important;
+      border: 2px dashed #A5C9CA !important;
+      border-radius: 8px;
+    }
+    .drop-placeholder {
+      border: 2px dashed #395B64;
+      border-radius: 8px;
+      height: 70px;
+      background: rgba(57, 91, 100, 0.1);
+      pointer-events: none;
+    }
+  </style>
 </head>
 
 <body style="background:#1E2224;">
@@ -32,6 +61,24 @@
           <span class="badge bg-success-subtle rounded-circle p-1 me-1"> </span> <span id="statFinalizado" class="text-light">0</span> <span style="color: #A5C9CA;">finalizadas</span>
         </span>
 
+        <!-- Botón e Historial de Tareas Asignadas -->
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 border-secondary-subtle"
+            type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+            <i class="bi bi-clipboard-check text-white"></i>
+            <span class="text-light">Asignadas</span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg"
+            style="width: 380px; max-height: 480px; overflow-y: auto; background: #223135; border-color: #395B64;">
+            <div class="d-flex align-items-center gap-2 border-bottom border-secondary-subtle pb-2 mb-3">
+              <i class="bi bi-person-workspace text-white"></i>
+              <span class="fw-bold text-light" style="font-family: 'Space Grotesk';">Mis Tareas Asignadas</span>
+            </div>
+            <div id="assignedItemsContainer"></div>
+          </div>
+        </div>
+
+        <!-- Botón e Historial de Reportes (Solo Pendientes) -->
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 border-secondary-subtle"
             type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
@@ -42,7 +89,7 @@
             style="width: 380px; max-height: 480px; overflow-y: auto; background: #223135; border-color: #395B64;">
             <div class="d-flex align-items-center gap-2 border-bottom border-secondary-subtle pb-2 mb-3">
               <i class="bi bi-journal-text text-white"></i>
-              <span class="fw-bold text-light" style="font-family: 'Space Grotesk';">Mis Reportes</span>
+              <span class="fw-bold text-light" style="font-family: 'Space Grotesk';">Mis Reportes Pendientes</span>
             </div>
             <div id="historyItemsContainer"></div>
           </div>
@@ -52,6 +99,7 @@
           <i class="bi bi-plus-lg me-1"></i>Generar reporte
         </button>
 
+        <!-- Perfil de usuario -->
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 d-flex align-items-center gap-2 border-secondary-subtle"
             type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,11 +111,9 @@
               <small class="text-body-secondary d-block">Usuario actual</small>
               <strong>Santiago Cano</strong>
             </li>
+            <li><hr class="dropdown-divider" style="border-color: #395B64;"></li>
             <li>
-              <hr class="dropdown-divider" style="border-color: #395B64;">
-            </li>
-            <li>
-              <a class="dropdown-item text-danger fw-semibold" href="../index.html">
+              <a class="dropdown-item text-danger fw-semibold" href="../inicio.html">
                 <i class="bi bi-box-arrow-right me-2"></i>Cerrar sesión
               </a>
             </li>
@@ -101,6 +147,7 @@
     </div>
 
     <div class="row g-4">
+      <!-- Pendiente -->
       <div class="col-12 col-lg-4">
         <div class="border border-secondary-subtle rounded-4 p-3 d-flex flex-column" style="min-height: 65vh; background: #222D30;">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -109,10 +156,11 @@
             </div>
             <span class="badge text-light rounded-pill" id="count-pendiente" style="background: #395B64;">0</span>
           </div>
-          <div class="d-flex flex-column gap-2" id="list-pendiente"></div>
+          <div class="d-flex flex-column gap-2 drop-zone" id="list-pendiente" data-status="pendiente"></div>
         </div>
       </div>
 
+      <!-- En Proceso -->
       <div class="col-12 col-lg-4">
         <div class="border border-secondary-subtle rounded-4 p-3 d-flex flex-column" style="min-height: 65vh; background: #222D30;">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -121,10 +169,11 @@
             </div>
             <span class="badge text-light rounded-pill" id="count-proceso" style="background: #395B64;">0</span>
           </div>
-          <div class="d-flex flex-column gap-2" id="list-proceso"></div>
+          <div class="d-flex flex-column gap-2 drop-zone" id="list-proceso" data-status="proceso"></div>
         </div>
       </div>
 
+      <!-- Finalizado -->
       <div class="col-12 col-lg-4">
         <div class="border border-secondary-subtle rounded-4 p-3 d-flex flex-column" style="min-height: 65vh; background: #222D30;">
           <div class="d-flex justify-content-between align-items-center mb-3">
@@ -133,12 +182,13 @@
             </div>
             <span class="badge text-light rounded-pill" id="count-finalizado" style="background: #395B64;">0</span>
           </div>
-          <div class="d-flex flex-column gap-2" id="list-finalizado"></div>
+          <div class="d-flex flex-column gap-2 drop-zone" id="list-finalizado" data-status="finalizado"></div>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- Modal -->
   <div class="modal fade" id="taskModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content border border-secondary-subtle" style="background: #223135;">
@@ -197,72 +247,143 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     let tasks = [
-      { id: 831, title: "Mantenimiento Telar A", desc: "Se realizó ajuste de tensión y lubricación de engranajes.", status: "finalizado", prio: "media", tag: "Mantenimiento", date: "Hoy, 09:15 AM" },
-      { id: 794, title: "Falla Eléctrica Sensor", desc: "Sensor óptico intermitente detiene la marcha.", status: "proceso", prio: "alta", tag: "Eléctrico", date: "Ayer, 03:40 PM" },
-      { id: 720, title: "Repuesto Agotado", desc: "Sin stock de materia prima en bodega central.", status: "pendiente", prio: "baja", tag: "Materia Prima", date: "28 May, 10:22 AM" }
+      { id: 831, title: "Mantenimiento Telar A", desc: "Se realizó ajuste de tensión y lubricación de engranajes.", status: "finalizado", prio: "media", tag: "Mantenimiento", date: "Hoy, 09:15 AM", assignee: "Santiago Cano" },
+      { id: 794, title: "Falla Eléctrica Sensor", desc: "Sensor óptico intermitente detiene la marcha.", status: "proceso", prio: "alta", tag: "Eléctrico", date: "Ayer, 03:40 PM", assignee: "Santiago Cano" },
+      { id: 720, title: "Repuesto Agotado", desc: "Sin stock de materia prima en bodega central.", status: "pendiente", prio: "baja", tag: "Materia Prima", date: "28 May, 10:22 AM", assignee: "Otro Operario" }
     ];
 
     const taskModal = new bootstrap.Modal(document.getElementById('taskModal'));
+    let draggedId = null;
 
-    function renderAll() {
-      const historyContainer = document.getElementById('historyItemsContainer');
-      const lists = {
-        pendiente: document.getElementById('list-pendiente'),
-        proceso: document.getElementById('list-proceso'),
-        finalizado: document.getElementById('list-finalizado')
-      };
+    const statusStyles = {
+      pendiente: { border: '#395B64', badge: 'background: rgba(57,91,100,0.2); color:#E2E8F0; border:1px solid #395B64;', label: 'Pendiente' },
+      proceso:   { border: '#A5C9CA', badge: 'background: rgba(165,201,202,0.15); color:#A5C9CA; border:1px solid #A5C9CA;', label: 'En Proceso' },
+      finalizado:{ border: '#2C4A52', badge: 'background: rgba(44,74,82,0.4); color:#CBD5E1; border:1px solid #2C4A52;', label: 'Finalizado' }
+    };
 
-      if (historyContainer) historyContainer.innerHTML = '';
-      Object.values(lists).forEach(l => { if (l) l.innerHTML = ''; });
-
-      let counts = { pendiente: 0, proceso: 0, finalizado: 0 };
-
-      let statusStyles = {
-        pendiente: { border: '#395B64', badge: 'background: rgba(57, 91, 100, 0.2); color: #E2E8F0; border: 1px solid #395B64;', label: 'Pendiente' },
-        proceso: { border: '#A5C9CA', badge: 'background: rgba(165, 201, 202, 0.15); color: #A5C9CA; border: 1px solid #A5C9CA;', label: 'En Proceso' },
-        finalizado: { border: '#2C4A52', badge: 'background: rgba(44, 74, 82, 0.4); color: #CBD5E1; border: 1px solid #2C4A52;', label: 'Finalizado' }
-      };
-
-      tasks.forEach(task => {
-        counts[task.status]++;
-        let styleCfg = statusStyles[task.status];
-
-        const cardElement = document.createElement('div');
-        cardElement.className = `card border-0 border-start border-4 p-3 mb-2 shadow-sm`;
-        cardElement.style.background = '#2C3E42';
-        cardElement.style.borderLeftColor = styleCfg.border;
-        cardElement.style.cursor = 'pointer';
-        cardElement.onclick = () => openEditModal(task.id);
-        cardElement.innerHTML = `
+    function createCard(task) {
+      const s = statusStyles[task.status];
+      const card = document.createElement('div');
+      card.className = 'card border-0 border-start border-4 p-3 shadow-sm task-card';
+      card.style.cssText = `background:#2C3E42; border-left-color:${s.border} !important; cursor:grab;`;
+      card.setAttribute('draggable', 'true');
+      card.dataset.id = task.id;
+      card.innerHTML = `
         <div class="d-flex justify-content-between align-items-start mb-2">
           <span class="fw-semibold text-light" style="font-size:0.9rem;">${task.title}</span>
-          <span class="badge" style="font-size:0.7rem; padding: 4px 8px; ${styleCfg.badge}">${styleCfg.label}</span>
+          <span class="badge" style="font-size:0.7rem;padding:4px 8px;${s.badge}">${s.label}</span>
         </div>
-        <p class="card-text mb-2 style="font-size:0.8rem; line-height: 1.4; color: #CBD5E1;">${task.desc}</p>
-        <div class="d-flex justify-content-between align-items-center" style="font-size:0.7rem; color: #A5C9CA;">
-          <span><i class="bi bi-calendar3 me-1"></i> ${task.date}</span>
+        <p class="mb-2 text-truncate" style="font-size:0.8rem;line-height:1.4;color:#CBD5E1;">${task.desc}</p>
+        <div class="d-flex justify-content-between align-items-center" style="font-size:0.7rem;color:#A5C9CA;">
+          <span><i class="bi bi-calendar3 me-1"></i>${task.date}</span>
           <span class="fw-bold">#${task.id}</span>
         </div>
       `;
 
-        const historyCard = cardElement.cloneNode(true);
-        historyCard.onclick = () => openEditModal(task.id);
-        if (historyContainer) historyContainer.appendChild(historyCard);
-
-        if (lists[task.status]) {
-          lists[task.status].appendChild(cardElement);
-        }
+      // Drag events
+      card.addEventListener('dragstart', (e) => {
+        draggedId = task.id;
+        card.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+      });
+      card.addEventListener('dragend', () => {
+        card.classList.remove('dragging');
+        document.querySelectorAll('.drop-placeholder').forEach(p => p.remove());
       });
 
-      if (document.getElementById('totalTasks')) document.getElementById('totalTasks').innerText = tasks.length;
-      ['pendiente', 'proceso', 'finalizado'].forEach(status => {
-        if (document.getElementById(`count-${status}`)) document.getElementById(`count-${status}`).innerText = counts[status];
-        if (document.getElementById(`stat${status.charAt(0).toUpperCase() + status.slice(1)}`)) {
-          document.getElementById(`stat${status.charAt(0).toUpperCase() + status.slice(1)}`).innerText = counts[status];
-        }
+      // Click para editar
+      card.addEventListener('click', () => openEditModal(task.id));
+
+      return card;
+    }
+
+    function setupDropZones() {
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.addEventListener('dragover', (e) => {
+          e.preventDefault();
+          zone.classList.add('drag-over');
+          e.dataTransfer.dropEffect = 'move';
+
+          // Placeholder visual
+          document.querySelectorAll('.drop-placeholder').forEach(p => p.remove());
+          const placeholder = document.createElement('div');
+          placeholder.className = 'drop-placeholder';
+          zone.appendChild(placeholder);
+        });
+
+        zone.addEventListener('dragleave', (e) => {
+          if (!zone.contains(e.relatedTarget)) {
+            zone.classList.remove('drag-over');
+            document.querySelectorAll('.drop-placeholder').forEach(p => p.remove());
+          }
+        });
+
+        zone.addEventListener('drop', (e) => {
+          e.preventDefault();
+          zone.classList.remove('drag-over');
+          document.querySelectorAll('.drop-placeholder').forEach(p => p.remove());
+
+          const newStatus = zone.dataset.status;
+          const task = tasks.find(t => t.id == draggedId);
+          if (task && task.status !== newStatus) {
+            task.status = newStatus;
+            renderAll();
+          }
+          draggedId = null;
+        });
       });
     }
 
+    function renderAll() {
+      const historyContainer = document.getElementById('historyItemsContainer');
+      const assignedContainer = document.getElementById('assignedItemsContainer');
+
+      const lists = {
+        pendiente: document.getElementById('list-pendiente'),
+        proceso:   document.getElementById('list-proceso'),
+        finalizado: document.getElementById('list-finalizado')
+      };
+
+      if (historyContainer) historyContainer.innerHTML = '';
+      if (assignedContainer) assignedContainer.innerHTML = '';
+      Object.values(lists).forEach(l => { if (l) l.innerHTML = ''; });
+
+      let counts = { pendiente: 0, proceso: 0, finalizado: 0 };
+
+      tasks.forEach(task => {
+        counts[task.status]++;
+        const card = createCard(task);
+
+        // NUEVO CAMBIO: El historial ahora solo guarda los clones con estado "pendiente"
+        if (task.status === 'pendiente') {
+          const histClone = card.cloneNode(true);
+          histClone.removeAttribute('draggable');
+          histClone.addEventListener('click', () => openEditModal(task.id));
+          if (historyContainer) historyContainer.appendChild(histClone);
+        }
+
+        // Clon para Historial de Asignadas (Filtro por usuario actual)
+        if (task.assignee === 'Santiago Cano') {
+          const assignClone = card.cloneNode(true);
+          assignClone.removeAttribute('draggable');
+          assignClone.addEventListener('click', () => openEditModal(task.id));
+          if (assignedContainer) assignedContainer.appendChild(assignClone);
+        }
+
+        if (lists[task.status]) lists[task.status].appendChild(card);
+      });
+
+      document.getElementById('totalTasks').innerText = tasks.length;
+      ['pendiente', 'proceso', 'finalizado'].forEach(s => {
+        document.getElementById(`count-${s}`).innerText = counts[s];
+        const statEl = document.getElementById(`stat${s.charAt(0).toUpperCase() + s.slice(1)}`);
+        if (statEl) statEl.innerText = counts[s];
+      });
+
+      setupDropZones();
+    }
+
+    // ── Modal nuevo reporte ──
     document.getElementById('btnGenerateReport').onclick = () => {
       document.getElementById('taskId').value = '';
       document.getElementById('taskTitle').value = '';
@@ -270,6 +391,7 @@
       document.getElementById('taskStatus').value = 'pendiente';
       document.getElementById('taskPrio').value = 'media';
       document.getElementById('taskTag').value = '';
+      document.getElementById('taskAssignee').value = 'Santiago Cano';
       document.getElementById('modalTitle').innerText = 'Nuevo Reporte';
       document.getElementById('btnDelete').classList.add('d-none');
       taskModal.show();
@@ -284,6 +406,7 @@
       document.getElementById('taskStatus').value = task.status;
       document.getElementById('taskPrio').value = task.prio;
       document.getElementById('taskTag').value = task.tag;
+      document.getElementById('taskAssignee').value = task.assignee || 'Santiago Cano';
       document.getElementById('modalTitle').innerText = `Editar Reporte #${task.id}`;
       document.getElementById('btnDelete').classList.remove('d-none');
       taskModal.show();
@@ -295,28 +418,18 @@
       const desc = document.getElementById('taskDesc').value.trim();
       const status = document.getElementById('taskStatus').value;
       const prio = document.getElementById('taskPrio').value;
-      const tag = document.getElementById('taskTag').value.trim() || "General";
-
+      const tag = document.getElementById('taskTag').value.trim() || 'General';
+      const assignee = document.getElementById('taskAssignee').value;
       if (!title || !desc) return;
 
       if (id) {
         const task = tasks.find(t => t.id == id);
-        if (task) {
-          task.title = title;
-          task.desc = desc;
-          task.status = status;
-          task.prio = prio;
-          task.tag = tag;
-        }
+        if (task) { task.title = title; task.desc = desc; task.status = status; task.prio = prio; task.tag = tag; task.assignee = assignee; }
       } else {
         tasks.unshift({
           id: Math.floor(100 + Math.random() * 900),
-          title: title,
-          desc: desc,
-          status: status,
-          prio: prio,
-          tag: tag,
-          date: "Hoy, " + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+          title, desc, status, prio, tag, assignee,
+          date: 'Hoy, ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
         });
       }
       taskModal.hide();
@@ -325,15 +438,10 @@
 
     document.getElementById('btnDelete').onclick = () => {
       const id = document.getElementById('taskId').value;
-      if (id) {
-        tasks = tasks.filter(t => t.id != id);
-        taskModal.hide();
-        renderAll();
-      }
+      if (id) { tasks = tasks.filter(t => t.id != id); taskModal.hide(); renderAll(); }
     };
 
     document.addEventListener('DOMContentLoaded', renderAll);
   </script>
 </body>
-
 </html>
