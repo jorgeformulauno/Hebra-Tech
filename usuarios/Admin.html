@@ -22,8 +22,10 @@
             <aside class="col-lg-2 col-md-3 d-none d-md-block p-0" style="min-height:100vh;">
 
                 <div class="text-center py-4" style="border-bottom: 1px solid var(--border-solid);">
-                    <div style="width:80px; height:80px; border-radius:50%; border:2px solid var(--accent); background:var(--bg-mid); overflow:hidden; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(57,91,100,0.35);">
-                        <img src="../img/logo.png" alt="HebraTech" style="width:100%; height:100%; object-fit:cover; filter:brightness(1.4) saturate(1.3);" />
+                    <div
+                        style="width:80px; height:80px; border-radius:50%; border:2px solid var(--accent); background:var(--bg-mid); overflow:hidden; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(57,91,100,0.35);">
+                        <img src="../img/logo.png" alt="HebraTech"
+                            style="width:100%; height:100%; object-fit:cover; filter:brightness(1.4) saturate(1.3);" />
                     </div>
                     <h6 class="graduate mb-0">Admin</h6>
                     <small style="font-weight:600; font-size:0.78rem;">Mery Jeans</small>
@@ -62,26 +64,30 @@
                         <div class="collapse show" id="usuariosMenu">
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
-                                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')" class="nav-link sidebar-link">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')"
+                                        class="nav-link sidebar-link">
                                         Gestión Total
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" onclick="cambiarSeccionLocal('section-operarios')" class="nav-link sidebar-link-sub">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-operarios')"
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-hard-hat me-2"></i>
                                         Operarios
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" onclick="cambiarSeccionLocal('section-clientes')" class="nav-link sidebar-link-sub">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-clientes')"
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-handshake me-2"></i>
                                         Clientes
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <a href="#" onclick="cargarHTML('../usuarios/proveedores.html')" class="nav-link sidebar-link-sub">
+                                    <a href="#" onclick="cargarHTML('../usuarios/proveedores.html')"
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-truck me-2"></i>Proveedores
                                     </a>
                                 </li>
@@ -96,11 +102,14 @@
             <!-- CONTENIDO -->
             <main class="col-lg-10 col-md-9 p-0">
 
-                <nav class="navbar custom-navbar px-4 py-3 border-bottom border-secondary" style="background: linear-gradient(90deg, var(--primary) 0%, var(--primary-deep) 100%);">
+                <nav class="navbar custom-navbar px-4 py-3 border-bottom border-secondary"
+                    style="background: linear-gradient(90deg, var(--primary) 0%, var(--primary-deep) 100%);">
 
                     <div class="d-none d-md-flex align-items-center ms-3 gap-2">
-                        <span class="live-indicator me-1" style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent); animation: livePulse 1.5s infinite;"></span>
-                        <small style="color:#ffffff; font-weight:700; font-family:'Roboto',sans-serif; font-size:0.8rem; letter-spacing:0.5px; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
+                        <span class="live-indicator me-1"
+                            style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent); animation: livePulse 1.5s infinite;"></span>
+                        <small
+                            style="color:#ffffff; font-weight:700; font-family:'Roboto',sans-serif; font-size:0.8rem; letter-spacing:0.5px; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
                             Sistema En Vivo
                         </small>
                     </div>
@@ -109,9 +118,13 @@
 
                         <!-- NOTIFICATION DROPDOWN CORREGIDO -->
                         <div class="dropdown">
-                            <button class="btn position-relative d-flex align-items-center justify-content-center" data-bs-toggle="dropdown" type="button" aria-expanded="false" style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(165,201,202,0.35); color: var(--accent); background:transparent; transition: all 0.2s;">
+                            <button class="btn position-relative d-flex align-items-center justify-content-center"
+                                data-bs-toggle="dropdown" type="button" aria-expanded="false"
+                                style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(165,201,202,0.35); color: var(--accent); background:transparent; transition: all 0.2s;">
                                 <i class="fas fa-bell"></i>
-                                <span id="badge-notificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size:0.65rem; padding: 3px 6px;">
+                                <span id="badge-notificaciones"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    style="display:none; font-size:0.65rem; padding: 3px 6px;">
                                     0
                                 </span>
                             </button>
@@ -125,7 +138,8 @@
                             </ul>
                         </div>
 
-                        <a href="../auth/iniciosesion.html" class="btn" style="background: var(--accent); color: var(--primary-dark); font-weight: 600; border-radius: 8px;">
+                        <a href="../auth/iniciosesion.html" class="btn"
+                            style="background: var(--accent); color: var(--primary-dark); font-weight: 600; border-radius: 8px;">
                             Cerrar sesión
                         </a>
 
@@ -139,7 +153,8 @@
                     <div id="mensaje-bienvenida" class="dashboard-card mb-4" style="transition: opacity 0.5s ease;">
                         <div class="card-body">
                             <h2 class="graduate mb-2" style="color: var(--primary-dark);">Hola, Administrador 👋</h2>
-                            <p class="mb-0" style="color: var(--inactive);">Bienvenido nuevamente al panel de gestión de HebraTech. Aquí puedes visualizar el estado general del sistema.</p>
+                            <p class="mb-0" style="color: var(--inactive);">Bienvenido nuevamente al panel de gestión de
+                                HebraTech. Aquí puedes visualizar el estado general del sistema.</p>
                         </div>
                     </div>
 
@@ -160,7 +175,8 @@
                                     </div>
 
                                     <ul class="list-group list-group-flush bg-transparent">
-                                        <li class="list-group-item bg-transparent px-0 border-light" id="incidenciaLinea3" style="color: var(--primary-dark);">
+                                        <li class="list-group-item bg-transparent px-0 border-light"
+                                            id="incidenciaLinea3" style="color: var(--primary-dark);">
                                             <div class="d-flex justify-content-between align-items-center mb-1">
                                                 <strong style="color: var(--primary-dark);">Línea 3 (Corte)</strong>
                                                 <span class="badge bg-danger">
@@ -172,13 +188,17 @@
                                                 Operario: Luis P.
                                             </small>
 
-                                            <button class="btn btn-sm mt-2 w-100" style="border: 1.5px solid var(--primary); color:var(--primary); background:transparent; border-radius:8px; font-family:'Roboto',sans-serif; font-weight: 500; font-size:0.8rem;" onclick="resolverIncidencia()">
+                                            <button class="btn btn-sm mt-2 w-100"
+                                                style="border: 1.5px solid var(--primary); color:var(--primary); background:transparent; border-radius:8px; font-family:'Roboto',sans-serif; font-weight: 500; font-size:0.8rem;"
+                                                onclick="resolverIncidencia()">
                                                 Atender Incidencia
                                             </button>
                                         </li>
                                     </ul>
 
-                                    <button class="btn mt-3 w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioOperario()">
+                                    <button class="btn mt-3 w-100"
+                                        style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioOperario()">
                                         Asignar Nueva Tarea
                                     </button>
 
@@ -198,19 +218,23 @@
 
                                     <div class="mb-3">
                                         <div class="d-flex justify-content-between small mb-1">
-                                            <span style="color: var(--primary-dark); font-weight: 500;">Uniformes (Col. Andino)</span>
+                                            <span style="color: var(--primary-dark); font-weight: 500;">Uniformes (Col.
+                                                Andino)</span>
                                             <span class="fw-bold" style="color: var(--primary);">
                                                 A tiempo
                                             </span>
                                         </div>
 
-                                        <div class="progress" style="background:rgba(165,201,202,0.25); border:1px solid rgba(165,201,202,0.3); height: 8px;">
+                                        <div class="progress"
+                                            style="background:rgba(165,201,202,0.25); border:1px solid rgba(165,201,202,0.3); height: 8px;">
                                             <div class="progress-bar" style="width:80%; background:var(--primary);">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <button class="btn w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioCliente()">
+                                    <button class="btn w-100"
+                                        style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioCliente()">
                                         Crear Nueva Orden
                                     </button>
 
@@ -228,7 +252,8 @@
                                         </h5>
                                     </div>
 
-                                    <div class="alert mb-3" style="background: var(--bg-mid); border:1px solid var(--border-solid); border-radius:10px; color: var(--primary-dark);">
+                                    <div class="alert mb-3"
+                                        style="background: var(--bg-mid); border:1px solid var(--border-solid); border-radius:10px; color: var(--primary-dark);">
                                         <strong style="color: var(--primary-dark);">
                                             Tela Oxford Blanca
                                         </strong>
@@ -238,7 +263,9 @@
                                         </small>
                                     </div>
 
-                                    <button class="btn w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioProveedor()">
+                                    <button class="btn w-100"
+                                        style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioProveedor()">
                                         Solicitar Insumos
                                     </button>
 
@@ -249,7 +276,8 @@
 
                         <!-- GRAFICA -->
                         <div class="dashboard-card p-3 shadow">
-                            <h4 class="mb-4" style="color: var(--primary); font-family: var(--ff-display); font-weight: 600;">
+                            <h4 class="mb-4"
+                                style="color: var(--primary); font-family: var(--ff-display); font-weight: 600;">
                                 Production Semanal
                             </h4>
                             <canvas id="graficaProduccion"></canvas>
@@ -275,7 +303,8 @@
                                         <input type="text" class="form-control" placeholder="Pérez">
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label" style="color:var(--inactive);">Correo Electrónico</label>
+                                        <label class="form-label" style="color:var(--inactive);">Correo
+                                            Electrónico</label>
                                         <input type="email" class="form-control" placeholder="admin@hebratech.com">
                                     </div>
                                     <div class="col-md-6 mb-3">
@@ -284,7 +313,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex gap-2 mt-3">
-                                    <button type="button" class="btn" style="background: var(--primary); color: white;" onclick="guardarPerfil()">
+                                    <button type="button" class="btn" style="background: var(--primary); color: white;"
+                                        onclick="guardarPerfil()">
                                         <i class="fas fa-save me-2"></i>Guardar Cambios
                                     </button>
                                     <button type="reset" class="btn btn-outline-secondary">
@@ -302,7 +332,8 @@
                                 <h2 style="color: var(--primary); font-family: var(--ff-display);">
                                     <i class="fas fa-users-cog me-2"></i>Directorio de Usuarios
                                 </h2>
-                                <button class="btn" style="background: var(--primary); color: white;" data-bs-toggle="modal" data-bs-target="#modalUsuario">
+                                <button class="btn" style="background: var(--primary); color: white;"
+                                    data-bs-toggle="modal" data-bs-target="#modalUsuario">
                                     Agregar
                                 </button>
                             </div>
@@ -361,7 +392,8 @@
                         </div>
                     </div>
 
-                    <iframe id="marco-externo" style="display:none; width:100%; height:80vh; border:none; border-radius:8px;"></iframe>
+                    <iframe id="marco-externo"
+                        style="display:none; width:100%; height:80vh; border:none; border-radius:8px;"></iframe>
 
                 </div>
             </main>
@@ -385,6 +417,7 @@
                 <div class="modal-body">
                     <!-- Formulario mapeado correctamente -->
                     <form id="form-nuevo-usuario">
+                        <!-- Fila 1: Nombre y Apellido -->
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <label class="form-label small">Nombre</label>
@@ -395,11 +428,31 @@
                                 <input type="text" id="input-apellido" class="form-control" placeholder="Martínez">
                             </div>
                         </div>
+
+                        <!-- Fila 2: Correo Electrónico y Rol -->
+                        <div class="row g-3 mt-1">
+                            <div class="col-md-6">
+                                <label class="form-label small">Correo Electrónico</label>
+                                <input type="email" id="input-correo" class="form-control"
+                                    placeholder="carlos@ejemplo.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small">Rol</label>
+                                <select id="select-rol" class="form-select">
+                                    <option value="" selected disabled>Selecciona un rol...</option>
+                                    <option value="administrador">Administrador</option>
+                                    <option value="operario">Operario</option>
+                                    <option value="cliente">cliente</option>
+                                    <option value="Proveedor">proveedor</option>
+                                </select>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button class="btn" style="background: var(--primary); color: white;" onclick="guardarUsuario()">Guardar Usuario</button>
+                    <button class="btn" style="background: var(--primary); color: white;"
+                        onclick="guardarUsuario()">Guardar Usuario</button>
                 </div>
             </div>
         </div>
