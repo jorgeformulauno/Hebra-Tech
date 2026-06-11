@@ -23,7 +23,6 @@
     .kanban-column { min-height: 65vh; transition: all 0.3s ease; }
     .kanban-column.drag-over { background: rgba(165, 201, 202, 0.08) !important; border-color: #A5C9CA !important; box-shadow: inset 0 0 10px rgba(165, 201, 202, 0.1); }
     
-    /* FIX: flex: 0 0 auto !important evita que el bordado se estire hacia abajo en columnas vacías */
     .drop-placeholder { background: linear-gradient(135deg, rgba(165, 201, 202, 0.1), rgba(165, 201, 202, 0.05)); border: 2px dashed #A5C9CA; border-radius: 8px; margin-bottom: 0.5rem; animation: pulse 1.5s ease-in-out infinite; flex: 0 0 auto !important; }
     
     /* Tarjetas e Identificadores Laterales */
@@ -44,26 +43,16 @@
 
 <body style="background: #1E2224; overflow-x: hidden;">
 
-  <nav class="navbar navbar-expand border-bottom border-secondary border-opacity-25 px-4 py-2" style="background: #2C4A52;">
+  <nav class="navbar navbar-expand px-4 py-2" style="background: #2C4A52;">
     <div class="container-fluid px-0">
       <a class="navbar-brand d-flex align-items-center gap-2 text-decoration-none" href="#">
         <div class="d-flex align-items-center justify-content-center rounded shadow-sm" style="width:34px;height:34px; background: linear-gradient(135deg,#395B64,#2C3333);">
-          <img src="../img/logo.png" alt="HebraTech" style="width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(155deg);" />
+          <img src="../img/logo.png" alt="HebraTech" style="width:22px;height:22px;object-fit:contain;filter:brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(155deg);" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMiIgaGVpZ2h0PSIyMiIgZmlsbD0iI0E1QzlDQSIgY2xhc3M9ImJpIGJpLWhleGFnb24tZmlsbCIgdmlld0JveD0iMCAwIDE2IDE2Ij48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik04LjUgLjEzNmExIDEgMCAwIDAtMSAwTDIuNTI2IDMuMTMzYTEgMSAwIDAgMC0uNS44NjZ2Ni4wMDJhMSAxIDAgMCAwIC41Ljg2Nmw0Ljk3NCAyLjk5N2ExIDEgMCAwIDAgMSAwTDkuNDc0IDEyLjg2N2ExIDEgMCAwIDAgLjUtLjg2NlY0QTEgMSAwIDAgMCA5LjQ3NCAzLjEzNkw4LjUgLjEzNnoiLz48L3N2Zz4='"/>
         </div>
         <span class="fw-bold" style="font-family:'Space Grotesk',sans-serif; color:#A5C9CA;">HebraTech</span>
       </a>
 
-      <div class="d-flex align-items-center gap-2 ms-auto">
-        <span class="badge rounded-pill border border-secondary border-opacity-25 d-none d-lg-inline-block p-2 px-3" style="background: #223135;">
-          <span class="badge bg-secondary rounded-circle p-1 me-1"> </span> <span id="statPendiente" class="text-light">0</span> <span style="color: #A5C9CA;">pendiente</span>
-        </span>
-        <span class="badge rounded-pill border border-secondary border-opacity-25 d-none d-lg-inline-block p-2 px-3" style="background: #223135;">
-          <span class="badge bg-info bg-opacity-25 rounded-circle p-1 me-1"> </span> <span id="statProceso" class="text-light">0</span> <span style="color: #A5C9CA;">en proceso</span>
-        </span>
-        <span class="badge rounded-pill border border-secondary border-opacity-25 d-none d-lg-inline-block p-2 px-3" style="background: #223135;">
-          <span class="badge bg-success bg-opacity-25 rounded-circle p-1 me-1"> </span> <span id="statFinalizado" class="text-light">0</span> <span style="color: #A5C9CA;">finalizadas</span>
-        </span>
-
+      <div class="d-flex align-items-center gap-3 ms-auto">
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 border-secondary border-opacity-25" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
             <i class="bi bi-clipboard-check text-white"></i>
@@ -79,9 +68,8 @@
         </div>
 
         <div class="dropdown">
-          <button class="btn btn-outline-secondary btn-sm d-flex align-items-center gap-2 border-secondary border-opacity-25" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+          <button class="btn btn-outline-secondary btn-sm rounded-circle border-secondary border-opacity-25 p-2 lh-1" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" title="Historial">
             <i class="bi bi-clock-history text-white"></i>
-            <span class="text-light">Historial</span>
           </button>
           <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg border-secondary border-opacity-25" style="width: 380px; max-height: 480px; overflow-y: auto; background: #223135;">
             <div class="d-flex align-items-center gap-2 border-bottom border-secondary border-opacity-25 pb-2 mb-3">
@@ -92,9 +80,21 @@
           </div>
         </div>
 
-        <button class="btn btn-sm px-3 text-white border-0" style="background:#395B64;" id="btnGenerateReport">
-          <i class="bi bi-plus-lg me-1"></i>Generar reporte
-        </button>
+        <div class="dropdown">
+          <button class="btn btn-outline-secondary btn-sm rounded-circle position-relative border-secondary border-opacity-25 p-2 lh-1" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" title="Notificaciones">
+            <i class="bi bi-bell text-white"></i>
+            <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-dark rounded-circle">
+              <span class="visually-hidden">Nuevas notificaciones</span>
+            </span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-end p-3 shadow-lg border-secondary border-opacity-25" style="width: 320px; max-height: 480px; overflow-y: auto; background: #223135;">
+            <div class="d-flex align-items-center gap-2 border-bottom border-secondary border-opacity-25 pb-2 mb-3">
+              <i class="bi bi-bell text-white"></i>
+              <span class="fw-bold text-light" style="font-family: 'Space Grotesk';">Notificaciones</span>
+            </div>
+            <div class="text-center text-secondary small py-3">No tienes notificaciones nuevas.</div>
+          </div>
+        </div>
 
         <div class="dropdown">
           <button class="btn btn-outline-secondary btn-sm rounded-pill px-3 d-flex align-items-center gap-2 border-secondary border-opacity-25" type="button" data-bs-toggle="dropdown">
@@ -118,32 +118,54 @@
     </div>
   </nav>
 
-  <div class="container-fluid p-4">
-    <div class="d-flex justify-content-between align-items-start mb-4 flex-wrap gap-3">
-      <div>
-        <h2 class="mb-0 fw-bold text-light" style="font-family:'Space Grotesk'; font-size:1.8rem;">
-          <i class="bi bi-kanban me-2"></i>Tablero Operarios
-        </h2>
-        <small class="text-body-secondary mt-2 d-block">
-          Total de tareas: <strong class="text-light" id="totalTasks">0</strong>
-        </small>
-      </div>
+  <nav class="navbar navbar-expand border-bottom border-secondary border-opacity-25 px-4 py-2" style="background: #1E2224;">
+    <div class="container-fluid px-0 justify-content-end">
+      <div class="d-flex align-items-center gap-3 flex-wrap">
+        
+        <div class="d-flex align-items-center gap-2">
+          <span class="badge rounded-pill border border-secondary border-opacity-25 p-2 px-3" style="background: #223135;">
+            <span class="badge bg-secondary rounded-circle p-1 me-1"> </span> <span id="statPendiente" class="text-light">0</span> <span style="color: #A5C9CA;">pendiente</span>
+          </span>
+          <span class="badge rounded-pill border border-secondary border-opacity-25 p-2 px-3" style="background: #223135;">
+            <span class="badge bg-info bg-opacity-25 rounded-circle p-1 me-1"> </span> <span id="statProceso" class="text-light">0</span> <span style="color: #A5C9CA;">en proceso</span>
+          </span>
+          <span class="badge rounded-pill border border-secondary border-opacity-25 p-2 px-3" style="background: #223135;">
+            <span class="badge bg-success bg-opacity-25 rounded-circle p-1 me-1"> </span> <span id="statFinalizado" class="text-light">0</span> <span style="color: #A5C9CA;">finalizadas</span>
+          </span>
+        </div>
 
-      <div class="d-flex gap-3 flex-wrap">
-        <div class="input-group input-group-sm" style="width: 200px;">
-          <span class="input-group-text border-secondary border-opacity-25 text-light" style="background:#223135;"><i class="bi bi-search"></i></span>
-          <input type="text" id="searchInput" class="form-control text-light shadow-none border-secondary border-opacity-25" style="background:#223135;" placeholder="Buscar tarea...">
+        <button class="btn btn-sm px-3 text-white border-0" style="background:#395B64;" id="btnGenerateReport">
+          <i class="bi bi-plus-lg me-1"></i>Generar reporte
+        </button>
+
+        <div class="d-flex gap-2">
+          <div class="input-group input-group-sm" style="width: 200px;">
+            <span class="input-group-text border-secondary border-opacity-25 text-light" style="background:#223135;"><i class="bi bi-search"></i></span>
+            <input type="text" id="searchInput" class="form-control text-light shadow-none border-secondary border-opacity-25" style="background:#223135;" placeholder="Buscar tarea...">
+          </div>
+          <div class="input-group input-group-sm" style="width: 150px;">
+            <span class="input-group-text border-secondary border-opacity-25 text-light" style="background:#223135;"><i class="bi bi-flag"></i></span>
+            <select id="filterPrio" class="form-select text-light shadow-none border-secondary border-opacity-25" style="background:#223135;">
+              <option value="">Todas</option>
+              <option value="alta">🔴 Alta</option>
+              <option value="media">⚪ Media</option>
+              <option value="baja">🟢 Baja</option>
+            </select>
+          </div>
         </div>
-        <div class="input-group input-group-sm" style="width: 180px;">
-          <span class="input-group-text border-secondary border-opacity-25 text-light" style="background:#223135;"><i class="bi bi-flag"></i></span>
-          <select id="filterPrio" class="form-select text-light shadow-none border-secondary border-opacity-25" style="background:#223135;">
-            <option value="">Todas</option>
-            <option value="alta">🔴 Alta</option>
-            <option value="media">⚪ Media</option>
-            <option value="baja">🟢 Baja</option>
-          </select>
-        </div>
+
       </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-4">
+    <div class="mb-4">
+      <h2 class="mb-0 fw-bold text-light" style="font-family:'Space Grotesk'; font-size:1.8rem;">
+        <i class="bi bi-kanban me-2"></i>Tablero Operarios
+      </h2>
+      <small class="text-body-secondary mt-2 d-block">
+        Total de tareas: <strong class="text-light" id="totalTasks">0</strong>
+      </small>
     </div>
 
     <div class="row g-4">
@@ -248,7 +270,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   
   <script>
-    // Se elimina el isReport de las tareas por defecto para que no salgan en historial
     let tasks = [
       { id: 831, title: "Mantenimiento Telar A", desc: "Se realizó ajuste de tensión y lubricación de engranajes.", status: "finalizado", prio: "media", tag: "Mantenimiento", date: "Hoy, 09:15 AM", assignee: "Santiago Cano" },
       { id: 794, title: "Falla Eléctrica Sensor", desc: "Sensor óptico intermitente detiene la marcha.", status: "proceso", prio: "alta", tag: "Eléctrico", date: "Ayer, 03:40 PM", assignee: "Santiago Cano" },
@@ -320,7 +341,6 @@
           if (!existing) {
             const placeholder = document.createElement('div');
             placeholder.className = 'drop-placeholder';
-            // Se fuerza el alto exacto y se delega el anti-estiramiento al CSS flex: 0 0 auto
             placeholder.style.height = `${draggedHeight}px`;
             zone.appendChild(placeholder);
           }
@@ -386,7 +406,6 @@
       });
 
       tasks.forEach(task => {
-        // SOLO muestra en historial si es un Reporte explícitamente creado
         if (task.isReport && historyContainer) {
           const histClone = createCard(task);
           histClone.draggable = false;
@@ -399,7 +418,6 @@
         }
       });
 
-      // Si el historial está vacío después de filtrar, mostrar mensaje
       if (historyContainer && historyContainer.children.length === 0) {
         historyContainer.innerHTML = `<div class="text-center text-secondary small py-3">No hay reportes generados aún.</div>`;
       }
@@ -478,7 +496,7 @@
           id: Math.floor(100 + Math.random() * 900),
           title, desc, status, prio, tag, assignee,
           date: 'Hoy, ' + new Date().toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit' }),
-          isReport: true // <-- ESTO INDICA QUE ES UN REPORTE NUEVO Y DEBE IR AL HISTORIAL
+          isReport: true 
         });
       }
       taskModal.hide();
