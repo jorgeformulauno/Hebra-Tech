@@ -1,271 +1,276 @@
 /* ==========================================================================
-   SISTEMA DE DISEÑO HEBRATECH — CONFIGURACIÓN GENERAL Y VARIABLES
+   HebraTech — Sistema de Administración General
+   Hoja de Estilos Corporativa (cssadmin.css)
    ========================================================================== */
+
 :root {
-  --primary:       #395B64;
-  --primary-dark:  #2C3333;
-  --primary-deep:  #1e3540;
-  --accent:        #A5C9CA;
-  --bg-light:      #E7F6F2;
-  --bg-card:       #EEF8F5;        /* Superficies de tarjeta claras */
-  --bg-surface:    #F3FAF8;        /* Fondo de inputs, dropdowns, toasts */
-  --bg-mid:        #D4EDE8;        /* Hover rows, secciones internas */
-  --white:         #ffffff;
-  --border:        rgba(165,201,202,0.3);
-  --border-solid:  #A5C9CA;
-  --success:       #5a9e6f;
-  --warning:       #e8a838;
-  --danger:        #c85a5a;
-  --inactive:      #4a6370;
-  --ff-display:    'Fredoka', sans-serif;
-  --ff-label:      'Graduate', serif;
-  --ff-body:       'Roboto', sans-serif;
-}
-
-*, *::before, *::after { 
-  box-sizing: border-box; 
-}
-
-html { 
-  scroll-behavior: smooth; 
-}
-
-body {
-  font-family: var(--ff-body);
-  background-color: var(--bg-light);
-  color: var(--primary-dark);
+    /* Paleta de Colores Institucional */
+    --primary: #1F4E5B;          /* Verde azulado profundo (Fondo de Sidebar / Base) */
+    --primary-deep: #112B3C;     /* Azul oscuro profundo (Gradientes y contrastes oscuros) */
+    --primary-dark: #2C3E50;     /* Gris azulado oscuro (Textos principales sobre fondo claro) */
+    --accent: #4FBDBA;           /* Aguamarina brillante (Iconos, estados activos y acentos) */
+    --bg-main: #F7F9FA;          /* Gris claro limpio (Fondo general de la aplicación) */
+    --bg-mid: #F0F5F5;           /* Fondo intermedio sutil para alertas y encabezados de tablas */
+    --border-solid: #E5E9E9;     /* Bordes sutiles y limpios */
+    --inactive: #7F8C8D;         /* Gris para textos secundarios o deshabilitados */
+    --white: #FFFFFF;            /* Blanco puro para tarjetas y contenedores */
+    
+    /* Tipografías */
+    --ff-display: 'Poppins', 'Segoe UI', sans-serif;
+    --ff-body: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ==========================================================================
-   SIDEBAR (CORRECCIÓN DE ICONOS Y LETRAS AZULES)
+   Estilos Generales de la Aplicación
    ========================================================================== */
+body {
+    background-color: var(--bg-main);
+    font-family: var(--ff-body);
+    color: var(--primary-dark);
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+/* Tipografía Especial */
+.graduate {
+    font-family: 'Graduate', Georgia, serif;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
 /* ==========================================================================
-   SIDEBAR (CORRECCIÓN DE ICONOS Y TEXTO BLANCO)
+   Sidebar (Menú Lateral de Navegación)
    ========================================================================== */
 aside {
-  background-color: var(--primary-dark) !important; /* Cambiado a fondo oscuro para legibilidad del texto blanco */
-  border-right: 1px solid var(--border-solid) !important;
+    background-color: var(--primary);
+    color: var(--white);
+    border-right: 1px solid rgba(17, 43, 60, 0.2);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 1020;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
 }
 
-/* Forzar que TODOS los enlaces y subenlaces usen color BLANCO eliminando el azul de Bootstrap */
-aside a, 
-aside .nav-link,
-aside .sidebar-link,
-aside .sidebar-link-sub,
-aside .nav-link span,
-aside .nav-link i {
-  color: var(--white) !important;
-  text-decoration: none !important;
-  transition: all 0.2s ease-in-out;
+/* Enlaces del Sidebar */
+.sidebar-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
 }
 
-/* Asignar la tipografía correcta evitando romper los iconos */
-aside a, 
-aside .nav-link,
-aside .sidebar-link,
-aside .sidebar-link-sub,
-aside .nav-link span {
-  font-family: var(--ff-body);
-  font-weight: 500;
+.sidebar-link:hover, 
+.sidebar-link:focus {
+    color: var(--accent) !important;
+    background-color: rgba(255, 255, 255, 0.06);
+    text-decoration: none;
 }
 
-/* Mantener la fuente original de Font Awesome para los iconos */
-aside i.fas, aside i.far, aside i.fab, aside i.fa {
-  font-family: "Font Awesome 6 Free" !important;
+/* Subenlaces del Sidebar */
+.sidebar-link-sub {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 8px 16px 8px 32px;
+    font-size: 0.88rem;
+    font-weight: 400;
+    transition: all 0.2s ease;
 }
 
-/* Efecto Hover en los elementos del sidebar */
-aside a:hover, 
-aside .nav-link:hover,
-aside .sidebar-link:hover,
-aside .sidebar-link-sub:hover {
-  color: var(--accent) !important; /* El texto cambia al color de acento al pasar el cursor */
-  background-color: rgba(255, 255, 255, 0.1) !important; /* Fondo sutil translúcido */
-  border-radius: 8px;
+.sidebar-link-sub:hover {
+    color: var(--accent) !important;
+    background-color: rgba(255, 255, 255, 0.04);
+    padding-left: 36px;
+    text-decoration: none;
 }
 
-/* Estado activo del menú */
-aside .nav-link.active,
-aside .nav-link.active i,
-aside .nav-link.active span {
-  background-color: var(--primary) !important;
-  color: var(--white) !important;
-  border-radius: 8px;
+/* Control de Colapsables internos */
+#usuariosMenu {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 4px;
+    padding: 4px 0;
 }
 
-/* Títulos, subtítulos y textos informativos dentro del sidebar en blanco */
-aside h4, aside h5, aside h6, aside .text-muted, aside .graduate, aside small {
-  color: var(--white) !important;
-  font-family: var(--ff-display);
-}
-/* DEFINICIÓN DE CLASE DE UTILIDAD PARA EL COLOR DE ACENTO (Usada en tus iconos y títulos) */
-.text-accent {
-  color: var(--primary) !important;
-}
 /* ==========================================================================
-   DASHBOARD CARDS (ESTÁNDAR Y OSCURAS)
+   Navbar Superior (Topbar)
+   ========================================================================== */
+.custom-navbar {
+    min-height: 70px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Animación del Indicador En Vivo */
+@keyframes livePulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(79, 189, 186, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(79, 189, 186, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(79, 189, 186, 0);
+    }
+}
+
+/* Botón de Notificaciones y Dropdowns de la Barra */
+.custom-navbar .btn {
+    transition: all 0.2s ease-in-out;
+}
+
+.custom-navbar .btn:hover {
+    background-color: rgba(255, 255, 255, 0.15) !important;
+    transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   Tarjetas del Dashboard e Interfaces Claras
    ========================================================================== */
 .dashboard-card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-solid);
-  border-radius: 16px;
-  transition: transform 0.2s, box-shadow 0.2s;
+    background-color: var(--white);
+    border: 1px solid var(--border-solid);
+    border-radius: 14px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(44, 51, 51, 0.08) !important;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(31, 78, 91, 0.08) !important;
 }
 
-/* Tarjetas oscuras superiores para la asignación de tareas */
-.dashboard-card-dark {
-  background: var(--primary) !important; 
-  border: 1px solid var(--primary-dark) !important;
-  border-radius: 16px;
-  color: var(--bg-light) !important;     
-  transition: transform 0.2s, box-shadow 0.2s;
+/* Títulos dentro de las tarjetas */
+.dashboard-card h2, 
+.dashboard-card h4, 
+.dashboard-card h5 {
+    font-family: var(--ff-display);
+    font-weight: 600;
 }
 
-.dashboard-card-dark:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(44, 51, 51, 0.2) !important;
-}
-
-.dashboard-card-dark h5,
-.dashboard-card-dark h6,
-.dashboard-card-dark .card-title,
-.dashboard-card-dark strong {
-  color: var(--white) !important;
-  font-family: var(--ff-display);
-}
-
-.dashboard-card-dark .text-secondary,
-.dashboard-card-dark .text-muted {
-  color: var(--accent) !important; 
-}
-
-.dashboard-card-dark .list-group-item {
-  background-color: rgba(44, 51, 51, 0.3) !important;
-  border-color: rgba(165, 201, 202, 0.2) !important;
-  color: var(--bg-light) !important;
-}
-
-.dashboard-card-dark .btn-primary {
-  background-color: var(--accent) !important;
-  border-color: var(--accent) !important;
-  color: var(--primary-dark) !important;
-  font-weight: 600;
+/* Listas dentro de tarjetas */
+.list-group-item {
+    border-color: var(--border-solid) !important;
+    padding: 12px 0;
 }
 
 /* ==========================================================================
-   CORRECCIÓN ANULA-CLASES: FUERZA EL CAMBIO SOBRE .bg-dark Y .text-light
+   Tablas de Datos (Directorio de Usuarios, etc.)
    ========================================================================== */
-
-/* Rompe el fondo negro del contenedor del modal */
-.modal-content,
-div.modal-content.bg-dark {
-  background-color: var(--bg-card) !important; 
-  color: var(--primary-dark) !important;       
-  border: 1px solid var(--border-solid) !important;
-  border-radius: 16px !important;
-  box-shadow: 0 10px 30px rgba(44, 51, 51, 0.15) !important;
+.table-responsive {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--border-solid);
 }
 
-/* Rompe el fondo negro del header del modal */
-.modal-header,
-div.modal-header.bg-dark {
-  background-color: var(--bg-mid) !important;   
-  border-bottom: 1px solid rgba(165, 201, 202, 0.4) !important;
-  border-top-left-radius: 16px !important;
-  border-top-right-radius: 16px !important;
+.table {
+    margin-bottom: 0;
+    background-color: var(--white);
 }
 
-/* Rompe el texto claro del título para que sea legible en el fondo menta */
-.modal-header .modal-title,
-div.modal-header.text-light .modal-title,
-div.modal-header.bg-dark.text-light .modal-title {
-  color: var(--primary-dark) !important;
-  font-family: var(--ff-display) !important;
-  font-weight: 600 !important;
+.table thead th {
+    background-color: var(--bg-mid);
+    color: var(--primary-dark);
+    font-family: var(--ff-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: 2px solid var(--border-solid);
+    padding: 14px;
 }
 
-/* Rompe el fondo negro del cuerpo del modal */
-.modal-body,
-div.modal-body.bg-dark {
-  background-color: var(--bg-card) !important;
-  color: var(--primary-dark) !important;
-  padding: 1.5rem !important;
+.table tbody td {
+    vertical-align: middle;
+    color: var(--primary-dark);
+    padding: 14px;
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--border-solid);
 }
 
-/* Hacer la 'X' de cerrar perfectamente visible sobre tu fondo claro */
-.modal-header .btn-close,
-div.modal-header.bg-dark .btn-close {
-  filter: brightness(0.1) !important; 
-  opacity: 0.7 !important;
-}
-.modal-header .btn-close:hover {
-  opacity: 1 !important;
-}
-
-/* Inputs, Selectores y Textareas dentro de los cuerpos del modal */
-.modal-body .form-control,
-.modal-body .form-select,
-div.modal-body.bg-dark .form-control,
-div.modal-body.bg-dark .form-select {
-  background-color: var(--white) !important;
-  color: var(--primary-dark) !important;
-  border: 1px solid var(--border-solid) !important;
-  border-radius: 8px !important;
-}
-
-.modal-body .form-control:focus,
-.modal-body .form-select:focus,
-div.modal-body.bg-dark .form-control:focus,
-div.modal-body.bg-dark .form-select:focus {
-  border-color: var(--primary) !important;
-  box-shadow: 0 0 0 3px rgba(57, 91, 100, 0.15) !important;
-}
-
-/* Corrección de etiquetas de formularios (Labels) y textos secundarios */
-.modal-body .form-label, 
-.modal-body .text-muted,
-.modal-body .text-secondary,
-div.modal-body.bg-dark .form-label,
-div.modal-body.bg-dark .text-muted,
-div.modal-body.bg-dark .text-light {
-  color: var(--inactive) !important;
-  font-weight: 500 !important;
-}
-
-/* Forzar que los textos pequeños informativos (span) no queden invisibles */
-.modal-body span, 
-div.modal-body.bg-dark span {
-  color: var(--primary-dark) !important;
-}
-
-/* Rompe el fondo negro del pie de página del modal */
-.modal-footer,
-div.modal-footer.bg-dark {
-  background-color: var(--bg-surface) !important;
-  border-top: 1px solid rgba(165, 201, 202, 0.3) !important;
-  border-bottom-left-radius: 16px !important;
-  border-bottom-right-radius: 16px !important;
+.table-hover tbody tr:hover {
+    background-color: rgba(79, 189, 186, 0.04);
 }
 
 /* ==========================================================================
-   COMPONENTES EXTRAS (TOASTS)
+   Modales y Formularios
    ========================================================================== */
-#toastContainer {
-  position: fixed; top: 20px; right: 20px; z-index: 1090;
-  display: flex; flex-direction: column; gap: 10px;
+.modal-content {
+    border-radius: 16px;
+    border: none;
+    box-shadow: 0 15px 35px rgba(17, 43, 60, 0.15);
 }
-.ht-toast {
-  position: relative; overflow: hidden;
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-solid);
-  border-radius: 14px; padding: 12px 16px;
+
+.modal-header {
+    background-color: var(--bg-mid);
+    border-bottom: 1px solid var(--border-solid);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    padding: 18px 24px;
 }
-.ht-toast-progress {
-  position: absolute; bottom: 0; left: 0; height: 3px;
-  background: linear-gradient(90deg, var(--primary), var(--accent));
+
+.modal-title {
+    font-family: var(--ff-display);
+    color: var(--primary);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-solid);
+    padding: 16px 24px;
+}
+
+/* Form Controls Personalizados */
+.form-control, .form-select {
+    border: 1.5px solid var(--border-solid);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    color: var(--primary-dark);
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(79, 189, 186, 0.15);
+    outline: none;
+}
+
+/* ==========================================================================
+   Componentes de Estado e UI (Progress bars, Badges)
+   ========================================================================== */
+.progress {
+    background-color: rgba(165, 201, 202, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    border-radius: 8px;
+    background-color: var(--primary);
+}
+
+.badge {
+    padding: 6px 10px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+/* Control de transiciones de las secciones SPA */
+.seccion-admin {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
