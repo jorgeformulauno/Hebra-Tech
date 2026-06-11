@@ -19,41 +19,41 @@
         <div class="row">
 
             <!-- SIDEBAR -->
-            <aside class="col-lg-2 col-md-3 sidebar d-none d-md-block p-0 border-end border-secondary"
-                style="min-height:100vh;">
+            <aside class="col-lg-2 col-md-3 d-none d-md-block p-0"
+                style="min-height:100vh; background:#E7F6F2; border-right: 1px solid #A5C9CA;">
 
-                <div class="text-center py-4 border-bottom border-secondary">
+                <div class="text-center py-4" style="border-bottom: 1px solid #A5C9CA;">
                     <img src="../img/logo.png" class="rounded-circle mb-3 p-1"
                         width="90" style="background-color:#1e3f3a; border: 2px solid #A5C9CA; filter: brightness(1.5) hue-rotate(20deg) saturate(1.4);">
-                    <h6 class="graduate mb-0 text-light">Admin</h6>
-                    <small class="text-accent">Mery Jeans</small>
+                    <h6 class="graduate mb-0" style="color:#2C3333;">Admin</h6>
+                    <small style="color:#395B64; font-weight:600;">Mery Jeans</small>
                 </div>
 
                 <ul class="nav flex-column p-3">
 
                     <li class="nav-item mb-2">
-                        <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link text-light">
+                        <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link sidebar-link">
                             <i class="fas fa-home me-2 text-accent"></i>
                             Dashboard
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link text-light">
+                        <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link sidebar-link">
                             <i class="fas fa-user-circle me-2 text-accent"></i>
                             Perfil
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalUsuario" class="nav-link text-light">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalUsuario" class="nav-link sidebar-link">
                             <i class="fas fa-user-plus me-2 text-accent"></i>
                             Nuevo Usuario
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-light" data-bs-toggle="collapse" href="#usuariosMenu">
+                        <a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#usuariosMenu">
                             <i class="fas fa-users me-2 text-accent"></i>
                             Usuarios
                             <i class="fas fa-caret-down ms-2"></i>
@@ -63,32 +63,29 @@
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
                                     <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')"
-                                        class="nav-link text-light">
+                                        class="nav-link sidebar-link">
                                         Gestión Total
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <!-- FIX: sección operarios ahora existe -->
                                     <a href="#" onclick="cambiarSeccionLocal('section-operarios')"
-                                        class="nav-link text-secondary">
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-hard-hat me-2"></i>
                                         Operarios
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <!-- FIX: sección clientes ahora existe -->
                                     <a href="#" onclick="cambiarSeccionLocal('section-clientes')"
-                                        class="nav-link text-secondary">
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-handshake me-2"></i>
                                         Clientes
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <!-- FIX: cargarHTML ahora funciona con el iframe corregido -->
                                     <a href="#" onclick="cargarHTML('../usuarios/proveedores.html')"
-                                        class="nav-link text-secondary">
+                                        class="nav-link sidebar-link-sub">
                                         <i class="fas fa-truck me-2"></i>Proveedores
                                     </a>
                                 </li>
@@ -194,7 +191,8 @@
                                                 Operario: Luis P.
                                             </small>
 
-                                            <button class="btn btn-sm btn-outline-success mt-2 w-100"
+                                            <button class="btn btn-sm mt-2 w-100"
+                                                style="border: 1.5px solid #A5C9CA; color:#A5C9CA; background:transparent; border-radius:8px; font-family:'Roboto',sans-serif; font-size:0.8rem;"
                                                 onclick="resolverIncidencia()">
 
                                                 Atender Incidencia
@@ -205,7 +203,9 @@
 
                                     </ul>
 
-                                    <button class="btn btn-success mt-3 w-100" onclick="formularioOperario()">
+                                    <button class="btn mt-3 w-100"
+                                        style="background:#395B64; color:#E7F6F2; border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioOperario()">
 
                                         Asignar Nueva Tarea
 
@@ -230,20 +230,22 @@
                                     <div class="mb-3">
 
                                         <div class="d-flex justify-content-between small mb-1">
-                                            <span>Uniformes (Col. Andino)</span>
-                                            <span class="fw-bold text-success">
+                                            <span style="color:#E7F6F2;">Uniformes (Col. Andino)</span>
+                                            <span class="fw-bold" style="color:#A5C9CA;">
                                                 A tiempo
                                             </span>
                                         </div>
 
-                                        <div class="progress bg-dark border border-secondary">
-                                            <div class="progress-bar bg-success" style="width:80%">
+                                        <div class="progress" style="background:rgba(165,201,202,0.15); border:1px solid rgba(165,201,202,0.25);">
+                                            <div class="progress-bar" style="width:80%; background:#395B64;">
                                             </div>
                                         </div>
 
                                     </div>
 
-                                    <button class="btn btn-info w-100" onclick="formularioCliente()">
+                                    <button class="btn w-100"
+                                        style="background:#395B64; color:#E7F6F2; border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioCliente()">
 
                                         Crear Nueva Orden
 
@@ -265,21 +267,23 @@
                                         </h5>
                                     </div>
 
-                                    <div class="alert bg-dark border border-warning text-light">
+                                    <div class="alert mb-3" style="background:rgba(57,91,100,0.4); border:1px solid #A5C9CA; border-radius:10px; color:#E7F6F2;">
 
-                                        <strong class="text-warning">
+                                        <strong style="color:#A5C9CA;">
                                             Tela Oxford Blanca
                                         </strong>
 
                                         <br>
 
-                                        <small class="text-secondary">
+                                        <small style="color:rgba(231,246,242,0.65);">
                                             Stock crítico
                                         </small>
 
                                     </div>
 
-                                    <button class="btn btn-warning w-100 text-dark" onclick="formularioProveedor()">
+                                    <button class="btn w-100"
+                                        style="background:#395B64; color:#E7F6F2; border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;"
+                                        onclick="formularioProveedor()">
 
                                         Solicitar Insumos
 
