@@ -66,6 +66,7 @@ body {
   letter-spacing: 0.3px;
   line-height: 1;
 }
+
 .brand-sub {
   font-family: var(--ff-body);
   font-size: 0.7rem;

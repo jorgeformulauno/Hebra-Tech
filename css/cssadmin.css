@@ -1,392 +1,271 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&family=Graduate&family=Roboto:wght@100;300;400;500;700&display=swap');
-
-h1 { font-family: "Graduate", serif; }
-h2, h3, h4, h5, h6 { font-family: "Fredoka", sans-serif; }
-p, a, i, span { font-family: "Roboto", sans-serif; line-height: 1.7; }
-
-/* ── PALETA HEBRATECH ── */
+/* ==========================================================================
+   SISTEMA DE DISEÑO HEBRATECH — CONFIGURACIÓN GENERAL Y VARIABLES
+   ========================================================================== */
 :root {
-    --primary:       #395B64;   /* Teal principal */
-    --primary-dark:  #2C3333;   /* Casi negro cálido */
-    --primary-deep:  #1e3540;   /* Tono más profundo para fondos */
-    --accent:        #A5C9CA;   /* Accent aqua suave */
-    --accent-hover:  #7fb0b2;   /* Accent más oscuro para hovers */
-    --bg-light:      #E7F6F2;   /* Fondo claro general */
-    --bg-card:       #EEF8F5;   /* Superficie de tarjeta */
-    --bg-surface:    #F3FAF8;   /* Inputs y superficies leves */
-    --bg-mid:        #D4EDE8;   /* Hover rows, encabezados internos */
-    --sidebar-bg:    #2C3333;   /* Sidebar = primary-dark */
-    --white:         #ffffff;
-    --border:        rgba(165, 201, 202, 0.25);
-    --border-solid:  #A5C9CA;
-    --inactive:      #7a9ba3;
-    --success:       #5a9e6f;
-    --warning:       #e8a838;
-    --danger:        #c85a5a;
-    --ff-display:    'Fredoka', sans-serif;
-    --ff-label:      'Graduate', serif;
-    --ff-body:       'Roboto', sans-serif;
+  --primary:       #395B64;
+  --primary-dark:  #2C3333;
+  --primary-deep:  #1e3540;
+  --accent:        #A5C9CA;
+  --bg-light:      #E7F6F2;
+  --bg-card:       #EEF8F5;        /* Superficies de tarjeta claras */
+  --bg-surface:    #F3FAF8;        /* Fondo de inputs, dropdowns, toasts */
+  --bg-mid:        #D4EDE8;        /* Hover rows, secciones internas */
+  --white:         #ffffff;
+  --border:        rgba(165,201,202,0.3);
+  --border-solid:  #A5C9CA;
+  --success:       #5a9e6f;
+  --warning:       #e8a838;
+  --danger:        #c85a5a;
+  --inactive:      #4a6370;
+  --ff-display:    'Fredoka', sans-serif;
+  --ff-label:      'Graduate', serif;
+  --ff-body:       'Roboto', sans-serif;
+}
+
+*, *::before, *::after { 
+  box-sizing: border-box; 
+}
+
+html { 
+  scroll-behavior: smooth; 
 }
 
 body {
-    background: var(--primary-dark);
-    min-height: 100vh;
-    color: var(--bg-light);
-    overflow-x: hidden;
-    font-family: var(--ff-body);
+  font-family: var(--ff-body);
+  background-color: var(--bg-light);
+  color: var(--primary-dark);
 }
 
-/* ── SIDEBAR ── */
-.sidebar {
-    min-height: 100vh;
-    background: var(--sidebar-bg);
-    border-right: 1px solid var(--border);
-    box-shadow: 5px 0 20px rgba(30, 53, 64, 0.45);
+/* ==========================================================================
+   SIDEBAR (CORRECCIÓN DE ICONOS Y LETRAS AZULES)
+   ========================================================================== */
+/* ==========================================================================
+   SIDEBAR (CORRECCIÓN DE ICONOS Y TEXTO BLANCO)
+   ========================================================================== */
+aside {
+  background-color: var(--primary-dark) !important; /* Cambiado a fondo oscuro para legibilidad del texto blanco */
+  border-right: 1px solid var(--border-solid) !important;
 }
 
-.sidebar .nav-link {
-    color: var(--accent) !important;
-    opacity: 0.75;
-    padding: 12px 15px;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-    margin-bottom: 5px;
-    font-family: var(--ff-body);
+/* Forzar que TODOS los enlaces y subenlaces usen color BLANCO eliminando el azul de Bootstrap */
+aside a, 
+aside .nav-link,
+aside .sidebar-link,
+aside .sidebar-link-sub,
+aside .nav-link span,
+aside .nav-link i {
+  color: var(--white) !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease-in-out;
 }
 
-.sidebar .nav-link:hover {
-    background: rgba(165, 201, 202, 0.12);
-    color: var(--bg-light) !important;
-    opacity: 1;
-    transform: translateX(5px);
+/* Asignar la tipografía correcta evitando romper los iconos */
+aside a, 
+aside .nav-link,
+aside .sidebar-link,
+aside .sidebar-link-sub,
+aside .nav-link span {
+  font-family: var(--ff-body);
+  font-weight: 500;
 }
 
-.sidebar .nav-link.active {
-    background: rgba(165, 201, 202, 0.18);
-    color: var(--bg-light) !important;
-    opacity: 1;
+/* Mantener la fuente original de Font Awesome para los iconos */
+aside i.fas, aside i.far, aside i.fab, aside i.fa {
+  font-family: "Font Awesome 6 Free" !important;
 }
 
-/* ── NAVBAR ── */
-.custom-navbar {
-    background: linear-gradient(90deg, var(--border-solid) 0%, var(--primary-deep) 100%);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 4px 15px rgba(30, 53, 64, 0.35);
+/* Efecto Hover en los elementos del sidebar */
+aside a:hover, 
+aside .nav-link:hover,
+aside .sidebar-link:hover,
+aside .sidebar-link-sub:hover {
+  color: var(--accent) !important; /* El texto cambia al color de acento al pasar el cursor */
+  background-color: rgba(255, 255, 255, 0.1) !important; /* Fondo sutil translúcido */
+  border-radius: 8px;
 }
 
-/* ── TIPOGRAFÍA ACCENT ── */
-.graduate {
-    font-family: 'Graduate', serif;
-    letter-spacing: 1px;
-    color: var(--accent);
+/* Estado activo del menú */
+aside .nav-link.active,
+aside .nav-link.active i,
+aside .nav-link.active span {
+  background-color: var(--primary) !important;
+  color: var(--white) !important;
+  border-radius: 8px;
 }
 
+/* Títulos, subtítulos y textos informativos dentro del sidebar en blanco */
+aside h4, aside h5, aside h6, aside .text-muted, aside .graduate, aside small {
+  color: var(--white) !important;
+  font-family: var(--ff-display);
+}
+/* DEFINICIÓN DE CLASE DE UTILIDAD PARA EL COLOR DE ACENTO (Usada en tus iconos y títulos) */
 .text-accent {
-    color: var(--accent) !important;
+  color: var(--primary) !important;
 }
-
-/* ── DASHBOARD CARDS ── */
+/* ==========================================================================
+   DASHBOARD CARDS (ESTÁNDAR Y OSCURAS)
+   ========================================================================== */
 .dashboard-card {
-    background: var(--primary);       /* Teal oscuro en lugar de pizarra */
-    border: 1px solid rgba(165, 201, 202, 0.18);
-    border-radius: 20px;
-    color: var(--bg-light);
-    padding: 25px;
-    transition: all 0.4s ease;
-    position: relative;
-    box-shadow: 0 10px 15px -3px rgba(30, 53, 64, 0.4);
-}
-
-.dashboard-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 4px;
-    border-radius: 20px 20px 0 0;
-    background: var(--accent);
-    opacity: 0.85;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-solid);
+  border-radius: 16px;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .dashboard-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--accent);
-    box-shadow: 0 15px 30px rgba(30, 53, 64, 0.5),
-                0 0 20px rgba(165, 201, 202, 0.18);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 51, 51, 0.08) !important;
 }
 
-.dashboard-card h5 {
-    margin-top: 10px;
-    font-weight: 600;
-    font-family: var(--ff-display);
-    color: var(--bg-light);
+/* Tarjetas oscuras superiores para la asignación de tareas */
+.dashboard-card-dark {
+  background: var(--primary) !important; 
+  border: 1px solid var(--primary-dark) !important;
+  border-radius: 16px;
+  color: var(--bg-light) !important;     
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.dashboard-card p {
-    color: var(--accent);
-    opacity: 0.85;
-    margin-bottom: 0;
-    font-family: var(--ff-body);
+.dashboard-card-dark:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 51, 51, 0.2) !important;
 }
 
-.dashboard-card i {
-    color: var(--accent);
-    transition: 0.3s;
+.dashboard-card-dark h5,
+.dashboard-card-dark h6,
+.dashboard-card-dark .card-title,
+.dashboard-card-dark strong {
+  color: var(--white) !important;
+  font-family: var(--ff-display);
 }
 
-.dashboard-card:hover i {
-    transform: scale(1.1);
+.dashboard-card-dark .text-secondary,
+.dashboard-card-dark .text-muted {
+  color: var(--accent) !important; 
 }
 
-/* ── BOTONES ── */
-.btn-hebratech {
-    background: var(--accent);
-    color: var(--primary-dark);
-    border: none;
-    border-radius: 12px;
-    padding: 10px 22px;
-    font-family: var(--ff-display);
-    font-weight: 600;
-    transition: 0.3s;
+.dashboard-card-dark .list-group-item {
+  background-color: rgba(44, 51, 51, 0.3) !important;
+  border-color: rgba(165, 201, 202, 0.2) !important;
+  color: var(--bg-light) !important;
 }
 
-.btn-hebratech:hover {
-    background: var(--accent-hover);
-    color: var(--white);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(165, 201, 202, 0.35);
+.dashboard-card-dark .btn-primary {
+  background-color: var(--accent) !important;
+  border-color: var(--accent) !important;
+  color: var(--primary-dark) !important;
+  font-weight: 600;
 }
 
-.btn-primary {
-    background: var(--primary);
-    border-color: var(--primary);
-    font-family: var(--ff-body);
-    font-weight: 600;
-    font-size: 0.83rem;
-    border-radius: 8px;
-    color: var(--bg-light);
-}
-.btn-primary:hover {
-    background: var(--primary-dark);
-    border-color: var(--primary-dark);
-    color: var(--bg-light);
+/* ==========================================================================
+   CORRECCIÓN ANULA-CLASES: FUERZA EL CAMBIO SOBRE .bg-dark Y .text-light
+   ========================================================================== */
+
+/* Rompe el fondo negro del contenedor del modal */
+.modal-content,
+div.modal-content.bg-dark {
+  background-color: var(--bg-card) !important; 
+  color: var(--primary-dark) !important;       
+  border: 1px solid var(--border-solid) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 10px 30px rgba(44, 51, 51, 0.15) !important;
 }
 
-.btn-outline-primary {
-    color: var(--accent);
-    border-color: var(--accent);
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
-    border-radius: 8px;
-}
-.btn-outline-primary:hover {
-    background: var(--accent);
-    color: var(--primary-dark);
-    border-color: var(--accent);
+/* Rompe el fondo negro del header del modal */
+.modal-header,
+div.modal-header.bg-dark {
+  background-color: var(--bg-mid) !important;   
+  border-bottom: 1px solid rgba(165, 201, 202, 0.4) !important;
+  border-top-left-radius: 16px !important;
+  border-top-right-radius: 16px !important;
 }
 
-/* ── TABLAS ── */
-.table {
-    color: var(--bg-light);
-    background-color: var(--primary);
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
+/* Rompe el texto claro del título para que sea legible en el fondo menta */
+.modal-header .modal-title,
+div.modal-header.text-light .modal-title,
+div.modal-header.bg-dark.text-light .modal-title {
+  color: var(--primary-dark) !important;
+  font-family: var(--ff-display) !important;
+  font-weight: 600 !important;
 }
 
-.table thead th {
-    background: rgba(165, 201, 202, 0.12);
-    color: var(--accent);
-    font-family: var(--ff-display);
-    font-size: 0.82rem;
-    border-bottom: 1px solid var(--border);
-    padding: 12px 16px;
+/* Rompe el fondo negro del cuerpo del modal */
+.modal-body,
+div.modal-body.bg-dark {
+  background-color: var(--bg-card) !important;
+  color: var(--primary-dark) !important;
+  padding: 1.5rem !important;
 }
 
-.table tbody tr {
-    transition: 0.2s;
-    border-color: rgba(165, 201, 202, 0.1);
+/* Hacer la 'X' de cerrar perfectamente visible sobre tu fondo claro */
+.modal-header .btn-close,
+div.modal-header.bg-dark .btn-close {
+  filter: brightness(0.1) !important; 
+  opacity: 0.7 !important;
+}
+.modal-header .btn-close:hover {
+  opacity: 1 !important;
 }
 
-.table tbody td {
-    padding: 12px 16px;
-    vertical-align: middle;
-    border-bottom: 1px solid rgba(165, 201, 202, 0.1);
-    color: var(--bg-light);
+/* Inputs, Selectores y Textareas dentro de los cuerpos del modal */
+.modal-body .form-control,
+.modal-body .form-select,
+div.modal-body.bg-dark .form-control,
+div.modal-body.bg-dark .form-select {
+  background-color: var(--white) !important;
+  color: var(--primary-dark) !important;
+  border: 1px solid var(--border-solid) !important;
+  border-radius: 8px !important;
 }
 
-.table tbody tr:hover td {
-    background: rgba(165, 201, 202, 0.08);
+.modal-body .form-control:focus,
+.modal-body .form-select:focus,
+div.modal-body.bg-dark .form-control:focus,
+div.modal-body.bg-dark .form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 3px rgba(57, 91, 100, 0.15) !important;
 }
 
-/* ── FORMULARIOS ── */
-.form-label {
-    font-family: var(--ff-body);
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--accent);
-    margin-bottom: 4px;
+/* Corrección de etiquetas de formularios (Labels) y textos secundarios */
+.modal-body .form-label, 
+.modal-body .text-muted,
+.modal-body .text-secondary,
+div.modal-body.bg-dark .form-label,
+div.modal-body.bg-dark .text-muted,
+div.modal-body.bg-dark .text-light {
+  color: var(--inactive) !important;
+  font-weight: 500 !important;
 }
 
-.form-control, .form-select {
-    background: rgba(57, 91, 100, 0.35);    /* Teal semitransparente */
-    border: 1px solid rgba(165, 201, 202, 0.3);
-    color: var(--bg-light);
-    border-radius: 12px;
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
+/* Forzar que los textos pequeños informativos (span) no queden invisibles */
+.modal-body span, 
+div.modal-body.bg-dark span {
+  color: var(--primary-dark) !important;
 }
 
-.form-control:focus, .form-select:focus {
-    background: rgba(57, 91, 100, 0.55);
-    color: var(--bg-light);
-    border-color: var(--accent);
-    box-shadow: 0 0 0 0.25rem rgba(165, 201, 202, 0.2);
+/* Rompe el fondo negro del pie de página del modal */
+.modal-footer,
+div.modal-footer.bg-dark {
+  background-color: var(--bg-surface) !important;
+  border-top: 1px solid rgba(165, 201, 202, 0.3) !important;
+  border-bottom-left-radius: 16px !important;
+  border-bottom-right-radius: 16px !important;
 }
 
-.form-control::placeholder {
-    color: rgba(231, 246, 242, 0.35);
+/* ==========================================================================
+   COMPONENTES EXTRAS (TOASTS)
+   ========================================================================== */
+#toastContainer {
+  position: fixed; top: 20px; right: 20px; z-index: 1090;
+  display: flex; flex-direction: column; gap: 10px;
 }
-
-.form-check-input:checked {
-    background-color: var(--accent);
-    border-color: var(--accent);
+.ht-toast {
+  position: relative; overflow: hidden;
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-solid);
+  border-radius: 14px; padding: 12px 16px;
 }
-
-/* ── DROPDOWN / NOTIFICACIONES ── */
-.dropdown-menu {
-    background: var(--sidebar-bg);
-    border-radius: 12px;
-    border: 1px solid var(--border);
-    box-shadow: 0 8px 30px rgba(30, 53, 64, 0.45);
-}
-
-.dropdown-item {
-    color: var(--accent);
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
-    opacity: 0.85;
-}
-
-.dropdown-item:hover {
-    background: rgba(165, 201, 202, 0.12);
-    color: var(--bg-light) !important;
-    opacity: 1;
-}
-
-.dropdown-header {
-    font-family: var(--ff-display);
-    font-size: 0.82rem;
-    color: var(--accent);
-}
-
-.dropdown-divider {
-    border-color: var(--border);
-}
-
-/* ── BADGES ── */
-.badge {
-    font-family: var(--ff-body);
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-}
-
-.badge-accent {
-    background: rgba(165, 201, 202, 0.18);
-    color: var(--accent);
-    border: 1px solid rgba(165, 201, 202, 0.35);
-}
-
-/* ── CARDS GENÉRICAS (Bootstrap override) ── */
-.card {
-    background: var(--primary);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    color: var(--bg-light);
-}
-
-.card-header {
-    background: rgba(165, 201, 202, 0.1);
-    border-bottom: 1px solid var(--border);
-    font-family: var(--ff-display);
-    font-size: 1rem;
-    color: var(--bg-light);
-}
-
-.card-body {
-    background: var(--primary);
-    border-radius: 0 0 16px 16px;
-}
-
-/* ── LIST GROUP ── */
-.list-group-item {
-    background: var(--primary);
-    border-color: rgba(165, 201, 202, 0.18);
-    color: var(--bg-light);
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
-    transition: background 0.2s;
-}
-
-.list-group-item:hover {
-    background: rgba(165, 201, 202, 0.1);
-}
-
-/* ── SCROLLBAR ── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--primary-dark); }
-::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 50px;
-    border: 1px solid var(--border);
-}
-::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-/* ── SIDEBAR CLARO ── */
-.sidebar-link {
-    color: #2C3333 !important;
-    padding: 10px 14px;
-    border-radius: 10px;
-    transition: all 0.25s ease;
-    margin-bottom: 3px;
-    font-family: var(--ff-body);
-    font-size: 0.88rem;
-    font-weight: 500;
-}
-.sidebar-link:hover {
-    background: rgba(57, 91, 100, 0.12);
-    color: #1e3540 !important;
-    transform: translateX(4px);
-}
-.sidebar-link.active,
-.sidebar-link:focus {
-    background: rgba(57, 91, 100, 0.18);
-    color: #1e3540 !important;
-}
-.sidebar-link-sub {
-    color: #395B64 !important;
-    padding: 8px 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    font-family: var(--ff-body);
-    font-size: 0.83rem;
-    display: block;
-    text-decoration: none;
-}
-.sidebar-link-sub:hover {
-    background: rgba(57, 91, 100, 0.1);
-    color: #2C3333 !important;
-    transform: translateX(3px);
-}
-
-/* ── LIVE INDICATOR ── */
-@keyframes livePulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 6px #A5C9CA; }
-    50%       { opacity: 0.5; box-shadow: 0 0 12px #A5C9CA; }
-}
-
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-    .sidebar { min-height: auto; }
-    .dashboard-card { margin-bottom: 20px; }
-    h1 { font-size: 1.8rem; }
+.ht-toast-progress {
+  position: absolute; bottom: 0; left: 0; height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
 }

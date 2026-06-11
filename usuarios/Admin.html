@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/cssadmin.css">
 </head>
 
-<body class="bg-dark text-light">
+<body>
 
     <div class="container-fluid">
         <div class="row">
@@ -23,10 +23,11 @@
                 style="min-height:100vh; background:#E7F6F2; border-right: 1px solid #A5C9CA;">
 
                 <div class="text-center py-4" style="border-bottom: 1px solid #A5C9CA;">
-                    <img src="../img/logo.png" class="rounded-circle mb-3 p-1"
-                        width="90" style="background-color:#1e3f3a; border: 2px solid #A5C9CA; filter: brightness(1.5) hue-rotate(20deg) saturate(1.4);">
-                    <h6 class="graduate mb-0" style="color:#2C3333;">Admin</h6>
-                    <small style="color:#395B64; font-weight:600;">Mery Jeans</small>
+                    <div style="width:80px; height:80px; border-radius:50%; border:2px solid #7fb0b2; background:#A5C9CA; overflow:hidden; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(57,91,100,0.35);">
+                        <img src="../img/logo.png" alt="HebraTech" style="width:100%; height:100%; object-fit:cover; filter:brightness(1.4) saturate(1.3);" />
+                    </div>
+                    <h6 class="graduate mb-0" style="color:#2C3333; font-size:0.95rem;">Admin</h6>
+                    <small style="color:#395B64; font-weight:600; font-size:0.78rem;">Mery Jeans</small>
                 </div>
 
                 <ul class="nav flex-column p-3">
@@ -323,88 +324,88 @@
                                 <div class="row">
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Nombre
                                         </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
+                                        <input type="text" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="Juan">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Apellido
                                         </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
+                                        <input type="text" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="Pérez">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Correo Electrónico
                                         </label>
-                                        <input type="email" class="form-control bg-dark text-light border-secondary"
+                                        <input type="email" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="admin@hebratech.com">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Teléfono
                                         </label>
-                                        <input type="tel" class="form-control bg-dark text-light border-secondary"
+                                        <input type="tel" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="3001234567">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Documento
                                         </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
+                                        <input type="text" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="123456789">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Cargo
                                         </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
+                                        <input type="text" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             value="Administrador General">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Nueva Contraseña
                                         </label>
-                                        <input type="password" class="form-control bg-dark text-light border-secondary">
+                                        <input type="password" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Confirmar Contraseña
                                         </label>
-                                        <input type="password" class="form-control bg-dark text-light border-secondary">
+                                        <input type="password" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     </div>
 
                                     <div class="col-12 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Dirección
                                         </label>
-                                        <textarea rows="3" class="form-control bg-dark text-light border-secondary"
+                                        <textarea rows="3" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="Dirección completa"></textarea>
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Ciudad
                                         </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
+                                        <input type="text" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                             placeholder="Bogotá">
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
+                                        <label class="form-label" style="color:var(--inactive);">
                                             Fecha de Nacimiento
                                         </label>
-                                        <input type="date" class="form-control bg-dark text-light border-secondary">
+                                        <input type="date" class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     </div>
 
                                 </div>
@@ -457,7 +458,7 @@
 
                             <div class="table-responsive">
 
-                                <table class="table table-dark table-hover text-center">
+                                <table class="table table-hover text-center" style="background:var(--bg-card); color:var(--primary-dark);">
 
                                     <thead>
 
@@ -548,46 +549,46 @@
     <!-- MODAL USUARIO -->
     <div class="modal fade" id="modalUsuario" tabindex="-1">
         <div class="modal-dialog modal-lg">
-            <div class="modal-content bg-dark text-light border border-secondary">
+            <div class="modal-content border border-secondary">
 
-                <div class="modal-header border-secondary">
+                <div class="modal-header" style="border-bottom:1px solid var(--border-solid);">
                     <div>
-                        <h5 class="modal-title fw-bold">
-                            <i class="fas fa-user-plus text-accent me-2"></i>
+                        <h5 class="modal-title fw-bold" style="color:var(--primary-dark); font-family:var(--ff-display);">
+                            <i class="fas fa-user-plus me-2" style="color:var(--accent);"></i>
                             Nuevo Usuario
                         </h5>
-                        <small class="text-secondary">
+                        <small style="color:var(--inactive);">
                             Completa la información para registrar el usuario en el sistema.
                         </small>
                     </div>
-                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    <button class="btn-close" style="filter:brightness(0.3);" data-bs-dismiss="modal"></button>
                 </div>
 
                 <div class="modal-body">
                     <form id="form-nuevo-usuario">
 
                         <!-- BLOQUE: Información personal -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
+                        <p style="color:var(--accent); font-family:var(--ff-body); font-weight:700; font-size:0.75rem; text-transform:uppercase;" class="mb-2 pb-1" style="border-bottom:1px solid var(--border-solid);">
                             <i class="fas fa-id-card me-1"></i> Información Personal
                         </p>
 
                         <div class="row g-3 mb-4">
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Nombre</label>
+                                <label class="form-label small" style="color:var(--inactive);">Nombre</label>
                                 <input type="text" id="input-nombre"
-                                    class="form-control bg-dark text-light border-secondary" placeholder="Ej: Carlos">
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);" placeholder="Ej: Carlos">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Apellido</label>
+                                <label class="form-label small" style="color:var(--inactive);">Apellido</label>
                                 <input type="text" id="input-apellido"
-                                    class="form-control bg-dark text-light border-secondary" placeholder="Ej: Martínez">
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);" placeholder="Ej: Martínez">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Tipo de documento</label>
-                                <select id="input-tipo-doc" class="form-select bg-dark text-light border-secondary">
+                                <label class="form-label small" style="color:var(--inactive);">Tipo de documento</label>
+                                <select id="input-tipo-doc" class="form-select" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     <option value=""> Seleccionar </option>
                                     <option>Cédula de ciudadanía</option>
                                     <option>Cédula de extranjería</option>
@@ -597,44 +598,44 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Número de documento</label>
+                                <label class="form-label small" style="color:var(--inactive);">Número de documento</label>
                                 <input type="text" id="input-documento"
-                                    class="form-control bg-dark text-light border-secondary"
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                     placeholder="Ej: 1023456789">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Fecha de nacimiento</label>
+                                <label class="form-label small" style="color:var(--inactive);">Fecha de nacimiento</label>
                                 <input type="date" id="input-nacimiento"
-                                    class="form-control bg-dark text-light border-secondary">
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Teléfono</label>
+                                <label class="form-label small" style="color:var(--inactive);">Teléfono</label>
                                 <input type="tel" id="input-telefono"
-                                    class="form-control bg-dark text-light border-secondary"
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                     placeholder="Ej: 3001234567">
                             </div>
 
                         </div>
 
                         <!-- BLOQUE: Acceso al sistema -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
+                        <p style="color:var(--accent); font-family:var(--ff-body); font-weight:700; font-size:0.75rem; text-transform:uppercase;" class="mb-2 pb-1">
                             <i class="fas fa-lock me-1"></i> Acceso al Sistema
                         </p>
 
                         <div class="row g-3 mb-4">
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Correo electrónico</label>
+                                <label class="form-label small" style="color:var(--inactive);">Correo electrónico</label>
                                 <input type="email" id="input-email"
-                                    class="form-control bg-dark text-light border-secondary"
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                     placeholder="usuario@hebratech.com">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Rol</label>
-                                <select id="input-rol" class="form-select bg-dark text-light border-secondary">
+                                <label class="form-label small" style="color:var(--inactive);">Rol</label>
+                                <select id="input-rol" class="form-select" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     <option value=""> Seleccionar rol </option>
                                     <option>Operario</option>
                                     <option>Cliente</option>
@@ -643,12 +644,12 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Contraseña temporal</label>
+                                <label class="form-label small" style="color:var(--inactive);">Contraseña temporal</label>
                                 <div class="input-group">
                                     <input type="password" id="input-password"
-                                        class="form-control bg-dark text-light border-secondary"
+                                        class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                         placeholder="Mínimo 8 caracteres">
-                                    <button type="button" class="btn btn-outline-secondary"
+                                    <button type="button" class="btn" style="border:1px solid var(--border-solid); background:var(--bg-mid); color:var(--primary-dark);"
                                         onclick="togglePasswordVisibility()">
                                         <i class="fas fa-eye" id="icon-ojo"></i>
                                     </button>
@@ -656,8 +657,8 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Estado inicial</label>
-                                <select id="input-estado" class="form-select bg-dark text-light border-secondary">
+                                <label class="form-label small" style="color:var(--inactive);">Estado inicial</label>
+                                <select id="input-estado" class="form-select" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     <option value="true">Activo</option>
                                     <option value="false">Inactivo</option>
                                 </select>
@@ -666,15 +667,15 @@
                         </div>
 
                         <!-- BLOQUE: Información laboral -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
+                        <p style="color:var(--accent); font-family:var(--ff-body); font-weight:700; font-size:0.75rem; text-transform:uppercase;" class="mb-2 pb-1">
                             <i class="fas fa-briefcase me-1"></i> Información Laboral
                         </p>
 
                         <div class="row g-3">
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Área o departamento</label>
-                                <select id="input-area" class="form-select bg-dark text-light border-secondary">
+                                <label class="form-label small" style="color:var(--inactive);">Área o departamento</label>
+                                <select id="input-area" class="form-select" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                                     <option value=""> Seleccionar área </option>
                                     <option>Producción</option>
                                     <option>Corte</option>
@@ -686,15 +687,15 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Fecha de ingreso</label>
+                                <label class="form-label small" style="color:var(--inactive);">Fecha de ingreso</label>
                                 <input type="date" id="input-ingreso"
-                                    class="form-control bg-dark text-light border-secondary">
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);">
                             </div>
 
                             <div class="col-12">
-                                <label class="form-label text-secondary small">Observaciones</label>
+                                <label class="form-label small" style="color:var(--inactive);">Observaciones</label>
                                 <textarea id="input-observaciones" rows="2"
-                                    class="form-control bg-dark text-light border-secondary"
+                                    class="form-control" style="background:var(--white); color:var(--primary-dark); border:1px solid var(--border-solid);"
                                     placeholder="Notas adicionales sobre este usuario..."></textarea>
                             </div>
 
@@ -703,8 +704,8 @@
                     </form>
                 </div>
 
-                <div class="modal-footer border-secondary d-flex justify-content-between align-items-center">
-                    <small class="text-secondary">
+                <div class="modal-footer d-flex justify-content-between align-items-center" style="border-top:1px solid var(--border-solid); background:var(--bg-surface);">
+                    <small style="color:var(--inactive);">
                         <i class="fas fa-info-circle me-1"></i>
                         Los campos de nombre, rol y correo son obligatorios.
                     </small>
@@ -741,9 +742,9 @@
                     icon: 'error',
                     title: 'Campos incompletos',
                     text: 'Nombre, correo y rol son obligatorios.',
-                    background: '#1e1e1e',
-                    color: '#fff',
-                    confirmButtonColor: '#00E5FF'
+                    background: '#EEF8F5',
+                    color: '#2C3333',
+                    confirmButtonColor: '#395B64'
                 });
                 return;
             }
@@ -775,9 +776,9 @@
                 icon: 'success',
                 title: 'Usuario registrado',
                 text: `${nombre} ${apellido} fue agregado como ${rol}.`,
-                background: '#1e1e1e',
-                color: '#fff',
-                confirmButtonColor: '#00E5FF'
+                background: '#EEF8F5',
+                color: '#2C3333',
+                confirmButtonColor: '#395B64'
             });
 
         }
@@ -1089,9 +1090,13 @@
         const darkModeSwal =
             Swal.mixin({
 
-                background: "#1e1e1e",
-                color: "#fff",
-                confirmButtonColor: "#00E5FF"
+                background: "#EEF8F5",
+                color: "#2C3333",
+                confirmButtonColor: "#395B64",
+                cancelButtonColor: "#4a6370",
+                customClass: {
+                    popup: 'swal-hebratech'
+                }
 
             });
 /* ===========================
@@ -1113,8 +1118,8 @@ async function formularioOperario() {
         html: `
             <div style="text-align:left; display:flex; flex-direction:column; gap:12px;">
                 <div>
-                    <label style="color:#aaa; font-size:13px;">Operario</label>
-                    <select id="sw-operario" class="swal2-input" style="margin:4px 0 0; width:100%;">
+                    <label style="color:var(--inactive,#4a6370); font-size:13px;">Operario</label>
+                    <select id="sw-operario" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;">
                         <option value="">— Seleccionar operario —</option>
                         <option>Luis Pérez</option>
                         <option>Ana Gómez</option>
@@ -1123,13 +1128,13 @@ async function formularioOperario() {
                     </select>
                 </div>
                 <div>
-                    <label style="color:#aaa; font-size:13px;">Nombre de la tarea</label>
-                    <input id="sw-tarea" class="swal2-input" style="margin:4px 0 0; width:100%;"
+                    <label style="color:#4a6370; font-size:13px;">Nombre de la tarea</label>
+                    <input id="sw-tarea" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;"
                         placeholder="Ej: Corte de tela Oxford blanca">
                 </div>
                 <div>
-                    <label style="color:#aaa; font-size:13px;">Línea de producción</label>
-                    <select id="sw-linea" class="swal2-input" style="margin:4px 0 0; width:100%;">
+                    <label style="color:#4a6370; font-size:13px;">Línea de producción</label>
+                    <select id="sw-linea" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;">
                         <option value="">— Seleccionar línea —</option>
                         <option>Línea 1 — Costura</option>
                         <option>Línea 2 — Estampado</option>
@@ -1139,17 +1144,17 @@ async function formularioOperario() {
                 </div>
                 <div style="display:flex; gap:10px;">
                     <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Fecha inicio</label>
-                        <input id="sw-fecha-ini" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
+                        <label style="color:#4a6370; font-size:13px;">Fecha inicio</label>
+                        <input id="sw-fecha-ini" type="date" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;">
                     </div>
                     <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Fecha límite</label>
-                        <input id="sw-fecha-fin" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
+                        <label style="color:#4a6370; font-size:13px;">Fecha límite</label>
+                        <input id="sw-fecha-fin" type="date" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;">
                     </div>
                 </div>
                 <div>
-                    <label style="color:#aaa; font-size:13px;">Prioridad</label>
-                    <select id="sw-prioridad" class="swal2-input" style="margin:4px 0 0; width:100%;">
+                    <label style="color:#4a6370; font-size:13px;">Prioridad</label>
+                    <select id="sw-prioridad" class="swal2-input" style="margin:4px 0 0; width:100%; background:#fff; color:#2C3333; border:1px solid #A5C9CA;">
                         <option>Baja</option>
                         <option selected>Media</option>
                         <option>Alta</option>
@@ -1157,9 +1162,9 @@ async function formularioOperario() {
                     </select>
                 </div>
                 <div>
-                    <label style="color:#aaa; font-size:13px;">Observaciones</label>
+                    <label style="color:#4a6370; font-size:13px;">Observaciones</label>
                     <textarea id="sw-obs-op" class="swal2-textarea"
-                        style="margin:4px 0 0; width:100%; resize:none;"
+                        style="margin:4px 0 0; width:100%; resize:none; background:#fff; color:#2C3333; border:1px solid #A5C9CA;"
                         placeholder="Instrucciones adicionales para el operario..."></textarea>
                 </div>
             </div>
@@ -1287,9 +1292,10 @@ function eliminarTarea(index) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Eliminar',
-        background: '#1e1e1e',
-        color: '#fff',
-        confirmButtonColor: '#00E5FF'
+        background: '#EEF8F5',
+        color: '#2C3333',
+        confirmButtonColor: '#c85a5a',
+        cancelButtonColor: '#4a6370'
     }).then(r => {
         if (r.isConfirmed) {
             agregarNotificacion(
@@ -1511,9 +1517,10 @@ function eliminarOrden(index) {
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Eliminar',
-        background: '#1e1e1e',
-        color: '#fff',
-        confirmButtonColor: '#00E5FF'
+        background: '#EEF8F5',
+        color: '#2C3333',
+        confirmButtonColor: '#c85a5a',
+        cancelButtonColor: '#4a6370'
     }).then(r => {
         if (r.isConfirmed) {
             agregarNotificacion(
