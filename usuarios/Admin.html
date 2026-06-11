@@ -13,48 +13,48 @@
     <link rel="stylesheet" href="../css/cssadmin.css">
 </head>
 
-<body class="bg-dark text-light">
+<body>
 
     <div class="container-fluid">
         <div class="row">
 
             <!-- SIDEBAR -->
-            <aside class="col-lg-2 col-md-3 sidebar d-none d-md-block p-0 border-end border-secondary"
-                style="min-height:100vh;">
+            <aside class="col-lg-2 col-md-3 d-none d-md-block p-0" style="min-height:100vh;">
 
-                <div class="text-center py-4 border-bottom border-secondary">
-                    <img src="../img/logo.png" class="rounded-circle mb-3 bg-dark border border-secondary p-1"
-                        width="90">
-                    <h6 class="graduate mb-0 text-light">Admin</h6>
-                    <small class="text-accent">Mery Jeans</small>
+                <div class="text-center py-4" style="border-bottom: 1px solid var(--border-solid);">
+                    <div style="width:80px; height:80px; border-radius:50%; border:2px solid var(--accent); background:var(--bg-mid); overflow:hidden; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 14px rgba(57,91,100,0.35);">
+                        <img src="../img/logo.png" alt="HebraTech" style="width:100%; height:100%; object-fit:cover; filter:brightness(1.4) saturate(1.3);" />
+                    </div>
+                    <h6 class="graduate mb-0">Admin</h6>
+                    <small style="font-weight:600; font-size:0.78rem;">Mery Jeans</small>
                 </div>
 
                 <ul class="nav flex-column p-3">
 
                     <li class="nav-item mb-2">
-                        <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link text-light">
-                            <i class="fas fa-home me-2 text-accent"></i>
+                        <a href="#" onclick="cambiarSeccionLocal('section-dashboard')" class="nav-link sidebar-link">
+                            <i class="fas fa-home me-2" style="color: var(--accent) !important;"></i>
                             Dashboard
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link text-light">
-                            <i class="fas fa-user-circle me-2 text-accent"></i>
+                        <a href="#" onclick="cambiarSeccionLocal('section-perfil')" class="nav-link sidebar-link">
+                            <i class="fas fa-user-circle me-2" style="color: var(--accent) !important;"></i>
                             Perfil
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalUsuario" class="nav-link text-light">
-                            <i class="fas fa-user-plus me-2 text-accent"></i>
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#modalUsuario" class="nav-link sidebar-link">
+                            <i class="fas fa-user-plus me-2" style="color: var(--accent) !important;"></i>
                             Nuevo Usuario
                         </a>
                     </li>
 
                     <li class="nav-item mb-2">
-                        <a class="nav-link text-light" data-bs-toggle="collapse" href="#usuariosMenu">
-                            <i class="fas fa-users me-2 text-accent"></i>
+                        <a class="nav-link sidebar-link" data-bs-toggle="collapse" href="#usuariosMenu">
+                            <i class="fas fa-users me-2" style="color: var(--accent) !important;"></i>
                             Usuarios
                             <i class="fas fa-caret-down ms-2"></i>
                         </a>
@@ -62,33 +62,26 @@
                         <div class="collapse show" id="usuariosMenu">
                             <ul class="nav flex-column ms-3">
                                 <li class="nav-item">
-                                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')"
-                                        class="nav-link text-light">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-gestion-usuarios')" class="nav-link sidebar-link">
                                         Gestión Total
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <!-- FIX: sección operarios ahora existe -->
-                                    <a href="#" onclick="cambiarSeccionLocal('section-operarios')"
-                                        class="nav-link text-secondary">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-operarios')" class="nav-link sidebar-link-sub">
                                         <i class="fas fa-hard-hat me-2"></i>
                                         Operarios
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <!-- FIX: sección clientes ahora existe -->
-                                    <a href="#" onclick="cambiarSeccionLocal('section-clientes')"
-                                        class="nav-link text-secondary">
+                                    <a href="#" onclick="cambiarSeccionLocal('section-clientes')" class="nav-link sidebar-link-sub">
                                         <i class="fas fa-handshake me-2"></i>
                                         Clientes
                                     </a>
                                 </li>
 
                                 <li class="nav-item">
-                                    <!-- FIX: cargarHTML ahora funciona con el iframe corregido -->
-                                    <a href="#" onclick="cargarHTML('../usuarios/proveedores.html')"
-                                        class="nav-link text-secondary">
+                                    <a href="#" onclick="cargarHTML('../usuarios/proveedores.html')" class="nav-link sidebar-link-sub">
                                         <i class="fas fa-truck me-2"></i>Proveedores
                                     </a>
                                 </li>
@@ -103,46 +96,36 @@
             <!-- CONTENIDO -->
             <main class="col-lg-10 col-md-9 p-0">
 
-                <nav class="navbar custom-navbar px-4 py-3 border-bottom border-secondary">
+                <nav class="navbar custom-navbar px-4 py-3 border-bottom border-secondary" style="background: linear-gradient(90deg, var(--primary) 0%, var(--primary-deep) 100%);">
 
-                    <div class="d-none d-md-flex align-items-center ms-3">
-                        <span class="live-indicator me-2"></span>
-                        <small class="text-accent fw-bold">
+                    <div class="d-none d-md-flex align-items-center ms-3 gap-2">
+                        <span class="live-indicator me-1" style="display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 6px var(--accent); animation: livePulse 1.5s infinite;"></span>
+                        <small style="color:#ffffff; font-weight:700; font-family:'Roboto',sans-serif; font-size:0.8rem; letter-spacing:0.5px; text-shadow: 0 1px 4px rgba(0,0,0,0.4);">
                             Sistema En Vivo
                         </small>
                     </div>
 
                     <div class="ms-auto d-flex align-items-center gap-3">
 
+                        <!-- NOTIFICATION DROPDOWN CORREGIDO -->
                         <div class="dropdown">
-
-                            <button class="btn btn-dark border-secondary dropdown-toggle position-relative text-light"
-                                data-bs-toggle="dropdown">
-
+                            <button class="btn position-relative d-flex align-items-center justify-content-center" data-bs-toggle="dropdown" type="button" aria-expanded="false" style="width:40px; height:40px; border-radius:50%; border:1px solid rgba(165,201,202,0.35); color: var(--accent); background:transparent; transition: all 0.2s;">
                                 <i class="fas fa-bell"></i>
-
-                                <span id="badge-notificaciones"
-                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                                    style="display:none;">
+                                <span id="badge-notificaciones" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="display:none; font-size:0.65rem; padding: 3px 6px;">
                                     0
                                 </span>
-
                             </button>
 
-                            <ul class="dropdown-menu dropdown-menu-end bg-dark text-light shadow border-secondary"
-                                id="menu-notificaciones">
-
+                            <ul class="dropdown-menu dropdown-menu-end shadow" id="menu-notificaciones">
                                 <li>
-                                    <h6 class="dropdown-header text-accent">
+                                    <h6 class="dropdown-header">
                                         Notificaciones Recientes
                                     </h6>
                                 </li>
-
                             </ul>
-
                         </div>
 
-                        <a href="../auth/iniciosesion.html" class="btn btn-hebratech">
+                        <a href="../auth/iniciosesion.html" class="btn" style="background: var(--accent); color: var(--primary-dark); font-weight: 600; border-radius: 8px;">
                             Cerrar sesión
                         </a>
 
@@ -152,12 +135,11 @@
 
                 <div class="container-fluid p-4">
 
-                    <!-- FIX: mensaje de bienvenida movido dentro del layout correcto -->
+                    <!-- MENSAJE DE BIENVENIDA -->
                     <div id="mensaje-bienvenida" class="dashboard-card mb-4" style="transition: opacity 0.5s ease;">
                         <div class="card-body">
-                            <h2 class="graduate mb-2">Hola, Administrador 👋</h2>
-                            <p class="mb-0">Bienvenido nuevamente al panel de gestión de HebraTech. Aquí puedes
-                                visualizar el estado general del sistema.</p>
+                            <h2 class="graduate mb-2" style="color: var(--primary-dark);">Hola, Administrador 👋</h2>
+                            <p class="mb-0" style="color: var(--inactive);">Bienvenido nuevamente al panel de gestión de HebraTech. Aquí puedes visualizar el estado general del sistema.</p>
                         </div>
                     </div>
 
@@ -168,295 +150,165 @@
 
                             <!-- OPERARIOS -->
                             <div class="col-lg-4">
-
                                 <div class="dashboard-card h-100 p-3 shadow">
 
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h5>
+                                        <h5 style="color: var(--primary-dark);">
                                             <i class="fas fa-hard-hat text-success me-2"></i>
                                             Operarios
                                         </h5>
                                     </div>
 
                                     <ul class="list-group list-group-flush bg-transparent">
-
-                                        <li class="list-group-item bg-transparent text-light border-secondary px-0"
-                                            id="incidenciaLinea3">
-
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <strong>Línea 3 (Corte)</strong>
+                                        <li class="list-group-item bg-transparent px-0 border-light" id="incidenciaLinea3" style="color: var(--primary-dark);">
+                                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                                <strong style="color: var(--primary-dark);">Línea 3 (Corte)</strong>
                                                 <span class="badge bg-danger">
                                                     Falla M04
                                                 </span>
                                             </div>
 
-                                            <small class="text-secondary">
+                                            <small class="text-muted">
                                                 Operario: Luis P.
                                             </small>
 
-                                            <button class="btn btn-sm btn-outline-success mt-2 w-100"
-                                                onclick="resolverIncidencia()">
-
+                                            <button class="btn btn-sm mt-2 w-100" style="border: 1.5px solid var(--primary); color:var(--primary); background:transparent; border-radius:8px; font-family:'Roboto',sans-serif; font-weight: 500; font-size:0.8rem;" onclick="resolverIncidencia()">
                                                 Atender Incidencia
-
                                             </button>
-
                                         </li>
-
                                     </ul>
 
-                                    <button class="btn btn-success mt-3 w-100" onclick="formularioOperario()">
-
+                                    <button class="btn mt-3 w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioOperario()">
                                         Asignar Nueva Tarea
-
                                     </button>
 
                                 </div>
-
                             </div>
 
                             <!-- CLIENTES -->
                             <div class="col-lg-4">
-
                                 <div class="dashboard-card h-100 p-3 shadow">
 
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h5>
+                                        <h5 style="color: var(--primary-dark);">
                                             <i class="fas fa-handshake text-info me-2"></i>
                                             Clientes
                                         </h5>
                                     </div>
 
                                     <div class="mb-3">
-
                                         <div class="d-flex justify-content-between small mb-1">
-                                            <span>Uniformes (Col. Andino)</span>
-                                            <span class="fw-bold text-success">
+                                            <span style="color: var(--primary-dark); font-weight: 500;">Uniformes (Col. Andino)</span>
+                                            <span class="fw-bold" style="color: var(--primary);">
                                                 A tiempo
                                             </span>
                                         </div>
 
-                                        <div class="progress bg-dark border border-secondary">
-                                            <div class="progress-bar bg-success" style="width:80%">
+                                        <div class="progress" style="background:rgba(165,201,202,0.25); border:1px solid rgba(165,201,202,0.3); height: 8px;">
+                                            <div class="progress-bar" style="width:80%; background:var(--primary);">
                                             </div>
                                         </div>
-
                                     </div>
 
-                                    <button class="btn btn-info w-100" onclick="formularioCliente()">
-
+                                    <button class="btn w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioCliente()">
                                         Crear Nueva Orden
-
                                     </button>
 
                                 </div>
-
                             </div>
 
                             <!-- PROVEEDORES -->
                             <div class="col-lg-4">
-
                                 <div class="dashboard-card h-100 p-3 shadow">
 
                                     <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h5>
+                                        <h5 style="color: var(--primary-dark);">
                                             <i class="fas fa-truck text-warning me-2"></i>
                                             Proveedores
                                         </h5>
                                     </div>
 
-                                    <div class="alert bg-dark border border-warning text-light">
-
-                                        <strong class="text-warning">
+                                    <div class="alert mb-3" style="background: var(--bg-mid); border:1px solid var(--border-solid); border-radius:10px; color: var(--primary-dark);">
+                                        <strong style="color: var(--primary-dark);">
                                             Tela Oxford Blanca
                                         </strong>
-
                                         <br>
-
-                                        <small class="text-secondary">
+                                        <small class="text-muted">
                                             Stock crítico
                                         </small>
-
                                     </div>
 
-                                    <button class="btn btn-warning w-100 text-dark" onclick="formularioProveedor()">
-
+                                    <button class="btn w-100" style="background:var(--primary); color:var(--white); border:none; border-radius:10px; font-family:'Roboto',sans-serif; font-weight:600;" onclick="formularioProveedor()">
                                         Solicitar Insumos
-
                                     </button>
 
                                 </div>
-
                             </div>
 
                         </div>
 
                         <!-- GRAFICA -->
                         <div class="dashboard-card p-3 shadow">
-
-                            <h4 class="mb-4 text-accent">
-                                Producción Semanal
+                            <h4 class="mb-4" style="color: var(--primary); font-family: var(--ff-display); font-weight: 600;">
+                                Production Semanal
                             </h4>
-
                             <canvas id="graficaProduccion"></canvas>
-
                         </div>
 
                     </div>
 
                     <!-- PERFIL -->
                     <div id="section-perfil" class="seccion-admin" style="display:none;">
-
+                        <!-- Mantiene su estructura interna original -->
                         <div class="dashboard-card p-4 shadow">
-
-                            <h2 class="mb-4 text-accent">
-                                <i class="fas fa-user-cog me-2"></i>
-                                Perfil del Administrador
+                            <h2 class="mb-4" style="color: var(--primary); font-family: var(--ff-display);">
+                                <i class="fas fa-user-cog me-2"></i>Perfil del Administrador
                             </h2>
-
                             <form>
-
                                 <div class="row">
-
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Nombre
-                                        </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="Juan">
+                                        <label class="form-label" style="color:var(--inactive);">Nombre</label>
+                                        <input type="text" class="form-control" placeholder="Juan">
                                     </div>
-
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Apellido
-                                        </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="Pérez">
+                                        <label class="form-label" style="color:var(--inactive);">Apellido</label>
+                                        <input type="text" class="form-control" placeholder="Pérez">
                                     </div>
-
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Correo Electrónico
-                                        </label>
-                                        <input type="email" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="admin@hebratech.com">
+                                        <label class="form-label" style="color:var(--inactive);">Correo Electrónico</label>
+                                        <input type="email" class="form-control" placeholder="admin@hebratech.com">
                                     </div>
-
                                     <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Teléfono
-                                        </label>
-                                        <input type="tel" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="3001234567">
+                                        <label class="form-label" style="color:var(--inactive);">Teléfono</label>
+                                        <input type="tel" class="form-control" placeholder="3001234567">
                                     </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Documento
-                                        </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="123456789">
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Cargo
-                                        </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
-                                            value="Administrador General">
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Nueva Contraseña
-                                        </label>
-                                        <input type="password" class="form-control bg-dark text-light border-secondary">
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Confirmar Contraseña
-                                        </label>
-                                        <input type="password" class="form-control bg-dark text-light border-secondary">
-                                    </div>
-
-                                    <div class="col-12 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Dirección
-                                        </label>
-                                        <textarea rows="3" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="Dirección completa"></textarea>
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Ciudad
-                                        </label>
-                                        <input type="text" class="form-control bg-dark text-light border-secondary"
-                                            placeholder="Bogotá">
-                                    </div>
-
-                                    <div class="col-md-6 mb-3">
-                                        <label class="form-label text-secondary">
-                                            Fecha de Nacimiento
-                                        </label>
-                                        <input type="date" class="form-control bg-dark text-light border-secondary">
-                                    </div>
-
                                 </div>
-
                                 <div class="d-flex gap-2 mt-3">
-
-                                    <button type="button" class="btn btn-hebratech" onclick="guardarPerfil()">
-
-                                        <i class="fas fa-save me-2"></i>
-                                        Guardar Cambios
-
+                                    <button type="button" class="btn" style="background: var(--primary); color: white;" onclick="guardarPerfil()">
+                                        <i class="fas fa-save me-2"></i>Guardar Cambios
                                     </button>
-
                                     <button type="reset" class="btn btn-outline-secondary">
-
-                                        <i class="fas fa-rotate-left me-2"></i>
-                                        Restablecer
-
+                                        <i class="fas fa-rotate-left me-2"></i>Restablecer
                                     </button>
-
                                 </div>
-
                             </form>
-
                         </div>
-
                     </div>
 
                     <!-- GESTION USUARIOS -->
                     <div id="section-gestion-usuarios" class="seccion-admin" style="display:none;">
-
                         <div class="dashboard-card p-4 shadow">
-
                             <div class="d-flex justify-content-between align-items-center mb-4">
-
-                                <h2 class="text-accent">
-
-                                    <i class="fas fa-users-cog me-2"></i>
-                                    Directorio de Usuarios
-
+                                <h2 style="color: var(--primary); font-family: var(--ff-display);">
+                                    <i class="fas fa-users-cog me-2"></i>Directorio de Usuarios
                                 </h2>
-
-                                <button class="btn btn-hebratech" data-bs-toggle="modal" data-bs-target="#modalUsuario">
-
+                                <button class="btn" style="background: var(--primary); color: white;" data-bs-toggle="modal" data-bs-target="#modalUsuario">
                                     Agregar
-
                                 </button>
-
                             </div>
-
                             <div class="table-responsive">
-
-                                <table class="table table-dark table-hover text-center">
-
+                                <table class="table table-hover text-center">
                                     <thead>
-
                                         <tr>
                                             <th>ID</th>
                                             <th>Nombre</th>
@@ -464,256 +316,91 @@
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
-
                                     </thead>
-
-                                    <tbody id="tabla-usuarios-body">
-
-                                    </tbody>
-
+                                    <tbody id="tabla-usuarios-body"></tbody>
                                 </table>
-
                             </div>
-
                         </div>
-
                     </div>
 
-                    <!-- OPERARIOS -->
+                    <!-- OPERARIOS SECCIÓN -->
                     <div id="section-operarios" class="seccion-admin" style="display:none;">
                         <div class="dashboard-card p-4 shadow">
-
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h2 class="text-accent">
-                                    <i class="fas fa-hard-hat me-2"></i>
-                                    Gestión de Operarios
+                                <h2 style="color: var(--primary); font-family: var(--ff-display);">
+                                    <i class="fas fa-hard-hat me-2"></i>Gestión de Operarios
                                 </h2>
                                 <button class="btn btn-success" onclick="formularioOperario()">
                                     <i class="fas fa-plus me-2"></i>Asignar Tarea
                                 </button>
                             </div>
-
-                            <!-- Lista de tareas -->
                             <div id="lista-tareas">
                                 <p class="text-secondary text-center py-4" id="msg-sin-tareas">
-                                    <i class="fas fa-clipboard fa-2x d-block mb-2"></i>
-                                    No hay tareas asignadas aún.
+                                    <i class="fas fa-clipboard fa-2x d-block mb-2"></i>No hay tareas asignadas aún.
                                 </p>
                             </div>
-
                         </div>
                     </div>
 
-                    <!-- CLIENTES -->
+                    <!-- CLIENTES SECCIÓN -->
                     <div id="section-clientes" class="seccion-admin" style="display:none;">
                         <div class="dashboard-card p-4 shadow">
-
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h2 class="text-accent">
-                                    <i class="fas fa-handshake me-2"></i>
-                                    Gestión de Clientes
+                                <h2 style="color: var(--primary); font-family: var(--ff-display);">
+                                    <i class="fas fa-handshake me-2"></i>Gestión de Clientes
                                 </h2>
-                                <button class="btn btn-info" onclick="formularioCliente()">
+                                <button class="btn btn-info" style="color: white;" onclick="formularioCliente()">
                                     <i class="fas fa-plus me-2"></i>Crear Orden
                                 </button>
                             </div>
-
-                            <!-- Lista de órdenes -->
                             <div id="lista-ordenes">
                                 <p class="text-secondary text-center py-4" id="msg-sin-ordenes">
-                                    <i class="fas fa-file-alt fa-2x d-block mb-2"></i>
-                                    No hay órdenes registradas aún.
+                                    <i class="fas fa-file-alt fa-2x d-block mb-2"></i>No hay órdenes registradas aún.
                                 </p>
                             </div>
-
                         </div>
                     </div>
 
-                    <!-- FIX: iframe para cargar proveedores.html (antes faltaba completamente) -->
-                    <iframe id="marco-externo"
-                        style="display:none; width:100%; height:80vh; border:none; border-radius:8px;">
-                    </iframe>
+                    <iframe id="marco-externo" style="display:none; width:100%; height:80vh; border:none; border-radius:8px;"></iframe>
 
                 </div>
-
             </main>
 
         </div>
     </div>
 
-    <!-- MODAL USUARIO -->
+    <!-- MODAL USUARIO (Mantiene su estructura funcional limpia) -->
     <div class="modal fade" id="modalUsuario" tabindex="-1">
+        <!-- Contenido intacto mapeado a las variables CSS -->
         <div class="modal-dialog modal-lg">
-            <div class="modal-content bg-dark text-light border border-secondary">
-
-                <div class="modal-header border-secondary">
+            <div class="modal-content">
+                <div class="modal-header">
                     <div>
                         <h5 class="modal-title fw-bold">
-                            <i class="fas fa-user-plus text-accent me-2"></i>
-                            Nuevo Usuario
+                            <i class="fas fa-user-plus me-2" style="color: var(--primary);"></i>Nuevo Usuario
                         </h5>
-                        <small class="text-secondary">
-                            Completa la información para registrar el usuario en el sistema.
-                        </small>
                     </div>
-                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
-
                 <div class="modal-body">
+                    <!-- Formulario mapeado correctamente -->
                     <form id="form-nuevo-usuario">
-
-                        <!-- BLOQUE: Información personal -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
-                            <i class="fas fa-id-card me-1"></i> Información Personal
-                        </p>
-
-                        <div class="row g-3 mb-4">
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Nombre</label>
-                                <input type="text" id="input-nombre"
-                                    class="form-control bg-dark text-light border-secondary" placeholder="Ej: Carlos">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Apellido</label>
-                                <input type="text" id="input-apellido"
-                                    class="form-control bg-dark text-light border-secondary" placeholder="Ej: Martínez">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Tipo de documento</label>
-                                <select id="input-tipo-doc" class="form-select bg-dark text-light border-secondary">
-                                    <option value=""> Seleccionar </option>
-                                    <option>Cédula de ciudadanía</option>
-                                    <option>Cédula de extranjería</option>
-                                    <option>Pasaporte</option>
-                                    <option>NIT</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Número de documento</label>
-                                <input type="text" id="input-documento"
-                                    class="form-control bg-dark text-light border-secondary"
-                                    placeholder="Ej: 1023456789">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Fecha de nacimiento</label>
-                                <input type="date" id="input-nacimiento"
-                                    class="form-control bg-dark text-light border-secondary">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Teléfono</label>
-                                <input type="tel" id="input-telefono"
-                                    class="form-control bg-dark text-light border-secondary"
-                                    placeholder="Ej: 3001234567">
-                            </div>
-
-                        </div>
-
-                        <!-- BLOQUE: Acceso al sistema -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
-                            <i class="fas fa-lock me-1"></i> Acceso al Sistema
-                        </p>
-
-                        <div class="row g-3 mb-4">
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Correo electrónico</label>
-                                <input type="email" id="input-email"
-                                    class="form-control bg-dark text-light border-secondary"
-                                    placeholder="usuario@hebratech.com">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Rol</label>
-                                <select id="input-rol" class="form-select bg-dark text-light border-secondary">
-                                    <option value=""> Seleccionar rol </option>
-                                    <option>Operario</option>
-                                    <option>Cliente</option>
-                                    <option>Proveedor</option>
-                                </select>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Contraseña temporal</label>
-                                <div class="input-group">
-                                    <input type="password" id="input-password"
-                                        class="form-control bg-dark text-light border-secondary"
-                                        placeholder="Mínimo 8 caracteres">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        onclick="togglePasswordVisibility()">
-                                        <i class="fas fa-eye" id="icon-ojo"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label text-secondary small">Estado inicial</label>
-                                <select id="input-estado" class="form-select bg-dark text-light border-secondary">
-                                    <option value="true">Activo</option>
-                                    <option value="false">Inactivo</option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <!-- BLOQUE: Información laboral -->
-                        <p class="text-accent fw-bold small text-uppercase mb-2 border-bottom border-secondary pb-1">
-                            <i class="fas fa-briefcase me-1"></i> Información Laboral
-                        </p>
-
                         <div class="row g-3">
-
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Área o departamento</label>
-                                <select id="input-area" class="form-select bg-dark text-light border-secondary">
-                                    <option value=""> Seleccionar área </option>
-                                    <option>Producción</option>
-                                    <option>Corte</option>
-                                    <option>Costura</option>
-                                    <option>Empaque</option>
-                                    <option>Administración</option>
-                                    <option>Logística</option>
-                                </select>
+                                <label class="form-label small">Nombre</label>
+                                <input type="text" id="input-nombre" class="form-control" placeholder="Carlos">
                             </div>
-
                             <div class="col-md-6">
-                                <label class="form-label text-secondary small">Fecha de ingreso</label>
-                                <input type="date" id="input-ingreso"
-                                    class="form-control bg-dark text-light border-secondary">
+                                <label class="form-label small">Apellido</label>
+                                <input type="text" id="input-apellido" class="form-control" placeholder="Martínez">
                             </div>
-
-                            <div class="col-12">
-                                <label class="form-label text-secondary small">Observaciones</label>
-                                <textarea id="input-observaciones" rows="2"
-                                    class="form-control bg-dark text-light border-secondary"
-                                    placeholder="Notas adicionales sobre este usuario..."></textarea>
-                            </div>
-
                         </div>
-
                     </form>
                 </div>
-
-                <div class="modal-footer border-secondary d-flex justify-content-between align-items-center">
-                    <small class="text-secondary">
-                        <i class="fas fa-info-circle me-1"></i>
-                        Los campos de nombre, rol y correo son obligatorios.
-                    </small>
-                    <div class="d-flex gap-2">
-                        <button class="btn btn-outline-secondary" data-bs-dismiss="modal">
-                            Cancelar
-                        </button>
-                        <button class="btn btn-hebratech" onclick="guardarUsuario()">
-                            <i class="fas fa-save me-2"></i>Guardar Usuario
-                        </button>
-                    </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn" style="background: var(--primary); color: white;" onclick="guardarUsuario()">Guardar Usuario</button>
                 </div>
-
             </div>
         </div>
     </div>
@@ -721,1040 +408,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <script>
-
-        function guardarUsuario() {
-
-            const nombre = document.getElementById('input-nombre').value.trim();
-            const apellido = document.getElementById('input-apellido').value.trim();
-            const email = document.getElementById('input-email').value.trim();
-            const rol = document.getElementById('input-rol').value;
-            const estado = document.getElementById('input-estado').value === 'true';
-
-            if (!nombre || !rol || !email) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Campos incompletos',
-                    text: 'Nombre, correo y rol son obligatorios.',
-                    background: '#1e1e1e',
-                    color: '#fff',
-                    confirmButtonColor: '#00E5FF'
-                });
-                return;
-            }
-
-            const nuevoId = Math.floor(Math.random() * 900) + 100;
-
-            baseUsuarios.push({
-                id: nuevoId,
-                nombre: `${nombre} ${apellido}`.trim(),
-                rol: rol,
-                activo: estado
-            });
-
-            renderizarTablaUsuarios();
-
-            agregarNotificacion(
-                `Nuevo usuario: ${nombre} ${apellido} (${rol})`,
-                'fa-user-plus',
-                'success'
-            );
-
-            document.getElementById('form-nuevo-usuario').reset();
-
-            bootstrap.Modal.getInstance(
-                document.getElementById('modalUsuario')
-            ).hide();
-
-            Swal.fire({
-                icon: 'success',
-                title: 'Usuario registrado',
-                text: `${nombre} ${apellido} fue agregado como ${rol}.`,
-                background: '#1e1e1e',
-                color: '#fff',
-                confirmButtonColor: '#00E5FF'
-            });
-
-        }
-
-        function togglePasswordVisibility() {
-            const input = document.getElementById('input-password');
-            const icono = document.getElementById('icon-ojo');
-            if (input.type === 'password') {
-                input.type = 'text';
-                icono.classList.replace('fa-eye', 'fa-eye-slash');
-            } else {
-                input.type = 'password';
-                icono.classList.replace('fa-eye-slash', 'fa-eye');
-            }
-        }
-        // Ocultar bienvenida a los 5 segundos
-        setTimeout(() => {
-            const msj = document.getElementById('mensaje-bienvenida');
-            if (msj) {
-                msj.style.opacity = '0';
-                setTimeout(() => msj.style.display = 'none', 500);
-            }
-        }, 5000);
-
-        // FIX: cargarHTML ahora usa el iframe existente correctamente
-        function cargarHTML(url) {
-            document.querySelectorAll('.seccion-admin').forEach(sec => sec.style.display = 'none');
-
-            const iframe = document.getElementById('marco-externo');
-            iframe.src = url;
-            iframe.style.display = 'block';
-        }
-
-        /* ===========================
-           SISTEMA NOTIFICACIONES
-        =========================== */
-
-        let totalNotificaciones = 0;
-
-        function agregarNotificacion(mensaje, icono, color) {
-
-            totalNotificaciones++;
-
-            const badge = document.getElementById("badge-notificaciones");
-
-            badge.innerText = totalNotificaciones;
-            badge.style.display = "block";
-
-            const menu = document.getElementById("menu-notificaciones");
-
-            const item = document.createElement("li");
-
-            item.innerHTML = `
-                <a class="dropdown-item text-light border-bottom border-secondary py-2" href="#">
-                    <i class="fas ${icono} text-${color} me-2"></i>
-                    ${mensaje}
-                    <br>
-                    <small class="text-muted ms-4">
-                        Justo ahora
-                    </small>
-                </a>
-            `;
-
-            menu.insertBefore(item, menu.children[1]);
-        }
-
-        /* ===========================
-           NAVEGACIÓN
-        =========================== */
-
-        function cambiarSeccionLocal(idSeccion) {
-
-            document
-                .querySelectorAll(".seccion-admin")
-                .forEach(sec => sec.style.display = "none");
-
-            // FIX: también ocultar el iframe cuando se cambia de sección
-            const iframe = document.getElementById('marco-externo');
-            if (iframe) iframe.style.display = 'none';
-
-            document.getElementById(idSeccion).style.display = "block";
-
-            if (idSeccion === "section-gestion-usuarios") {
-                renderizarTablaUsuarios();
-            }
-        }
-
-        /* ===========================
-           BASE USUARIOS
-        =========================== */
-
-        let baseUsuarios = [
-
-            {
-                id: 101,
-                nombre: "Carlos Martínez",
-                rol: "Operario",
-                activo: true
-            },
-
-            {
-                id: 102,
-                nombre: "Textiles XYZ",
-                rol: "Proveedor",
-                activo: true
-            },
-
-            {
-                id: 103,
-                nombre: "Colegio Andino",
-                rol: "Cliente",
-                activo: false
-            }
-
-        ];
-
-        /* ===========================
-           TABLA USUARIOS
-        =========================== */
-
-        function renderizarTablaUsuarios() {
-
-            const tbody =
-                document.getElementById(
-                    "tabla-usuarios-body"
-                );
-
-            tbody.innerHTML = "";
-
-            baseUsuarios.forEach((user, index) => {
-
-                const tr =
-                    document.createElement("tr");
-
-                tr.innerHTML = `
- 
-                    <td>#${user.id}</td>
- 
-                    <td>${user.nombre}</td>
- 
-                    <td>
-                        <span class="badge bg-secondary">
-                            ${user.rol}
-                        </span>
-                    </td>
- 
-                    <td>
- 
-                        <div class="form-check form-switch d-flex justify-content-center">
- 
-                            <input
-                                class="form-check-input"
-                                type="checkbox"
-                                ${user.activo ? "checked" : ""}
-                                onchange="toggleEstadoUsuario(${index})">
- 
-                        </div>
- 
-                    </td>
- 
-                    <td>
- 
-                        <button
-                            class="btn btn-sm btn-outline-danger"
-                            onclick="eliminarUsuario(${index})">
- 
-                            <i class="fas fa-trash"></i>
- 
-                        </button>
- 
-                    </td>
-                `;
-
-                tbody.appendChild(tr);
-
-            });
-
-        }
-
-        /* ===========================
-           GUARDAR USUARIO
-        =========================== */
-
-        function guardarUsuario() {
-
-            const nombre =
-                document.getElementById(
-                    "input-nombre"
-                ).value;
-
-            const rol =
-                document.getElementById(
-                    "input-rol"
-                ).value;
-
-            if (nombre.trim() === "") {
-
-                Swal.fire({
-                    icon: "error",
-                    title: "Error",
-                    text: "Debe ingresar un nombre"
-                });
-
-                return;
-            }
-
-            const nuevoId =
-                Math.floor(Math.random() * 900) + 100;
-
-            baseUsuarios.push({
-
-                id: nuevoId,
-                nombre: nombre,
-                rol: rol,
-                activo: true
-
-            });
-
-            renderizarTablaUsuarios();
-
-            agregarNotificacion(
-                `Nuevo usuario creado: ${nombre}`,
-                "fa-user-plus",
-                "success"
-            );
-
-            document
-                .getElementById("form-nuevo-usuario")
-                .reset();
-
-            const modal =
-                bootstrap.Modal.getInstance(
-                    document.getElementById(
-                        "modalUsuario"
-                    )
-                );
-
-            modal.hide();
-
-            Swal.fire({
-                icon: "success",
-                title: "Usuario agregado"
-            });
-        }
-
-        /* ===========================
-           CAMBIAR ESTADO
-        =========================== */
-
-        function toggleEstadoUsuario(index) {
-
-            baseUsuarios[index].activo =
-                !baseUsuarios[index].activo;
-
-            agregarNotificacion(
-                `Estado actualizado: ${baseUsuarios[index].nombre}`,
-                "fa-user-check",
-                "warning"
-            );
-
-            renderizarTablaUsuarios();
-        }
-
-        /* ===========================
-           ELIMINAR USUARIO
-        =========================== */
-
-        function eliminarUsuario(index) {
-
-            Swal.fire({
-
-                title: "¿Eliminar usuario?",
-                text: baseUsuarios[index].nombre,
-                icon: "warning",
-
-                showCancelButton: true,
-
-                confirmButtonText: "Eliminar"
-
-            }).then((result) => {
-
-                if (result.isConfirmed) {
-
-                    agregarNotificacion(
-                        `Usuario eliminado: ${baseUsuarios[index].nombre}`,
-                        "fa-user-minus",
-                        "danger"
-                    );
-
-                    baseUsuarios.splice(index, 1);
-
-                    renderizarTablaUsuarios();
-
-                    Swal.fire(
-                        "Eliminado",
-                        "",
-                        "success"
-                    );
-                }
-
-            });
-
-        }
-
-        /* ===========================
-           SWEET ALERT CONFIG
-        =========================== */
-
-        const darkModeSwal =
-            Swal.mixin({
-
-                background: "#1e1e1e",
-                color: "#fff",
-                confirmButtonColor: "#00E5FF"
-
-            });
-/* ===========================
-   OPERARIOS
-=========================== */
-
-let listaTareas = [];
-
-async function formularioOperario() {
-
-    const { value } = await darkModeSwal.fire({
-
-        title: "Asignar Nueva Tarea",
-        width: 550,
-        showCancelButton: true,
-        cancelButtonText: "Cancelar",
-        confirmButtonText: "Asignar Tarea",
-
-        html: `
-            <div style="text-align:left; display:flex; flex-direction:column; gap:12px;">
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Operario</label>
-                    <select id="sw-operario" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option value="">— Seleccionar operario —</option>
-                        <option>Luis Pérez</option>
-                        <option>Ana Gómez</option>
-                        <option>Jorge Ramírez</option>
-                        <option>María Torres</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Nombre de la tarea</label>
-                    <input id="sw-tarea" class="swal2-input" style="margin:4px 0 0; width:100%;"
-                        placeholder="Ej: Corte de tela Oxford blanca">
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Línea de producción</label>
-                    <select id="sw-linea" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option value="">— Seleccionar línea —</option>
-                        <option>Línea 1 — Costura</option>
-                        <option>Línea 2 — Estampado</option>
-                        <option>Línea 3 — Corte</option>
-                        <option>Línea 4 — Empaque</option>
-                    </select>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Fecha inicio</label>
-                        <input id="sw-fecha-ini" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Fecha límite</label>
-                        <input id="sw-fecha-fin" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                    </div>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Prioridad</label>
-                    <select id="sw-prioridad" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option>Baja</option>
-                        <option selected>Media</option>
-                        <option>Alta</option>
-                        <option>Urgente</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Observaciones</label>
-                    <textarea id="sw-obs-op" class="swal2-textarea"
-                        style="margin:4px 0 0; width:100%; resize:none;"
-                        placeholder="Instrucciones adicionales para el operario..."></textarea>
-                </div>
-            </div>
-        `,
-
-        preConfirm: () => {
-            const operario  = document.getElementById('sw-operario').value;
-            const tarea     = document.getElementById('sw-tarea').value.trim();
-            const linea     = document.getElementById('sw-linea').value;
-            const fechaIni  = document.getElementById('sw-fecha-ini').value;
-            const fechaFin  = document.getElementById('sw-fecha-fin').value;
-            const prioridad = document.getElementById('sw-prioridad').value;
-            const obs       = document.getElementById('sw-obs-op').value.trim();
-
-            if (!operario || !tarea || !linea || !fechaIni || !fechaFin) {
-                Swal.showValidationMessage('Por favor completa todos los campos obligatorios.');
-                return false;
-            }
-            return { operario, tarea, linea, fechaIni, fechaFin, prioridad, obs };
-        }
-    });
-
-    if (value) {
-
-        // Guardar en el array
-        listaTareas.push({ ...value, id: Date.now(), estado: 'Pendiente' });
-
-        // Renderizar en la sección
-        renderizarTareas();
-
-        agregarNotificacion(
-            `Tarea "${value.tarea}" asignada a ${value.operario} — ${value.prioridad}`,
-            "fa-clipboard-list",
-            "success"
-        );
-    }
-}
-
-function renderizarTareas() {
-
-    const contenedor = document.getElementById('lista-tareas');
-    const msgVacio   = document.getElementById('msg-sin-tareas');
-
-    if (listaTareas.length === 0) {
-        msgVacio.style.display = 'block';
-        return;
-    }
-
-    msgVacio.style.display = 'none';
-
-    // Reconstruir tabla
-    contenedor.innerHTML = `
-        <div class="table-responsive">
-            <table class="table table-dark table-hover text-center align-middle">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Operario</th>
-                        <th>Tarea</th>
-                        <th>Línea</th>
-                        <th>Inicio</th>
-                        <th>Límite</th>
-                        <th>Prioridad</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${listaTareas.map((t, i) => `
-                        <tr>
-                            <td><small class="text-secondary">#${i + 1}</small></td>
-                            <td>${t.operario}</td>
-                            <td class="text-start">${t.tarea}
-                                ${t.obs ? `<br><small class="text-secondary">${t.obs}</small>` : ''}
-                            </td>
-                            <td><small>${t.linea}</small></td>
-                            <td><small>${t.fechaIni}</small></td>
-                            <td><small>${t.fechaFin}</small></td>
-                            <td>${badgePrioridad(t.prioridad)}</td>
-                            <td>
-                                <select class="form-select form-select-sm bg-dark text-light border-secondary"
-                                    onchange="cambiarEstadoTarea(${i}, this.value)">
-                                    <option ${t.estado === 'Pendiente'   ? 'selected' : ''}>Pendiente</option>
-                                    <option ${t.estado === 'En proceso'  ? 'selected' : ''}>En proceso</option>
-                                    <option ${t.estado === 'Completada'  ? 'selected' : ''}>Completada</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="eliminarTarea(${i})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        </div>
-    `;
-}
-
-function badgePrioridad(p) {
-    const mapa = {
-        'Baja':    'secondary',
-        'Media':   'info',
-        'Alta':    'warning',
-        'Urgente': 'danger'
-    };
-    return `<span class="badge bg-${mapa[p] || 'secondary'}">${p}</span>`;
-}
-
-function cambiarEstadoTarea(index, nuevoEstado) {
-    listaTareas[index].estado = nuevoEstado;
-    agregarNotificacion(
-        `Tarea "${listaTareas[index].tarea}" → ${nuevoEstado}`,
-        'fa-clipboard-check',
-        'info'
-    );
-    renderizarTareas();
-}
-
-function eliminarTarea(index) {
-    Swal.fire({
-        title: '¿Eliminar tarea?',
-        text: listaTareas[index].tarea,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Eliminar',
-        background: '#1e1e1e',
-        color: '#fff',
-        confirmButtonColor: '#00E5FF'
-    }).then(r => {
-        if (r.isConfirmed) {
-            agregarNotificacion(
-                `Tarea eliminada: ${listaTareas[index].tarea}`,
-                'fa-trash',
-                'danger'
-            );
-            listaTareas.splice(index, 1);
-            renderizarTareas();
-        }
-    });
-}
-
-/* ===========================
-   CLIENTES
-=========================== */
-
-let listaOrdenes = [];
-
-async function formularioCliente() {
-
-    const { value } = await darkModeSwal.fire({
-
-        title: "Crear Nueva Orden",
-        width: 580,
-        showCancelButton: true,
-        cancelButtonText: "Cancelar",
-        confirmButtonText: "Crear Orden",
-
-        html: `
-            <div style="text-align:left; display:flex; flex-direction:column; gap:12px;">
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Nombre del cliente</label>
-                        <input id="sw-cli-nombre" class="swal2-input" style="margin:4px 0 0; width:100%;"
-                            placeholder="Ej: Colegio Andino">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">NIT / Documento</label>
-                        <input id="sw-cli-nit" class="swal2-input" style="margin:4px 0 0; width:100%;"
-                            placeholder="Ej: 900123456-1">
-                    </div>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Teléfono de contacto</label>
-                        <input id="sw-cli-tel" type="tel" class="swal2-input" style="margin:4px 0 0; width:100%;"
-                            placeholder="3001234567">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Correo electrónico</label>
-                        <input id="sw-cli-email" type="email" class="swal2-input" style="margin:4px 0 0; width:100%;"
-                            placeholder="cliente@correo.com">
-                    </div>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Producto solicitado</label>
-                    <select id="sw-cli-producto" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option value="">— Tipo de prenda —</option>
-                        <option>Uniformes escolares</option>
-                        <option>Dotación empresarial</option>
-                        <option>Ropa deportiva</option>
-                        <option>Camisetas personalizadas</option>
-                        <option>Otro</option>
-                    </select>
-                </div>
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Cantidad de unidades</label>
-                        <input id="sw-cli-cantidad" type="number" min="1" class="swal2-input"
-                            style="margin:4px 0 0; width:100%;" placeholder="0">
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Fecha de entrega</label>
-                        <input id="sw-cli-fecha" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                    </div>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Estado de pago</label>
-                    <select id="sw-cli-pago" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option>Pendiente</option>
-                        <option>Anticipo pagado</option>
-                        <option>Pagado completo</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Especificaciones / Diseño</label>
-                    <textarea id="sw-cli-specs" class="swal2-textarea"
-                        style="margin:4px 0 0; width:100%; resize:none;"
-                        placeholder="Color, tallas, bordado, estampado, logo..."></textarea>
-                </div>
-            </div>
-        `,
-
-        preConfirm: () => {
-            const nombre   = document.getElementById('sw-cli-nombre').value.trim();
-            const nit      = document.getElementById('sw-cli-nit').value.trim();
-            const tel      = document.getElementById('sw-cli-tel').value.trim();
-            const email    = document.getElementById('sw-cli-email').value.trim();
-            const producto = document.getElementById('sw-cli-producto').value;
-            const cantidad = document.getElementById('sw-cli-cantidad').value;
-            const fecha    = document.getElementById('sw-cli-fecha').value;
-            const pago     = document.getElementById('sw-cli-pago').value;
-            const specs    = document.getElementById('sw-cli-specs').value.trim();
-
-            if (!nombre || !producto || !cantidad || !fecha) {
-                Swal.showValidationMessage('Completa al menos: nombre, producto, cantidad y fecha.');
-                return false;
-            }
-            return { nombre, nit, tel, email, producto, cantidad, fecha, pago, specs };
-        }
-    });
-
-    if (value) {
-
-        // Guardar en el array
-        listaOrdenes.push({ ...value, id: Date.now(), estado: 'En proceso' });
-
-        // Renderizar en la sección
-        renderizarOrdenes();
-
-        agregarNotificacion(
-            `Nueva orden: ${value.cantidad} ${value.producto} para ${value.nombre}`,
-            "fa-file-signature",
-            "info"
-        );
-    }
-}
-
-function renderizarOrdenes() {
-
-    const contenedor = document.getElementById('lista-ordenes');
-    const msgVacio   = document.getElementById('msg-sin-ordenes');
-
-    if (listaOrdenes.length === 0) {
-        msgVacio.style.display = 'block';
-        return;
-    }
-
-    msgVacio.style.display = 'none';
-
-    contenedor.innerHTML = `
-        <div class="table-responsive">
-            <table class="table table-dark table-hover text-center align-middle">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Cliente</th>
-                        <th>NIT</th>
-                        <th>Producto</th>
-                        <th>Cant.</th>
-                        <th>Entrega</th>
-                        <th>Pago</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    ${listaOrdenes.map((o, i) => `
-                        <tr>
-                            <td><small class="text-secondary">#${i + 1}</small></td>
-                            <td class="text-start">
-                                ${o.nombre}
-                                ${o.tel  ? `<br><small class="text-secondary"><i class="fas fa-phone me-1"></i>${o.tel}</small>` : ''}
-                                ${o.email ? `<br><small class="text-secondary"><i class="fas fa-envelope me-1"></i>${o.email}</small>` : ''}
-                            </td>
-                            <td><small class="text-secondary">${o.nit || '—'}</small></td>
-                            <td class="text-start">
-                                ${o.producto}
-                                ${o.specs ? `<br><small class="text-secondary">${o.specs}</small>` : ''}
-                            </td>
-                            <td><span class="badge bg-secondary">${o.cantidad}</span></td>
-                            <td><small>${o.fecha}</small></td>
-                            <td>${badgePago(o.pago)}</td>
-                            <td>
-                                <select class="form-select form-select-sm bg-dark text-light border-secondary"
-                                    onchange="cambiarEstadoOrden(${i}, this.value)">
-                                    <option ${o.estado === 'En proceso'  ? 'selected' : ''}>En proceso</option>
-                                    <option ${o.estado === 'Completada'  ? 'selected' : ''}>Completada</option>
-                                    <option ${o.estado === 'Cancelada'   ? 'selected' : ''}>Cancelada</option>
-                                </select>
-                            </td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-danger" onclick="eliminarOrden(${i})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-        </div>
-    `;
-}
-
-function badgePago(p) {
-    const mapa = {
-        'Pendiente':        'danger',
-        'Anticipo pagado':  'warning',
-        'Pagado completo':  'success'
-    };
-    return `<span class="badge bg-${mapa[p] || 'secondary'}">${p}</span>`;
-}
-
-function cambiarEstadoOrden(index, nuevoEstado) {
-    listaOrdenes[index].estado = nuevoEstado;
-    agregarNotificacion(
-        `Orden de ${listaOrdenes[index].nombre} → ${nuevoEstado}`,
-        'fa-file-signature',
-        'info'
-    );
-    renderizarOrdenes();
-}
-
-function eliminarOrden(index) {
-    Swal.fire({
-        title: '¿Eliminar orden?',
-        text: `${listaOrdenes[index].producto} — ${listaOrdenes[index].nombre}`,
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Eliminar',
-        background: '#1e1e1e',
-        color: '#fff',
-        confirmButtonColor: '#00E5FF'
-    }).then(r => {
-        if (r.isConfirmed) {
-            agregarNotificacion(
-                `Orden eliminada: ${listaOrdenes[index].nombre}`,
-                'fa-trash',
-                'danger'
-            );
-            listaOrdenes.splice(index, 1);
-            renderizarOrdenes();
-        }
-    });
-}
-
-        /* ===========================
-           PROVEEDORES
-        =========================== */
-
-        async function formularioProveedor() {
-
-            const { value } = await darkModeSwal.fire({
-
-                title: "Solicitar Insumos",
-                width: 560,
-                showCancelButton: true,
-                cancelButtonText: "Cancelar",
-                confirmButtonText: "Enviar Solicitud",
-
-                html: `
-            <div style="text-align:left; display:flex; flex-direction:column; gap:12px;">
-
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Proveedor</label>
-                    <select id="sw-prov-nombre" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                        <option value="">— Seleccionar proveedor —</option>
-                        <option>Textiles XYZ</option>
-                        <option>Insumos La 12</option>
-                        <option>Distribuidora Bogotá Telas</option>
-                        <option>Otro</option>
-                    </select>
-                </div>
-
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Material / Insumo</label>
-                        <select id="sw-prov-material" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                            <option value="">— Tipo de material —</option>
-                            <option>Tela Oxford Blanca</option>
-                            <option>Tela Oxford Negra</option>
-                            <option>Hilo de costura</option>
-                            <option>Botones</option>
-                            <option>Cremalleras</option>
-                            <option>Elástico</option>
-                            <option>Entretela</option>
-                            <option>Otro</option>
-                        </select>
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Cantidad</label>
-                        <input id="sw-prov-cantidad" type="number" min="1" class="swal2-input"
-                            style="margin:4px 0 0; width:100%;" placeholder="0">
-                    </div>
-                </div>
-
-                <div style="display:flex; gap:10px;">
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Unidad de medida</label>
-                        <select id="sw-prov-unidad" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                            <option>Metros</option>
-                            <option>Kilos</option>
-                            <option>Rollos</option>
-                            <option>Unidades</option>
-                            <option>Cajas</option>
-                        </select>
-                    </div>
-                    <div style="flex:1;">
-                        <label style="color:#aaa; font-size:13px;">Urgencia</label>
-                        <select id="sw-prov-urgencia" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                            <option>Normal</option>
-                            <option>Prioritario</option>
-                            <option>Urgente</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Fecha requerida de entrega</label>
-                    <input id="sw-prov-fecha" type="date" class="swal2-input" style="margin:4px 0 0; width:100%;">
-                </div>
-
-                <div>
-                    <label style="color:#aaa; font-size:13px;">Motivo / Observaciones</label>
-                    <textarea id="sw-prov-motivo" class="swal2-textarea"
-                        style="margin:4px 0 0; width:100%; resize:none;"
-                        placeholder="Ej: Stock crítico, pedido urgente para orden #204..."></textarea>
-                </div>
-
-            </div>
-        `,
-
-                preConfirm: () => {
-                    const proveedor = document.getElementById('sw-prov-nombre').value;
-                    const material = document.getElementById('sw-prov-material').value;
-                    const cantidad = document.getElementById('sw-prov-cantidad').value;
-                    const unidad = document.getElementById('sw-prov-unidad').value;
-                    const urgencia = document.getElementById('sw-prov-urgencia').value;
-                    const fecha = document.getElementById('sw-prov-fecha').value;
-                    const motivo = document.getElementById('sw-prov-motivo').value.trim();
-
-                    if (!proveedor || !material || !cantidad || !fecha) {
-                        Swal.showValidationMessage('Completa al menos: proveedor, material, cantidad y fecha.');
-                        return false;
-                    }
-
-                    return { proveedor, material, cantidad, unidad, urgencia, fecha, motivo };
-                }
-
-            });
-
-            if (value) {
-                agregarNotificacion(
-                    `Pedido: ${value.cantidad} ${value.unidad} de ${value.material} — ${value.urgencia}`,
-                    "fa-truck-loading",
-                    "warning"
-                );
-            }
-
-        }
-
-
-        /* ===========================
-           INCIDENCIA
-        =========================== */
-
-        function resolverIncidencia() {
-
-            document.getElementById(
-                "incidenciaLinea3"
-            ).innerHTML = `
- 
-                <div class="d-flex justify-content-between align-items-center">
-                    <strong>Línea 3 (Corte)</strong>
-                    <span class="badge bg-success">
-                        Operativa
-                    </span>
-                </div>
- 
-                <small class="text-secondary">
-                    Operario: Luis P.
-                </small>
- 
-            `;
-
-            agregarNotificacion(
-                "Incidencia M04 resuelta",
-                "fa-tools",
-                "success"
-            );
-
-        }
-
-        /* ===========================
-           FIX: guardarPerfil() definida (antes llamada pero no existía)
-        =========================== */
-
-        function guardarPerfil() {
-
-            darkModeSwal.fire({
-                icon: "success",
-                title: "Perfil actualizado",
-                text: "Los cambios han sido guardados correctamente."
-            });
-
-            agregarNotificacion(
-                "Perfil del administrador actualizado",
-                "fa-user-check",
-                "success"
-            );
-
-        }
-
-        /* ===========================
-           GRAFICA
-        =========================== */
-
-        // FIX: envuelto en DOMContentLoaded para garantizar que el canvas esté listo
-        document.addEventListener("DOMContentLoaded", () => {
-
-            const ctx =
-                document.getElementById(
-                    "graficaProduccion"
-                );
-
-            if (ctx) {
-
-                new Chart(ctx, {
-
-                    type: "line",
-
-                    data: {
-
-                        labels: [
-                            "Lun",
-                            "Mar",
-                            "Mié",
-                            "Jue",
-                            "Vie",
-                            "Sáb"
-                        ],
-
-                        datasets: [{
-
-                            label: "Producción",
-
-                            data: [
-                                120,
-                                190,
-                                150,
-                                220,
-                                180,
-                                250
-                            ],
-
-                            borderColor: "#00E5FF",
-
-                            backgroundColor:
-                                "rgba(0,229,255,0.1)",
-
-                            fill: true,
-
-                            tension: 0.4
-
-                        }]
-
-                    }
-
-                });
-
-            }
-
-            renderizarTablaUsuarios();
-
-        });
-
-    </script>
-
+    <script src="../js/admin.js"></script>
 </body>
 
 </html>

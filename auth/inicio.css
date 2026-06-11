@@ -341,5 +341,5 @@ h1 {
     color: white;
     font-size: 1rem;
     flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(57,91,100,0.3);
+    box-shadow: 0 4px 12px rgba(0, 200, 255, 0.3);
 }
